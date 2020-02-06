@@ -80,7 +80,7 @@ body {
 				<div class="form-address">
 					<div>주소</div>
 					<div>
-						<input type="text" id="sample4_postcode" placeholder="우편번호">
+						<input type="text" name="zipCode" id="sample4_postcode" placeholder="우편번호">
 						<input type="button" onclick="sample4_execDaumPostcode()"
 							value="우편번호 찾기">
 					</div>
@@ -88,18 +88,18 @@ body {
 					<div>
 						<input type="text" name="road_address" id="sample4_roadAddress"
 							placeholder="도로명주소" size="30"> <input type="text"
-							name="number_address" id="sample4_jibunAddress"
+							name="numberAddress" id="sample4_jibunAddress"
 							placeholder="지번주소" size="30">
 					</div>
 					<span id="guide" style="color: #999; display: none"></span>
 					<div>
-						<input type="text" name="detail_address"
+						<input type="text" name="detailAddress"
 							id="sample4_detailAddress" placeholder="상세주소">
 					</div>
 				</div>
 
 				<div class="form-want-money">
-					<span>원하는 시급 </span> <input type="number" name="want_money"
+					<span>원하는 시급 </span> <input type="number" name="wantMoney"
 						min="8590" value="8590"><span>원</span>
 				</div>
 
@@ -115,30 +115,30 @@ body {
 				<div>근무</div>
 				<div class="form-want-day-of-week">
 					<span>원하는 요일</span> <span><input type="checkbox" value="월">월</span>
-					<span><input type="checkbox" name="day_of_week" value="화">화</span>
-					<span><input name="day_of_week" type="checkbox" value="수">수</span>
-					<span><input name="day_of_week" type="checkbox" value="목">목</span>
-					<span> <input name="day_of_week" type="checkbox" value="금">금
-					</span> <span><input name="day_of_week" type="checkbox" value="토">토</span>
-					<span><input name="day_of_week" type="checkbox" value="일">일</span>
+					<span><input type="checkbox" name="dayOfWeek" value="화">화</span>
+					<span><input name="dayOfWeek" type="checkbox" value="수">수</span>
+					<span><input name="dayOfWeek" type="checkbox" value="목">목</span>
+					<span> <input name="dayOfWeek" type="checkbox" value="금">금
+					</span> <span><input name="dayOfWeek" type="checkbox" value="토">토</span>
+					<span><input name="dayOfWeek" type="checkbox" value="일">일</span>
 				</div>
 
 				<div class="form-want-address">
-					<span>원하는 지역</span> <select name="">
-						<option>서울</option>
-						<option>경기도</option>
-						<option>강원도</option>
-						<option>충청남도</option>
-						<option>충청북도</option>
-						<option>전라북도</option>
-						<option>전라남도</option>
-						<option>경상북도</option>
-						<option>경상남도</option>
+					<span>원하는 지역</span> <select name="wantLocal">
+						<option value="서울">서울</option>
+						<option value="경기도">경기도</option>
+						<option value="강원도">강원도</option>
+						<option value="충청남도">충청남도</option>
+						<option value="충청북도">충청북도</option>
+						<option value="전라북도">전라북도</option>
+						<option value="전라남도">전라남도</option>
+						<option value="경상북도">경상북도</option>
+						<option value="경상남도">경상남도</option>
 					</select>
 				</div>
 
 				<div class="form-want-time">
-					<span>원하는 시간대</span> <select>
+					<span>원하는 시간대</span> <select name="wantTime">
 						<option>6시 ~ 10시</option>
 						<option>10시 ~ 12시</option>
 						<option>12시 ~ 16시</option>

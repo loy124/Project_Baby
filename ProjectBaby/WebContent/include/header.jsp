@@ -33,7 +33,7 @@ $(document).ready(function(){
 		$('.sub_menu',this).hide();
 		$('> a',this).css({'color':'#fff'})
 	});
-}
+};
 </script>
 
 <body>

@@ -43,7 +43,7 @@ body {
 
 		<!-- submit시 RegiInfoServlet에 method방식은 pos에
       type registerAf와 값들을 가지고 이동한다 -->
-		<form action="registerInfo" method="post">
+	<form action="registerInfo" method="post">
 			<div class="form-container">
 				<input type="hidden" name="type" value="registerAf">
 				<div class="form-id">
@@ -57,10 +57,9 @@ body {
 						<input type="text" placeholder="인증번호를 입력하세요">&nbsp;&nbsp;<input
 							type="button" value="인증번호 확인">
 					</div>
-
 				</div>
 				<div class="form-password">
-					<span class="label">패스워드</span><input type="text" name="pwd"
+					<span class="label">패스워드</span><input type="text" name="password"
 						size="20">
 				</div>
 				<div class="form-name">
@@ -68,7 +67,7 @@ body {
 						size="20">
 				</div>
 				<div class="form-age">
-					<span class="label">나이</span><input type="text" name="email"
+					<span class="label">나이</span><input type="text" name="age"
 						size="20">
 
 				</div>
@@ -80,18 +79,21 @@ body {
 				<div class="form-address">
 					<div>주소</div>
 					<div>
-						<input type="text" id="sample4_postcode" placeholder="우편번호">
+						<input type="text" name="zipCode" id="sample4_postcode" placeholder="우편번호">
 						<input type="button" onclick="sample4_execDaumPostcode()"
 							value="우편번호 찾기">
 					</div>
 					<div></div>
 					<div>
-						<input type="text" id="sample4_roadAddress" placeholder="도로명주소" size="30">
-						<input type="text" id="sample4_jibunAddress" placeholder="지번주소"  size="30">
+						<input type="text" name="road_address" id="sample4_roadAddress"
+							placeholder="도로명주소" size="30"> <input type="text"
+							name="numberAddress" id="sample4_jibunAddress"
+							placeholder="지번주소" size="30">
 					</div>
 					<span id="guide" style="color: #999; display: none"></span>
 					<div>
-						<input type="text" id="sample4_detailAddress" placeholder="상세주소">
+						<input type="text" name="detailAddress"
+							id="sample4_detailAddress" placeholder="상세주소">
 					</div>
 				</div>
 				<div class="form-submit">

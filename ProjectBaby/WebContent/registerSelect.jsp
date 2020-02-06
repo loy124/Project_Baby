@@ -8,8 +8,8 @@
 </head>
 <body>
 	<div>
-		<button onclick="">일반 회원 가입</button>
-		<button onclick="">시터 회원 가입</button>
+		<button onclick="location.href='register?type=moveRegisterMember'">일반 회원 가입</button>
+		<button onclick="location.href='register?type=moveRegisterSitter'">시터 회원 가입</button>
 	</div>
 </body>
 </html>

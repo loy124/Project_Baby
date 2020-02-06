@@ -108,7 +108,7 @@ a {
 	
 	/* RegiInfoServlet으로 이동 */
 	function regiButton(){
-		location.href="registerInfo?type=moveRegister"
+		location.href="register.jsp"
 	}
 	
 	// 로그인 버튼 클릭시에 동작하는 함수 
@@ -159,9 +159,7 @@ a {
 			});
 	</script>
 	
-	<script src="script.js">
-	
-	</script>
+	<script src="script.js"></script>
 </body>
 
 </html>

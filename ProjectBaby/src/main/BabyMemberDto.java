@@ -20,6 +20,7 @@ public class BabyMemberDto {
 	   
 	   private String registerDate;
 	   private String unRegisterDate;
+	   
 	   public BabyMemberDto(String id, String password, String name, int age, String gender, String address, String money,
 	         String phoneNumber, String bankAccount, String bankAccountMoney, int auth, String point,
 	         String customerRequest, String registerDate, String unRegisterDate) {

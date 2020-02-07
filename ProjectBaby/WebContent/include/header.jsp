@@ -1,97 +1,84 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Baby</title>
+	<meta charset="UTF-8">
+	<title>Oh My Baby</title>
 
-<!-- style -->
-<link rel="stylesheet" type="text/css" href="css/reset.css" />
-<link rel="stylesheet" type="text/css" href="css/layout.css" />
+	<!-- favicon 16, 24, 32, 64, 152 -->
+	<link rel="shortcut icon" href="./images/front/favicon.ico">
+	<link rel="apple-touch-icon" href="./images/front/icon_57.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="./images/front/icon_72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="./images/front/icon_114.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="./images/front/icon_144.png">
 
-<!-- webfont -->
-<link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css'
-	rel='stylesheet' type='text/css' />
-<link
-	href='http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css'
-	rel='stylesheet' type='text/css' />
+	<link href="css/front/reset.css" rel="stylesheet">
+	<link href="css/front/common.css" rel="stylesheet">
+	<link href="css/front/layout.css" rel="stylesheet">
+	<link href="css/front/style.css" rel="stylesheet">
 
-<!-- ie cheker -->
-<script type="text/javascript" src="js/ie-checker.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="js/front/jquery-3.1.0.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+	<script src="js/front/jquery.bxslider.js"></script>
+	<script src="js/front/common.js"></script>
+
 </head>
-
-<script type="text/javascript">
-$(document).ready(function(){
-	/*gnb*/
-	$('.gnb > li').mouseenter(function(){
-		$('.sub_menu',this).show();
-		$('> a',this).css({'color':'#0885c4'})
-	}).mouseleave(function(){
-		$('.sub_menu',this).hide();
-		$('> a',this).css({'color':'#fff'})
-	});
-};
-</script>
 
 <body>
 	<header class="headerWrap">
 		<div class="header clearfix tr">
 			<div class="header_topSec clearfix">
 				<ul class="clearfix">
-					<li><a href="#n">로그인</a></li>
-					<li><a href="#n">회원가입</a></li>
+					<li><a href="#n" id="loginBtn">로그인</a></li>
+					<li><a href="register?type=moveRegister">회원가입</a></li>
 				</ul>
 			</div>
 			<div class="inner_header clearfix">
 				<h1>
-					<a href="#" class="logo">
-						<img src="images/">
+					<a href="index.html" class="logo">
+						<img src="images/front/logo.png">
+						<!-- <span>내 아이를 부탁해</span> -->
 					</a>
 				</h1>
 				<ul class="gnb clearfix">
 					<li>
-						<a href="" style="color: rgb(255, 255, 255);">Mypage</a>
-						<ul class="sub_menu" style="display: none;">
-							<li><a href="">예약 내역 확인</a></li>
+						<a href="">Mypage</a>
+						<ul class="sub_menu">
+							<li><a href="">예약내역 확인</a></li>
 							<li><a href="">내 포인트 관리</a></li>
-							<li><a href="">지난 이력 확인</a></li>
+							<li><a href="">지난 이력확인</a></li>
 							<li><a href="">내 계정 관리</a></li>
 						</ul>
 					</li>
 					<li>
-						<a href="" style="color: rgb(255, 255, 255);">Service</a>
-						<ul class="sub_menu" style="display: none;">
-							<li>
-								<a href="">거래소 다운로드</a>
-							</li>
-							<li><a href="">인증센터</a></li>
-							<li><a href="">전자지갑주소</a></li>
-							<li><a href="">회원정보</a></li>
-							<li><a href="">자산현황</a></li>
-							<li><a href="">내 거래내역</a></li>
-							<li><a href="">접속정보</a></li>
-							<li><a href="">API관리</a></li>
+						<a href="">Service</a>
+						<ul class="sub_menu">
+							<li><a href="">돌봄 신청</a></li>
+							<li><a href="">구인구직</a></li>
 						</ul>
 					</li>
+
 					<li>
-						<a href="1_sub_03_customer_01_faq.html" style="color: rgb(255, 255, 255);">고객센터</a>
-						<ul class="sub_menu" style="display: none;">
-							<li><a href="">FAQ</a></li>
-							<li><a href="">공지사항</a></li>
-							<li><a href="">1:1문의</a></li>
-							<li><a href="">수수료 및 입출금한도</a></li>
-							<li><a href="">Market Cap</a></li>
-							<li><a href="">인증자료제출</a></li>
-							<li><a href="">암호화폐 정보</a></li>
+						<a href="">고객센터</a>
+						<ul class="sub_menu">
+							<li><a href="">오시는길</a></li>
+							<li><a href="">Q&A</a></li>
 						</ul>
 					</li>
+
 					<li>
-						<a href="" style="color: rgb(255, 255, 255);">커뮤니티</a>
+						<a href="">커뮤니티</a>
+						<ul class="sub_menu">
+							<li><a href="">후기게시판</a></li>
+							<li><a href="">자유게시판</a></li>
+						</ul>
 					</li>
+
 				</ul>
 			</div>
 		</div>
 	</header>
+	<!--// header -->

@@ -43,9 +43,9 @@ body {
 
 		<!-- submit시 RegiInfoServlet에 method방식은 pos에
       type registerAf와 값들을 가지고 이동한다 -->
-	<form action="registerInfo" method="post">
+		<form action="register" method="post">
 			<div class="form-container">
-				<input type="hidden" name="type" value="registerAf">
+				<input type="hidden" name="type" value="registerMemberAf">
 				<div class="form-id">
 					<span class="label">id(이메일)</span> <input type="text" id="id"
 						name="id" size="20"> <span id="idcheck"
@@ -72,28 +72,38 @@ body {
 
 				</div>
 				<div class="form-gender">
-					<span class="label">성별</span><input type="text" name="gender"
-						size="20">
+					<span class="label">성별</span> <input type="radio" name="gender"
+						value="남"> <span>남</span> <input type="radio"
+						name="gender" value="여"><span>여</span>
 				</div>
+
+				<div class="form-phone-number">
+					<span class="label">휴대폰 번호</span> <input type="text"
+						name="numberFirst" size="10">- <input type="text"
+						name="numberSecond" size="10">- <input type="text"
+						name="numberThird" size="10">
+				</div>
+
 				<%--주소--%>
 				<div class="form-address">
 					<div>주소</div>
 					<div>
-						<input type="text" name="zipCode" id="sample4_postcode" placeholder="우편번호">
-						<input type="button" onclick="sample4_execDaumPostcode()"
-							value="우편번호 찾기">
+						<input type="text" name="zipCode" id="sample4_postcode"
+							placeholder="우편번호"> <input type="button"
+							onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
 					</div>
 					<div></div>
 					<div>
-						<input type="text" name="road_address" id="sample4_roadAddress"
-							placeholder="도로명주소" size="30"> <input type="text"
+						<input type="text" name="roadAddress" id="sample4_roadAddress"
+							placeholder="도로명주소" size="30">
+						<%-- <input type="text"
 							name="numberAddress" id="sample4_jibunAddress"
-							placeholder="지번주소" size="30">
+							placeholder="지번주소" size="30"> --%>
 					</div>
 					<span id="guide" style="color: #999; display: none"></span>
 					<div>
-						<input type="text" name="detailAddress"
-							id="sample4_detailAddress" placeholder="상세주소">
+						<input type="text" name="detailAddress" id="sample4_detailAddress"
+							placeholder="상세주소">
 					</div>
 				</div>
 				<div class="form-submit">

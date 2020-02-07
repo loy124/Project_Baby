@@ -43,9 +43,9 @@ body {
 
 		<!-- submit시 RegiInfoServlet에 method방식은 pos에
       type registerAf와 값들을 가지고 이동한다 -->
-		<form action="registerInfo" method="post">
+		<form action="register" method="post">
 			<div class="form-container">
-				<input type="hidden" name="type" value="registerAf">
+				<input type="hidden" name="type" value="registerSitterAf">
 				<div class="form-id">
 					<span class="label">id(이메일)</span> <input type="text" id="id"
 						name="id" size="20"> <span id="idcheck"
@@ -73,34 +73,43 @@ body {
 
 				</div>
 				<div class="form-gender">
-					<span class="label">성별</span><input type="text" name="gender"
-						size="20">
+					<span class="label">성별</span><input type="radio" name="gender"
+						value="남"> <span>남</span> <input type="radio"
+						name="gender" value="여"><span>여</span>
 				</div>
+
+				<div class="form-phone-number">
+					<span class="label">휴대폰 번호</span> <input type="text"
+						name="numberFirst" size="10">- <input type="text"
+						name="numberSecond" size="10">- <input type="text"
+						name="numberThird" size="10">
+				</div>
+
 				<%--주소--%>
 				<div class="form-address">
 					<div>주소</div>
 					<div>
-						<input type="text" name="zipCode" id="sample4_postcode" placeholder="우편번호">
-						<input type="button" onclick="sample4_execDaumPostcode()"
-							value="우편번호 찾기">
+						<input type="text" name="zipCode" id="sample4_postcode"
+							placeholder="우편번호"> <input type="button"
+							onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
 					</div>
 					<div></div>
 					<div>
 						<input type="text" name="road_address" id="sample4_roadAddress"
 							placeholder="도로명주소" size="30"> <input type="text"
-							name="numberAddress" id="sample4_jibunAddress"
-							placeholder="지번주소" size="30">
+							name="numberAddress" id="sample4_jibunAddress" placeholder="지번주소"
+							size="30">
 					</div>
 					<span id="guide" style="color: #999; display: none"></span>
 					<div>
-						<input type="text" name="detailAddress"
-							id="sample4_detailAddress" placeholder="상세주소">
+						<input type="text" name="detailAddress" id="sample4_detailAddress"
+							placeholder="상세주소">
 					</div>
 				</div>
 
-				<div class="form-want-money">
-					<span>원하는 시급 </span> <input type="number" name="wantMoney"
-						min="8590" value="8590"><span>원</span>
+				<div class="form-want-pay">
+					<span>원하는 시급 </span> <input type="number" name="wantPay" min="8590"
+						value="8590"><span>원</span>
 				</div>
 
 				<div class="form-career">
@@ -115,12 +124,12 @@ body {
 				<div>근무</div>
 				<div class="form-want-day-of-week">
 					<span>원하는 요일</span> <span><input type="checkbox" value="월">월</span>
-					<span><input type="checkbox" name="dayOfWeek" value="화">화</span>
-					<span><input name="dayOfWeek" type="checkbox" value="수">수</span>
-					<span><input name="dayOfWeek" type="checkbox" value="목">목</span>
-					<span> <input name="dayOfWeek" type="checkbox" value="금">금
-					</span> <span><input name="dayOfWeek" type="checkbox" value="토">토</span>
-					<span><input name="dayOfWeek" type="checkbox" value="일">일</span>
+					<span><input type="checkbox" name="wantDate" value="화">화</span>
+					<span><input name="wantDate" type="checkbox" value="수">수</span>
+					<span><input name="wantDate" type="checkbox" value="목">목</span>
+					<span> <input name="wantDate" type="checkbox" value="금">금
+					</span> <span><input name="wantDate" type="checkbox" value="토">토</span>
+					<span><input name="wantDate" type="checkbox" value="일">일</span>
 				</div>
 
 				<div class="form-want-address">
@@ -145,6 +154,11 @@ body {
 						<option>16시 ~ 20시</option>
 						<option>20시 ~ 24시</option>
 					</select>
+				</div>
+
+				<div class="form-want-introduce">
+					<div>자기소개</div>
+					<textarea rows="15" cols="30" name="introduce"></textarea>
 				</div>
 
 				<div class="form-submit">

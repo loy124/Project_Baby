@@ -1,0 +1,334 @@
+@charset "utf-8";
+
+
+/* 공통 css */
+/* font style */
+@font-face {
+	font-family: NanumSquare;
+	src: url(../../fonts/NanumSquareR.eot);
+	src: local("나눔스퀘어"), url(../../fonts/NanumSquareR.woff) format("woff");
+}
+.font_square {font-family: "NanumSquare" !important;}
+
+/* input style */
+input[type="radio"] {vertical-align: middle; margin-right: 7px;}
+input[type="checkbox"] {vertical-align: middle; margin-right: 7px;}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {box-sizing: border-box; width: 430px; height: 37px; line-height: 37px; vertical-align: middle; padding: 0 10px; font-size: 13px; border: 1px solid #d6d6d6; background: #fff;}
+
+select:disabled {color: #999; border: 1px solid #d6d6d6; background: #f5f5f5 url(../../images/front/ico_select_arr.png) 92% 50% no-repeat;}
+input:disabled {color: #999; border: 1px solid #d6d6d6; background: #f5f5f5;}
+
+select {
+	box-sizing: border-box; width: 134px; height: 28px; line-height: 28px; padding: 0 0 0 10px; vertical-align: middle; font-family: inherit; font-size: 13px; color: #545454; background: #fff url(../../images/front/ico_select_arr.png) 92% 50% no-repeat; border: 1px solid #e7e7e7;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+select::-ms-expand {display: none;}/* for IE 11 */
+
+
+
+/* -- 팝업창 */
+.lp_box {
+    position: fixed;
+    background: #fff;
+    z-index: 9999;
+}
+.lp_box, .lp_bg, .lp_bg2 {
+    display: none;
+}
+.lp_box, .lp_bg, .lp_bg2 {
+    display: none;
+}
+
+.btn_close_lp {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.lp_cn {
+    box-sizing: border-box;
+    padding: 30px 20px 20px;
+    font-family: 'NanumSquare';
+}
+.btn_gray_s {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 20px;
+    font-family: 'NanumSquare';
+    font-size: 13px;
+    color: #fff;
+    background: #666;
+}
+.btn_blue_l {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    letter-spacing: 1px;
+    font-family: 'NanumSquare';
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: #10afe7;
+}
+
+/* 로그인 */
+.lp_sbj {
+  padding-top: 30px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+.login_setting > span {
+    position: relative;
+		    line-height: 32px;
+}
+/* 비번 재설정 팝업 */
+.top_sec {
+    width: 100%;
+    height: 57px;
+    background: #17aae0;
+}
+.top_sec .tlc {
+    display: block;
+    width: 270px;
+    line-height: 60px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'NanumSquare';
+    letter-spacing: 0px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.btn_close_lp2 {
+    display: block;
+    position: absolute;
+    top: 18px;
+    right: 20px;
+}
+
+.lp_cn {
+    box-sizing: border-box;
+    padding: 30px 20px 20px;
+    font-family: 'NanumSquare';
+}
+
+.lp_cn p {
+    font-size: 15px;
+    padding-top: 10px;
+    line-height: 23px;
+}
+
+.btn_blue_l {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    letter-spacing: 1px;
+    font-family: 'NanumSquare';
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: #10afe7;
+}
+
+
+
+
+/* header */
+.headerWrap {
+  min-width: 1100px;
+  /* border-bottom: 1px solid #ccc; */
+  box-shadow: 2px 0 14px rgba(0, 0, 0, 0.2);
+  background: #fff;
+}
+.header {
+  width: 1100px;
+	box-sizing: border-box;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: block;
+  position: absolute;
+  height: 54px;
+  top: 50%;
+  margin-top: -85px;
+}
+.logo img{
+  width: 200px;
+}
+
+.header_topSec{
+	float: right;
+	padding: 12px 0;
+}
+.header_topSec ul {
+    float: left;
+}
+.header_topSec ul li {
+  float: left;
+  padding-right: 13px;
+  margin-right: 13px;
+  line-height: 28px;
+  font-size: 13px;
+  background: url(../../images/front/ico_bar_vert_s.gif) no-repeat 100% center;
+}
+.header_topSec ul li a {
+  color: #000;
+}
+.header_topSec ul li a:hover {
+    text-decoration: underline;
+}
+
+.clearfix:after {
+  content: '.';
+  display: block;
+  height: 0px;
+  clear: both;
+  visibility: hidden;
+}
+
+.clearfix:after {
+  content: '.';
+  display: block;
+  height: 0px;
+  clear: both;
+  visibility: hidden;
+}
+
+.inner_header {
+    clear: both;
+    position: relative;
+    height: 50px;
+}
+
+.gnb {
+    float: right;
+}
+
+.gnb > li {
+    line-height: 36px;
+    font-size: 17px;
+		position: relative;
+    float: left;
+    font-weight: bold;
+}
+
+.gnb > li > a {
+    display: block;
+    height: 108px;
+    padding: 0 17px;
+    font-family: "NanumSquare";
+    color: #82a3d4;
+}
+
+/* gnb - sub_menu */
+.sub_menu {
+  left: 50%;
+  margin-left: -72px;
+  z-index: 1000;
+  top: 50px;
+	border: 1px solid #b3b3b3;
+}
+.sub_menu li {
+  width: 143px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.sub_menu li a {
+    padding: 10px 0px;
+		display: block;
+    background: #fff;
+    letter-spacing: -1px;
+}
+
+
+/* content */
+.containerWrap{
+	position: relative;
+	min-height: 600px;
+	box-sizing: border-box;
+  /* margin: 0 auto -155px; */
+}
+.container_inner{
+	width: 1100px;
+	margin: 50px auto;
+}
+.content{
+	min-height:300px;
+}
+
+
+/*  footer  */
+
+footer {
+
+}
+
+.footerWrap {
+	width: 100%;
+  min-width: 1100px;
+	padding: 30px 0 25px;
+  background-color: #3a3a3a;
+}
+
+.footer {
+    box-sizing: border-box;
+    position: relative;
+    width: 1100px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+.footer p{
+    width: 130px;
+		height: 64px;
+		display: inline-block;
+}
+
+.footer__info {
+    float: none;
+    margin-left: 187px;
+}
+
+.footer__info p {
+    font-size: 12px;
+    color: #bebfc2;
+    font-weight: bold;
+}
+
+.footer__menu > li {
+    padding-bottom: 5px;
+    font-size: 12px;
+    color: #bebfc2;
+    font-weight: bold;
+}
+
+.footer__menu li a {
+    color: #bebfc2;
+}
+
+.footer__menu .inner_list li:first-child {
+    padding-left: 0;
+}
+
+.footer__menu .inner_list li {
+    float: left;
+    padding: 0 10px;
+    color: #bebfc2;
+    background: url(../../images/front/ico_bar_footer.png) no-repeat 100% center;
+}

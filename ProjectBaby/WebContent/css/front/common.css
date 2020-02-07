@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+
+.sub_menu {display: none; position: absolute; top: 90px; z-index: 50; border: 1px solid #0885c4;}
+.sub_menu li {line-height: normal;}
+.sub_menu li a {display: block; padding: 13px 26px; background: #fff; letter-spacing: -1px;}
+.sub_menu li a:hover,
+.sub_menu li a.current {color: #fff; background: #ccc;}
+
+.sub_menu li {width: 166px; text-align: center; font-size: 14px;}
+
+
+.sub_menu li a {padding: 10px 0px;}

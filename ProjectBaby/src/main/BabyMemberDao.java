@@ -2,8 +2,10 @@ package main;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import db.DBClose;
 import db.DBConnection;
 
 public class BabyMemberDao {
@@ -20,6 +22,15 @@ public class BabyMemberDao {
 	}
 	
 	/*
+	 * ID, PASSWORD, NAME, AGE, GENDER, ADDRESS, MONEY," + " PHONE_NUMBER," +
+	 * " BANK_ACCOUNT, BANK_ACCOUNT_MONEY, AUTH, POINT, " +
+	 * " CUSTOMER_REQUEST_DATE, REGISTER_DATE, UN_REGISTER_DATE," +
+	 * "LICENSE, WANT_PAY, CAREER, HIRE_DATE, EXPIRE_DATE, PROFILE_PHOTO, " +
+	 * "INTRODUCE, START_WORK_DATE, END_WORK_DATE, WANT_DATE, WANT_LOCAL, WANT_TIME
+	 */
+	
+	
+	/*
 	 * String sql =
 	 * "SELECT ID, PASSWORD, NAME, AGE, GENDER, ADDRESS, MONEY, PHONE_NUMBER," +
 	 * " BANK_ACCOUNT, BANK_ACCOUNT_MONEY, AUTH, POINT," +
@@ -28,6 +39,38 @@ public class BabyMemberDao {
 	
 	public static BabyMemberDao getInstance() {
 		return babyMemberDao;
+	}
+	
+	public boolean getId(String id) {
+		String sql = " SELECT ID " + " FROM BABY_MEMBER " + " WHERE ID = ? ";
+
+		Connection conn = null; // DB Connection
+		PreparedStatement psmt = null; // SQL
+		ResultSet rs = null; // result
+
+		boolean findId = false;
+
+		System.out.println("sql:" + sql);
+
+		try {
+			conn = DBConnection.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				findId = true; // 데이터가 있을 때
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, rs);
+		}
+
+		return findId;
 	}
 	
 	public boolean registerMember(BabyMemberDto dto) {
@@ -60,6 +103,8 @@ public class BabyMemberDao {
 		
 		return count > 0 ? true : false;
 	}
+	
+	
 	
 	public boolean registerSitter(BabyMemberDto dto) {
 	      String sql = "INSERT INTO BABY_MEMBER (ID, PASSWORD, NAME, AGE, GENDER, ADDRESS, MONEY,"

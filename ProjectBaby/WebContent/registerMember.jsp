@@ -50,7 +50,7 @@ body {
 					<span class="label">id(이메일)</span> <input type="text" id="id"
 						name="id" size="20"> <span id="idcheck"
 						style="font-size: 8px"> <input type="button" id="btn"
-						value="id확인"> <span>id 확인시 텍스트</span>
+						value="id확인"> <span class="id-check-test">id 확인시 텍스트</span>
 					</span>
 					<!-- 아이디 확인시 클릭시 이메일인증 번호를 전송 -->
 					<div class="form-check">
@@ -184,11 +184,20 @@ body {
 
 		//idCheck를 RegiInfoServlet에 넘겨주고 success로 값을 받아온다
 		//값을 정확히 받아오면 console.log에 true or false가 찍힌다
+		$("#submitBtn").prop("disabled", true);
 		$("#btn").click(function() {
-			//alert("됨");
-
+			//alert("됨");   
+			
+			//이메일 정규식 사용하기
+			var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+			if($("#id").val().match(regExp) === null){
+				$(".id-check-test").css("color", "#ff0000");
+				$(".id-check-test").html("올바른 이메일 형식을 사용해주세요");
+				return ;
+			}
+			
 			$.ajax({
-				url : "./registerInfo",
+				url : "./register",
 				//data : "id=" + $("#id").val(),
 				//json타입
 				type : "get",
@@ -200,18 +209,38 @@ body {
 					console.log(data);
 					if (data.trim() === "false") {
 						//alert("사용 가능한 아이디입니다")
-						$("#idcheck").css("color", "#0000ff");
-						$("#idcheck").html("사용할 수 있는 id입니다");
+						$(".id-check-test").css("color", "#0000ff");
+						$(".id-check-test").html("사용할 수 있는 id입니다. 해당 이메일로 인증번호를 발송하였습니다");
 						$("#submitBtn").prop("disabled", false);
+						
+						$.ajax({
+							url : "./email",
+							type : "get",
+							data : {
+								"id" : $("#id").val()
+							},
+							success : function(data1) {
+								console.log(data1);
+							}
+						});
 					} else if (data.trim() == "true") {
-						$("#idcheck").css("color", "#ff0000");
-						$("#idcheck").html("사용중인 id입니다");
+						$(".id-check-test").css("color", "#ff0000");
+						$(".id-check-test").html("사용중인 id입니다");
 						$("#id").val("");
 						$("#submitBtn").prop("disabled", true);
 					}
 				}
 			})
 		});
+		
+		/* if($("input").val() == ""){
+			$("#submitBtn").prop("disabled", true);
+			alert("비었지롱");
+		}else{
+			$("#submitBtn").prop("disabled", true);
+			alert("아니지롱");
+		} */
+		
 	</script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package main;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/register")
-public class RegisterServelt extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -33,7 +34,16 @@ public class RegisterServelt extends HttpServlet {
 			resp.sendRedirect("registerMember.jsp");
 		} else if (type.equals("moveRegisterSitter")) {
 			resp.sendRedirect("registerSitter.jsp");
-		} else {
+		} else if (type.equals("idCheck")) {
+			String id = req.getParameter("id");
+			System.out.println(id);
+			PrintWriter out = resp.getWriter();
+			BabyMemberDao babyMemberDao = BabyMemberDao.getInstance();
+			boolean isS = babyMemberDao.getId(id);
+			out.println(isS);
+		}
+		
+		else {
 			req.setCharacterEncoding("utf-8");
 			String id = req.getParameter("id");
 			String password = req.getParameter("password");

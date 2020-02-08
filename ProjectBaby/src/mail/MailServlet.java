@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.Properties;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.mail.Message;
 import javax.mail.internet.InternetAddress;
@@ -19,12 +20,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/mail")
+@WebServlet("/email")
 public class MailServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = req.getParameter("id");
+		System.out.println("받아온 이메일:" + id);
 
 		// 먼저 아이디로 회원정보를 받아오고 가져온 데이터에서 email값을 비교하여 존재하지 않으면 인증메일 보내지 못함
 		/*
@@ -37,7 +39,7 @@ public class MailServlet extends HttpServlet {
 		// mail server 설정
 		String host = "smtp.naver.com";
 		String user = "dhsdb1541@naver.com"; // 자신의 네이버 계정
-		String password = "";// 자신의 네이버 패스워드
+		String password = "leesj081312!@";// 자신의 네이버 패스워드
 
 		// 메일 받을 주소
 		/* String to_email = m.getEmail(); */
@@ -95,6 +97,9 @@ public class MailServlet extends HttpServlet {
 
 			Transport.send(msg);
 			System.out.println("이메일 전송");
+			System.out.println(temp);
+			PrintWriter out = resp.getWriter();
+			out.println(temp);
 			
 
 		} catch (Exception e) {

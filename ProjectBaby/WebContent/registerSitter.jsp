@@ -241,9 +241,11 @@ body {
 		//값을 정확히 받아오면 console.log에 true or false가 찍힌다
 		$("#btn").click(function() {
 			//alert("됨");
+			
+			var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
 			$.ajax({
-				url : "./registerInfo",
+				url : "./register",
 				//data : "id=" + $("#id").val(),
 				//json타입
 				type : "get",

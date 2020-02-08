@@ -246,6 +246,41 @@ public class BabyMemberDto {
 		this.wantLocal = wantLocal;
 		this.wantTime = wantTime;
 	}
+	
+	
+	public BabyMemberDto(String id, String name, int age, String gender, String address, String money,
+			String phoneNumber, String bankAccount, String bankAccountMoney, int auth, String point,
+			String customerRequestDate, String registerDate, String unRegisterDate, String license, String wantPay,
+			String career, String hireDate, String expireDate, String profilePhoto, String introduce,
+			String startWorkDate, String endWorkDate, String[] wantDate, String wantLocal, String wantTime) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+		this.address = address;
+		this.money = money;
+		this.phoneNumber = phoneNumber;
+		this.bankAccount = bankAccount;
+		this.bankAccountMoney = bankAccountMoney;
+		this.auth = auth;
+		this.point = point;
+		this.customerRequestDate = customerRequestDate;
+		this.registerDate = registerDate;
+		this.unRegisterDate = unRegisterDate;
+		this.license = license;
+		this.wantPay = wantPay;
+		this.career = career;
+		this.hireDate = hireDate;
+		this.expireDate = expireDate;
+		this.profilePhoto = profilePhoto;
+		this.introduce = introduce;
+		this.startWorkDate = startWorkDate;
+		this.endWorkDate = endWorkDate;
+		this.wantDate = wantDate;
+		this.wantLocal = wantLocal;
+		this.wantTime = wantTime;
+	}
 	public BabyMemberDto(String id, String password, String name, int age, String gender, String address,
 			String phoneNumber, String wantPay, String career, String introduce, String[] wantDate,
 			String wantLocal, String wantTime) {

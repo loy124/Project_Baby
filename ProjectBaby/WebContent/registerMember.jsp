@@ -222,8 +222,8 @@ body {
 												$(".id-check-text")
 														.html(
 																"사용할 수 있는 id입니다. 해당 이메일로 인증번호를 발송하였습니다");
-												$("#submitBtn").prop(
-														"disabled", false);
+												/* $("#submitBtn").prop(
+														"disabled", false); */
 												$(".check-email").prop(
 														"disabled", "false");
 												$(".form-check").toggle();
@@ -258,18 +258,18 @@ body {
 		}
 
 		$(".check-email-button").click(function() {
-			
+
 			console.log(typeof emailAuthData);
 			console.log(typeof $(".check-email-input").val());
 			let emailInputData = $(".check-email-input").val().trim();
-			
-			if (emailInputData === emailAuthData) {
-				$(".check-email-text").css("color","blue");
+
+			if (emailInputData !== "" & emailInputData === emailAuthData) {
+				$(".check-email-text").css("color", "blue");
 				$(".check-email-text").html("인증번호가 확인되었습니다.");
 				$(".check-email-button").prop("disabled", "true");
 				$("#btn").prop("disabled", "true");
 			} else {
-				$(".check-email-text").css("color","red");
+				$(".check-email-text").css("color", "red");
 				console.log(emailAuthData);
 				console.log("val = " + $(".check-email-input").val());
 				$(".check-email-text").html("인증번호가 올바르지 않습니다. 다시 확인하세요");

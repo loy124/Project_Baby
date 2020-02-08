@@ -21,13 +21,16 @@ public class BabyMemberDao {
 
 	}
 	
+
+	
+	
 	/*
-	 * ID, PASSWORD, NAME, AGE, GENDER, ADDRESS, MONEY," + " PHONE_NUMBER," +
+	 * "ID, PASSWORD, NAME, AGE, GENDER, ADDRESS, MONEY," + " PHONE_NUMBER," +
 	 * " BANK_ACCOUNT, BANK_ACCOUNT_MONEY, AUTH, POINT, " +
-	 * " CUSTOMER_REQUEST_DATE, REGISTER_DATE, UN_REGISTER_DATE," +
-	 * "LICENSE, WANT_PAY, CAREER, HIRE_DATE, EXPIRE_DATE, PROFILE_PHOTO, " +
-	 * "INTRODUCE, START_WORK_DATE, END_WORK_DATE, WANT_DATE, WANT_LOCAL, WANT_TIME
-	 */
+	 * " CUSTOMER_REQUEST_DATE, REGISTER_DATE, UN_REGISTER_DATE, " +
+	 * " LICENSE, WANT_PAY, CAREER, HIRE_DATE, EXPIRE_DATE, PROFILE_PHOTO, " + "
+	 * INTRODUCE, START_WORK_DATE, END_WORK_DATE, WANT_DATE, WANT_LOCAL, WANT_TIME
+	 */	 
 	
 	
 	/*
@@ -98,6 +101,8 @@ public class BabyMemberDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			DBClose.close(psmt, conn, null);
 		}
 		
 		
@@ -139,6 +144,7 @@ public class BabyMemberDao {
 	         for (int j = 0; j < wantDate.length; j++) {
 	            str = str + "," + wantDate[j];
 	         }
+	         
 	         psmt.setString(i++, str);
 	         psmt.setString(i++, dto.getWantLocal());
 	         psmt.setString(i++, dto.getWantTime());
@@ -147,12 +153,71 @@ public class BabyMemberDao {
 	      } catch (SQLException e) {
 	         // TODO Auto-generated catch block
 	         e.printStackTrace();
-	      }
+	      } finally {
+			DBClose.close(psmt, conn, null);
+		}
 	      
 	      
 	      return count > 0 ? true : false;
 	   }
 	
+	public BabyMemberDto login(String id, String password) {
+		String sql = " SELECT ID, NAME, AGE, GENDER, ADDRESS, MONEY," + " PHONE_NUMBER," +
+				  " BANK_ACCOUNT, BANK_ACCOUNT_MONEY, AUTH, POINT, " +
+				  " CUSTOMER_REQUEST_DATE, REGISTER_DATE, UN_REGISTER_DATE, " +
+				  " LICENSE, WANT_PAY, CAREER, HIRE_DATE, EXPIRE_DATE, PROFILE_PHOTO, " +
+				  " INTRODUCE, START_WORK_DATE, END_WORK_DATE, WANT_DATE, WANT_LOCAL, WANT_TIME "
+				  + "FROM BABY_MEMBER WHERE ID =? PASSWORD = ? ";
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		BabyMemberDto babyMemberDto = null;
+		try {
+			conn = DBConnection.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			psmt.setString(2, password);
+			rs = psmt.executeQuery();
+			int i = 1;
+			while(rs.next()) {
+				String arr = rs.getString(24);
+				String arrArray[] = arr.split(",");
+				
+				babyMemberDto = new BabyMemberDto(rs.getString(i++),
+						rs.getString(i++),
+						rs.getInt(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getInt(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++), 
+						arrArray,
+						rs.getString(i++),
+						rs.getString(i++));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return babyMemberDto;
+		
+	}
 }
 
 

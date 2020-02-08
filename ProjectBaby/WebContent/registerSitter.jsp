@@ -298,7 +298,7 @@ body {
 									})
 						});
 
-		function emailAjax() {
+		function emailAjax() {	
 			$.ajax({
 				url : "./email",
 				type : "get",

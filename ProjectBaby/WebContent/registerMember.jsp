@@ -35,23 +35,29 @@ body {
 .form-address>* {
 	margin-bottom: 10px;
 }
+
+.phone-number {
+	width: 230px;
+}
+
+.form-phone-number>input {
+	width: 100px;
+}
 </style>
 <body>
-	<h1>회원가입</h1>
-	<p>환영합니다</p>
+	<%@ include file="./include/header.jsp"%>
 	<div align="center">
 
 		<!-- submit시 RegiInfoServlet에 method방식은 pos에
       type registerAf와 값들을 가지고 이동한다 -->
-		<form action="register" method="post">
+		<form id="register-form" action="register" method="post">
 			<div class="form-container">
 				<input type="hidden" name="type" value="registerMemberAf">
 				<div class="form-id">
 					<span class="label">id(이메일)</span> <input type="text" id="id"
 						name="id" size="20"> <span id="idcheck"
 						style="font-size: 8px"> <input type="button" id="btn"
-						value="id확인"> <span class="id-check-text">id 확인시
-							텍스트</span>
+						value="id확인"> <span class="id-check-text"></span>
 					</span>
 					<!-- 아이디 확인시 클릭시 이메일인증 번호를 전송 -->
 					<div class="form-check" style="display: none;">
@@ -81,10 +87,12 @@ body {
 				</div>
 
 				<div class="form-phone-number">
-					<span class="label">휴대폰 번호</span> <input type="text"
-						name="numberFirst" size="10">- <input type="text"
-						name="numberSecond" size="10">- <input type="text"
-						name="numberThird" size="10">
+					<span class="label">휴대폰 번호</span> <input style="width: 70px"
+						type="text" class="phone-number" name="numberFirst">&nbsp;-&nbsp;<input
+						style="width: 70px" class="phone-number" type="text"
+						name="numberSecond">&nbsp;-&nbsp;<input
+						style="width: 70px" class="phone-number" type="text"
+						name="numberThird">
 				</div>
 
 				<%--주소--%>
@@ -110,11 +118,14 @@ body {
 					</div>
 				</div>
 				<div class="form-submit">
-					<input type="submit" value="회원가입" id="submitBtn">
+					<!-- <input type="submit" value="회원가입" id="submitBtn"> -->
+					<button type="button" id="submitBtn">회원가입</button>
+					<span class="submit-text"></span>
 				</div>
 			</div>
 		</form>
 	</div>
+	<%@ include file="./include/footer.jsp"%>
 
 
 	<script
@@ -156,34 +167,20 @@ body {
 							// 우편번호와 주소 정보를 해당 필드에 넣는다.
 							document.getElementById('sample4_postcode').value = data.zonecode;
 							document.getElementById("sample4_roadAddress").value = roadAddr;
-							document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+							//document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
 
 							// 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-							if (roadAddr !== '') {
+							/* if (roadAddr !== '') {
 								document.getElementById("sample4_extraAddress").value = extraRoadAddr;
 							} else {
 								document.getElementById("sample4_extraAddress").value = '';
-							}
+							} */
 
 							var guideTextBox = document.getElementById("guide");
-							// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-							if (data.autoRoadAddress) {
-								var expRoadAddr = data.autoRoadAddress
-										+ extraRoadAddr;
-								guideTextBox.innerHTML = '(예상 도로명 주소 : '
-										+ expRoadAddr + ')';
-								guideTextBox.style.display = 'block';
-
-							} else if (data.autoJibunAddress) {
-								var expJibunAddr = data.autoJibunAddress;
-								guideTextBox.innerHTML = '(예상 지번 주소 : '
-										+ expJibunAddr + ')';
-								guideTextBox.style.display = 'block';
-							} else {
-								guideTextBox.innerHTML = '';
-								guideTextBox.style.display = 'none';
-							}
+							document.getElementById("sample4_detailAddress")
+									.focus();
 						}
+
 					}).open();
 		}
 
@@ -253,7 +250,7 @@ body {
 					console.log(emailData);
 					//상단에 선언해준 emailAuthData에 data1 할당
 					emailAuthData = emailData.trim();
-					
+
 				}
 			});
 		}
@@ -269,8 +266,7 @@ body {
 				$(".check-email-text").html("인증번호가 확인되었습니다.");
 				$(".check-email-button").prop("disabled", "true");
 				$("#btn").prop("disabled", "true");
-				$("#submitBtn").prop(
-						"disabled", false);
+				$("#submitBtn").prop("disabled", false);
 			} else {
 				$(".check-email-text").css("color", "red");
 				console.log(emailAuthData);
@@ -278,14 +274,10 @@ body {
 				$(".check-email-text").html("인증번호가 올바르지 않습니다. 다시 확인하세요");
 			}
 		});
-
-		/* if($("input").val() == ""){
-			$("#submitBtn").prop("disabled", true);
-			alert("비었지롱");
-		}else{
-			$("#submitBtn").prop("disabled", true);
-			alert("아니지롱");
-		} */
-	</script>
+		$("#submitBtn").click(function(){
+			
+			$("#register-form").submit();
+		});		
+</script>
 </body>
 </html>

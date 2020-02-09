@@ -118,7 +118,7 @@ public class BabyMemberDao {
 	            + " CUSTOMER_REQUEST_DATE, REGISTER_DATE, UN_REGISTER_DATE,"
 	            + "LICENSE, WANT_PAY, CAREER, HIRE_DATE, EXPIRE_DATE, PROFILE_PHOTO, "
 	            + "INTRODUCE, START_WORK_DATE, END_WORK_DATE, WANT_DATE, WANT_LOCAL, WANT_TIME ) "
-	            + " VALUES(?, ?, ?, ?, ?, ?, 0, ?, 0, 0, 3, 0, null, SYSDATE, null, null, "
+	            + " VALUES(?, ?, ?, ?, ?, ?, 0, ?, 0, 0, 5, 0, null, SYSDATE, null, null, "
 	            + " ?, ?, null, null, null, ?, null, null, ?, ?, ?)";
 	      Connection conn = null;
 	      PreparedStatement psmt = null;

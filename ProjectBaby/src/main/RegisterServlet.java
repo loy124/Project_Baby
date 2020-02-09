@@ -68,9 +68,9 @@ public class RegisterServlet extends HttpServlet {
 				System.out.println(babyMemberDto.toString());
 				boolean isS = babyMemberDao.registerMember(babyMemberDto);
 				System.out.println(isS);
-				 resp.sendRedirect("process.jsp?type=register&isS"+isS);
+				 resp.sendRedirect("process.jsp?type=register&isS="+isS);
 			} else if (type.equals("registerSitterAf")) {
-			
+				req.setCharacterEncoding("utf-8");
 				String wantPay = req.getParameter("wantPay");
 				String career = req.getParameter("career");
 				String wantDate[] = req.getParameterValues("wantDate");
@@ -81,7 +81,7 @@ public class RegisterServlet extends HttpServlet {
 				BabyMemberDto sitterDto = new BabyMemberDto(id, password, name, age, gender, address, phoneNumber, wantPay, career, introduce, wantDate, wantLocal, wantTime);
 				boolean isS = babyMemberDao.registerSitter(sitterDto);
 				System.out.println(isS);
-				resp.sendRedirect("process.jsp?type=register&isS"+isS);
+				resp.sendRedirect("process.jsp?type=register&isS="+isS);
 				/*
 				 * SitterMemberDto dto = new SitterMemberDto(id, password, name, age, gender,
 				 * address, phoneNumber, wantPay, career, introduce, wantDate, wantLocal,

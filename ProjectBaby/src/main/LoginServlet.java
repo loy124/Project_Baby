@@ -2,6 +2,7 @@ package main;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,7 +28,6 @@ public class LoginServlet extends HttpServlet{
 
 	public void processFunc(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		resp.setCharacterEncoding("utf-8");
 		String type = req.getParameter("type");
 		if(type.equals("moveLogin")) {
 			resp.sendRedirect("login.jsp");
@@ -45,13 +45,19 @@ public class LoginServlet extends HttpServlet{
 				session.setMaxInactiveInterval(30 * 60 * 60);
 				System.out.println(babyMemberDto.toString());
 				System.out.println(babyMemberDto.getName());
-				String name = babyMemberDto.getName();
+				String name = URLEncoder.encode(babyMemberDto.getName(), "UTF-8");
 				
-				resp.sendRedirect("process.jsp?type=login&name="+name);
+				resp.sendRedirect("process.jsp?type=login&name="+ name);
 			}else {
 				resp.sendRedirect("process.jsp?type=login");
 			}
 			
+		}else if (type.equals("moveMain")) {
+			resp.sendRedirect("main.jsp");
+		}else if(type.equals("logout")) {
+			HttpSession session = req.getSession();
+			session.invalidate();
+			resp.sendRedirect("main.jsp");
 		}
 		
 	}

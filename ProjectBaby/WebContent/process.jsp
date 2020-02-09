@@ -8,11 +8,12 @@
 </head>
 <body>
 	<%
-		request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("UTF-8");
 		String type = request.getParameter("type");
 		System.out.println(type);
 		String sIsS = request.getParameter("isS");
 		boolean isS = Boolean.parseBoolean(sIsS);
+		System.out.println("isS = " + isS);
 	%>
 
 	<%
@@ -38,12 +39,12 @@
 	<%
 		if (type.equals("login")) {
 			String name = request.getParameter("name");
-			System.out.print("자네이름은 뭔가" + name);
+			//System.out.print("자네이름은 뭔가" + name);
 			if (name != null && name != "") {
 	%>
 	<script>
 		alert("<%=name%>님 환영합니다");
-		//location.href = "login?type=moveMain";
+		location.href = "login?type=moveMain";
 	</script>
 	<%
 		} else {

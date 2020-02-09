@@ -37,54 +37,55 @@ body {
 }
 </style>
 <body>
-	<h1>시터 회원가입</h1>
-	<p>환영합니다</p>
+	<%@ include file="./include/header.jsp"%>
+
+
 	<div align="center">
 
 		<!-- submit시 RegiInfoServlet에 method방식은 pos에
       type registerAf와 값들을 가지고 이동한다 -->
-		<form action="register" method="post">
+		<form id="register-form" action="register" method="post">
 			<div class="form-container">
 				<input type="hidden" name="type" value="registerSitterAf">
 				<div class="form-id">
 					<span class="label">id(이메일)</span> <input type="text" id="id"
-															  name="id" size="20"> <span id="idcheck"
-																						 style="font-size: 8px"> <input type="button" id="btn"
-																														value="id확인"> <span class="id-check-text">id 확인시
+						name="id" size="20"> <span id="idcheck"
+						style="font-size: 8px"> <input type="button" id="btn"
+						value="id확인"> <span class="id-check-text">id 확인시
 							텍스트</span>
 					</span>
 					<!-- 아이디 확인시 클릭시 이메일인증 번호를 전송 -->
 					<div class="form-check" style="display: none;">
 						<input type="text" class="check-email-input"
-							   placeholder="인증번호를 입력하세요">&nbsp;&nbsp;<input
+							placeholder="인증번호를 입력하세요">&nbsp;&nbsp;<input
 							type="button" class="check-email-button" value="인증번호 확인">
 						<span class="check-email-text"></span>
 					</div>
 				</div>
 				<div class="form-password">
 					<span class="label">패스워드</span><input type="text" name="password"
-														  size="20">
+						size="20">
 				</div>
 				<div class="form-name">
 					<span class="label">이름</span><input type="text" name="name"
-														size="20">
+						size="20">
 				</div>
 				<div class="form-age">
 					<span class="label">나이</span><input type="text" name="age"
-														size="20">
+						size="20">
 
 				</div>
 				<div class="form-gender">
 					<span class="label">성별</span> <input type="radio" name="gender"
-														 value="남"> <span>남</span> <input type="radio"
-																						  name="gender" value="여"><span>여</span>
+						value="남"> <span>남</span> <input type="radio"
+						name="gender" value="여"><span>여</span>
 				</div>
 
 				<div class="form-phone-number">
 					<span class="label">휴대폰 번호</span> <input type="text"
-															 name="numberFirst" size="10">- <input type="text"
-																								   name="numberSecond" size="10">- <input type="text"
-																																		  name="numberThird" size="10">
+						name="numberFirst" style="width: 70px">&nbsp;-&nbsp;<input
+						type="text" name="numberSecond" style="width: 70px">&nbsp;-&nbsp;<input
+						type="text" name="numberThird" style="width: 70px">
 				</div>
 
 				<%--주소--%>
@@ -92,13 +93,13 @@ body {
 					<div>주소</div>
 					<div>
 						<input type="text" name="zipCode" id="sample4_postcode"
-							   placeholder="우편번호"> <input type="button"
-														  onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+							placeholder="우편번호"> <input type="button"
+							onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
 					</div>
 					<div></div>
 					<div>
 						<input type="text" name="roadAddress" id="sample4_roadAddress"
-							   placeholder="도로명주소" size="30">
+							placeholder="도로명주소" size="30">
 						<%-- <input type="text"
 							name="numberAddress" id="sample4_jibunAddress"
 							placeholder="지번주소" size="30"> --%>
@@ -106,7 +107,7 @@ body {
 					<span id="guide" style="color: #999; display: none"></span>
 					<div>
 						<input type="text" name="detailAddress" id="sample4_detailAddress"
-							   placeholder="상세주소">
+							placeholder="상세주소">
 					</div>
 				</div>
 
@@ -165,14 +166,18 @@ body {
 				</div>
 
 				<div class="form-submit">
-					<input type="submit" value="회원가입" id="submitBtn">
+					<!-- <input type="submit" value="회원가입" id="submitBtn"> -->
+					<button type="button" id="submitBtn">회원가입</button>
+					<span class="submit-text"></span>
 				</div>
 			</div>
 		</form>
 	</div>
 
+	<%@ include file="./include/footer.jsp"%>
 
-	
+
+
 	<script
 		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
@@ -212,34 +217,20 @@ body {
 							// 우편번호와 주소 정보를 해당 필드에 넣는다.
 							document.getElementById('sample4_postcode').value = data.zonecode;
 							document.getElementById("sample4_roadAddress").value = roadAddr;
-							document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+							//document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
 
 							// 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-							if (roadAddr !== '') {
+							/* if (roadAddr !== '') {
 								document.getElementById("sample4_extraAddress").value = extraRoadAddr;
 							} else {
 								document.getElementById("sample4_extraAddress").value = '';
-							}
+							} */
 
 							var guideTextBox = document.getElementById("guide");
-							// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-							if (data.autoRoadAddress) {
-								var expRoadAddr = data.autoRoadAddress
-										+ extraRoadAddr;
-								guideTextBox.innerHTML = '(예상 도로명 주소 : '
-										+ expRoadAddr + ')';
-								guideTextBox.style.display = 'block';
-
-							} else if (data.autoJibunAddress) {
-								var expJibunAddr = data.autoJibunAddress;
-								guideTextBox.innerHTML = '(예상 지번 주소 : '
-										+ expJibunAddr + ')';
-								guideTextBox.style.display = 'block';
-							} else {
-								guideTextBox.innerHTML = '';
-								guideTextBox.style.display = 'none';
-							}
+							document.getElementById("sample4_detailAddress")
+									.focus();
 						}
+
 					}).open();
 		}
 
@@ -298,7 +289,7 @@ body {
 									})
 						});
 
-		function emailAjax() {	
+		function emailAjax() {
 			$.ajax({
 				url : "./email",
 				type : "get",
@@ -314,18 +305,18 @@ body {
 		}
 
 		$(".check-email-button").click(function() {
-			
+
 			console.log(typeof emailAuthData);
 			console.log(typeof $(".check-email-input").val());
 			let emailInputData = $(".check-email-input").val().trim();
-			
+
 			if (emailInputData === emailAuthData) {
-				$(".check-email-text").css("color","blue");
+				$(".check-email-text").css("color", "blue");
 				$(".check-email-text").html("인증번호가 확인되었습니다.");
 				$(".check-email-button").prop("disabled", "true");
 				$("#btn").prop("disabled", "true");
 			} else {
-				$(".check-email-text").css("color","red");
+				$(".check-email-text").css("color", "red");
 				console.log(emailAuthData);
 				console.log("val = " + $(".check-email-input").val());
 				$(".check-email-text").html("인증번호가 올바르지 않습니다. 다시 확인하세요");
@@ -339,6 +330,10 @@ body {
 			$("#submitBtn").prop("disabled", true);
 			alert("아니지롱");
 		} */
+		$("#submitBtn").click(function() {
+
+			$("#register-form").submit();
+		});
 	</script>
 </body>
 </html>

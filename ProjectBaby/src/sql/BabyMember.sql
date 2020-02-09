@@ -34,3 +34,6 @@ CREATE TABLE BABY_MEMBER
     WANT_TIME             VARCHAR2(30)      NULL, 
     CONSTRAINT BABY_MEMBER_PK PRIMARY KEY (ID)
 );
+
+
+select * from baby_member where id = 'dhsdb1541@naver.com';

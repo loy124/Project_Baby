@@ -50,12 +50,10 @@ public class RegisterServlet extends HttpServlet {
 			String name = req.getParameter("name");
 			int age = Integer.parseInt(req.getParameter("age"));
 			String gender = req.getParameter("gender");
-
 			String numberFirst = req.getParameter("numberFirst");
 			String numberSecond = req.getParameter("numberSecond");
 			String numberThird = req.getParameter("numberThird");
 			String phoneNumber = numberFirst + "-" + numberSecond + "-" + numberThird;
-
 			// 주소 받아오기
 			String roadAddress = req.getParameter("roadAddress");
 			String detailAddress = req.getParameter("detailAddress");
@@ -70,7 +68,7 @@ public class RegisterServlet extends HttpServlet {
 				System.out.println(babyMemberDto.toString());
 				boolean isS = babyMemberDao.registerMember(babyMemberDto);
 				System.out.println(isS);
-				// resp.sendRedirect("process.jsp?type=register&isS"+isS);
+				 resp.sendRedirect("process.jsp?type=register&isS"+isS);
 			} else if (type.equals("registerSitterAf")) {
 			
 				String wantPay = req.getParameter("wantPay");
@@ -83,12 +81,12 @@ public class RegisterServlet extends HttpServlet {
 				BabyMemberDto sitterDto = new BabyMemberDto(id, password, name, age, gender, address, phoneNumber, wantPay, career, introduce, wantDate, wantLocal, wantTime);
 				boolean isS = babyMemberDao.registerSitter(sitterDto);
 				System.out.println(isS);
+				resp.sendRedirect("process.jsp?type=register&isS"+isS);
 				/*
 				 * SitterMemberDto dto = new SitterMemberDto(id, password, name, age, gender,
 				 * address, phoneNumber, wantPay, career, introduce, wantDate, wantLocal,
 				 * wantTime); System.out.println(dto.toString());
 				 */
-				// resp.sendRedirect("process.jsp?type=register&isS"+isS);
 			}
 		}
 	}

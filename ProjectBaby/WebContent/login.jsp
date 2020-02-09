@@ -92,8 +92,9 @@ a {
 				d="M40,105 C10,140 110,140 80,105 L80,105 L70,111 L60,105 L50,111 L40,105"
 				fill="#fff" />
         </svg>
-		<input name="id" id="id" type="text" placeholder="Id"> <input
-			name="pwd" id="pwd" type="password" placeholder="Password"> <input
+        <input type="hidden" name="type" value="loginStart"> 
+		<input name="id" id="id" type="text" placeholder="ID(이메일형식)"> <input
+			name="password" id="password" type="password" placeholder="비밀번호	"> <input
 			type="button" id="_btnLogin" value="Login">
 		<div class="sort">
 			
@@ -108,7 +109,7 @@ a {
 	
 	/* RegiInfoServlet으로 이동 */
 	function regiButton(){
-		location.href="register.jsp"
+		location.href="register?type=moveRegister"
 	}
 	
 	// 로그인 버튼 클릭시에 동작하는 함수 
@@ -116,9 +117,9 @@ a {
 				if ($("#id").val().trim() == "") {
 					alert("id를 입력해 주십시오");
 					$("#id").focus();
-				} else if ($("#pwd").val().trim() == "") {
+				} else if ($("#password").val().trim() == "") {
 					alert("password를 입력해 주십시오");
-					$("#pwd").focus();
+					$("#password").focus();
 				} else {
 					//LoginServlet 으로 이동
 					$("#frm").attr({

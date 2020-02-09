@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet{
@@ -26,9 +27,31 @@ public class LoginServlet extends HttpServlet{
 
 	public void processFunc(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
+		resp.setCharacterEncoding("utf-8");
 		String type = req.getParameter("type");
 		if(type.equals("moveLogin")) {
 			resp.sendRedirect("login.jsp");
+		}else if(type.equals("loginStart")) {
+			String id = req.getParameter("id");
+			String password = req.getParameter("password");
+			System.out.println(id + " " +  password);
+			BabyMemberDao babyMemberDao = BabyMemberDao.getInstance();
+			BabyMemberDto babyMemberDto = babyMemberDao.login(id, password);
+			
+			if(babyMemberDto != null) {
+				System.out.println("아이디가 있어요");
+				HttpSession session = req.getSession();
+				session.setAttribute("login", babyMemberDto);
+				session.setMaxInactiveInterval(30 * 60 * 60);
+				System.out.println(babyMemberDto.toString());
+				System.out.println(babyMemberDto.getName());
+				String name = babyMemberDto.getName();
+				
+				resp.sendRedirect("process.jsp?type=login&name="+name);
+			}else {
+				resp.sendRedirect("process.jsp?type=login");
+			}
+			
 		}
 		
 	}

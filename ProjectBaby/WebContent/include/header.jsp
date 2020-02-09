@@ -32,7 +32,7 @@
 		<div class="header clearfix tr">
 			<div class="header_topSec clearfix">
 				<ul class="clearfix">
-					<li><a href="#n" id="loginBtn">로그인</a></li>
+					<li><a href="login?type=moveLogin" id="loginBtn">로그인</a></li>
 					<li><a href="register?type=moveRegister">회원가입</a></li>
 				</ul>
 			</div>

@@ -253,6 +253,7 @@ body {
 					console.log(emailData);
 					//상단에 선언해준 emailAuthData에 data1 할당
 					emailAuthData = emailData.trim();
+					
 				}
 			});
 		}
@@ -268,6 +269,8 @@ body {
 				$(".check-email-text").html("인증번호가 확인되었습니다.");
 				$(".check-email-button").prop("disabled", "true");
 				$("#btn").prop("disabled", "true");
+				$("#submitBtn").prop(
+						"disabled", false);
 			} else {
 				$(".check-email-text").css("color", "red");
 				console.log(emailAuthData);

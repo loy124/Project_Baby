@@ -318,6 +318,82 @@ public class BabyMemberDao {
 	}
 	
 	
+	public BabyMemberDto getDetail(String id) {
+		String sql = " SELECT ID, NAME, AGE, GENDER, ADDRESS, MONEY, PHONE_NUMBER, " +
+				  " BANK_ACCOUNT, BANK_ACCOUNT_MONEY, AUTH, POINT, " +
+				  " CUSTOMER_REQUEST_DATE, REGISTER_DATE, UN_REGISTER_DATE, " +
+				  " LICENSE, WANT_PAY, CAREER, HIRE_DATE, EXPIRE_DATE, PROFILE_PHOTO, " +
+				  " INTRODUCE, START_WORK_DATE, END_WORK_DATE, WANT_DATE, WANT_LOCAL, WANT_TIME "
+				  + " FROM BABY_MEMBER " + " WHERE ID = ?";
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		BabyMemberDto babyMemberDto = null;
+		try {
+			conn = DBConnection.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			System.out.println("psmt");
+			rs = psmt.executeQuery();
+			int i = 1;
+			String arrArray[] = null;
+			
+			while(rs.next()) {
+				String arr = rs.getString(24);
+				if(arr != null) {
+					System.out.println("arr"+ arr);
+					System.out.println("test");
+					arrArray = arr.split(",");
+				}
+				System.out.println("split까지 체크");
+
+				/*
+				 * for (int j = 0; j < arrArray.length; j++) { System.out.println(arrArray[j]);
+				 * }
+				 */
+				 
+				System.out.print(i);
+				babyMemberDto = new BabyMemberDto(
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getInt(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getInt(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++),
+						rs.getString(i++), 
+						arrArray,
+						rs.getString(i++),
+						rs.getString(i++));
+						
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBClose.close(psmt, conn, rs);
+		}
+		
+		return babyMemberDto;	
+		
+	}
+	
+	
 	/*
 	 * public int getAllMember(String choice, String searchWord) { String sql =
 	 * " SELECT COUNT(*) FROM BABY_MEMBER ";

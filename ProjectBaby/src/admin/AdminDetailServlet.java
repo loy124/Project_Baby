@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import main.BabyMemberDao;
+import main.BabyMemberDto;
+
 @WebServlet("/adminDetail")
 public class AdminDetailServlet extends HttpServlet{
 
@@ -27,6 +30,10 @@ public class AdminDetailServlet extends HttpServlet{
 	    String type = req.getParameter("type");
 	    if(type.equals("moveDetail")) {
 	    	String id = req.getParameter("id");
+	    	BabyMemberDao babyMemberDao = BabyMemberDao.getInstance();
+	    	BabyMemberDto dto = babyMemberDao.getDetail(id);
+	    	req.setAttribute("dto", dto);
+	    	forward("adminDetail.jsp", req, resp);
 	    }
 
 	}

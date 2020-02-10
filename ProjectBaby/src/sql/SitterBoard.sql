@@ -3,13 +3,13 @@ DROP SEQUENCE SITTER_BOARD_SEQ;
 
 CREATE TABLE SITTER_BOARD
 (
-    SEQ                   NUMBER(8)        NOT NULL, 
-    ID                    VARCHAR2(30)     NULL, 
-    TITLE                 VARCHAR2(20)     NULL, 
-    CONTENT               VARCHAR2(200)    NULL, 
-    FILE_NAME             VARCHAR2(100)    NULL, 
-    ORIGINAL_FILE_NAME    VARCHAR2(200)    NULL, 
-    READCOUNT             NUMBER(8)        NULL, 
+    SEQ                   NUMBER(80)        NOT NULL, 
+    ID                    VARCHAR2(300)     NULL, 
+    TITLE                 VARCHAR2(200)     NULL, 
+    CONTENT               VARCHAR2(2000)    NULL, 
+    FILE_NAME             VARCHAR2(1000)    NULL, 
+    ORIGINAL_FILE_NAME    VARCHAR2(2000)    NULL, 
+    READCOUNT             NUMBER(80)        NULL, 
     REGISTER_DATE         DATE             NULL, 
     CONSTRAINT SITTER_BOARD_PK PRIMARY KEY (SEQ)
 );

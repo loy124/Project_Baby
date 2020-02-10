@@ -28,6 +28,7 @@ public class AdminDetailServlet extends HttpServlet{
 	public void processFunc(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	    req.setCharacterEncoding("utf-8");
 	    String type = req.getParameter("type");
+	    System.out.println(type);
 	    if(type.equals("moveDetail")) {
 	    	String id = req.getParameter("id");
 	    	BabyMemberDao babyMemberDao = BabyMemberDao.getInstance();

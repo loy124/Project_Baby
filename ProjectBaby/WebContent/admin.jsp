@@ -52,7 +52,7 @@
 					%>
 					<tr>
 						<th><%=i + 1%></th>
-						<td><a href="adminDetail?type=moveDetail?id=<%=dto.getId()%>"><%=dto.getId()%></a></td>
+						<td><a href="adminDetail?type=moveDetail&id=<%=dto.getId()%>"><%=dto.getId()%></a></td>
 						<td><%=dto.getName()%></td>
 						<td><%=dto.getAuth()%></td>
 					</tr>

@@ -274,6 +274,8 @@ body {
 				$(".check-email-text").html("인증번호가 올바르지 않습니다. 다시 확인하세요");
 			}
 		});
+		
+
 		$("#submitBtn").click(function(){
 			
 			$("#register-form").submit();

@@ -1,17 +1,25 @@
 <%@page import="main.BabyMemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 
-<%@ include file="./include/header.jsp" %>
+<%@ include file="./include/header.jsp"%>
 
 <!-- content 영역 -->
 <%
-/* BabyMemberDto babyMemberDto = (BabyMemberDto)session.getAttribute("login");
-if(babyMemberDto != null){
-	System.out.println("로그인후 dto" + babyMemberDto.toString());
-} */
+	// BabyMemberDto babyMemberDto = (BabyMemberDto)session.getAttribute("login");
+	if (babyMemberDto != null) {
+		System.out.println("로그인후 dto" + babyMemberDto.toString());
+		if (babyMemberDto.getAuth() == 1) {
 %>
+<script>
+	location.href = "admin?type=moveAdmin";
+</script>
+<%
+	}
+	}
+%>
+
 <div class="containerWrap main">
 	<div class="container_inner">
 		<!-- 필요 없으면 div 삭제 (필요한거 남기고!) 배결색은 style만 삭제하면 되요~~!! -->
@@ -23,4 +31,4 @@ if(babyMemberDto != null){
 <!--// container -->
 
 
-<%@ include file="./include/footer.jsp" %>
+<%@ include file="./include/footer.jsp"%>

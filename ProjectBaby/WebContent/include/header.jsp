@@ -32,7 +32,7 @@
 
 </head>
 <%
-	BabyMemberDto babyMemberDto = (BabyMemberDto)session.getAttribute("login");
+	BabyMemberDto babyMemberDto = (BabyMemberDto) session.getAttribute("login");
 	if (babyMemberDto != null) {
 		System.out.println("로그인후 dto" + babyMemberDto.toString());
 	}
@@ -45,12 +45,26 @@
 				<%
 					if (babyMemberDto != null) {
 				%>
-
+				<%
+					if (babyMemberDto.getAuth() == 1) {
+				%>
+				<ul class="clearfix">
+					<li><%=babyMemberDto.getName()%>님 환영합니다</li>
+					<li><a href="admin?type=moveAdmin" id="loginBtn">관리자페이지</a></li>
+					<li><a href="login?type=logout" id="loginBtn">로그아웃</a></li>
+				</ul>
+				<%
+					} else {
+				%>
 				<ul class="clearfix">
 					<li><%=babyMemberDto.getName()%>님 환영합니다</li>
 					<li><a href="#" id="loginBtn">마이페이지</a></li>
 					<li><a href="login?type=logout" id="loginBtn">로그아웃</a></li>
 				</ul>
+				<%
+					}
+				%>
+
 				<%
 					} else {
 				%>
@@ -69,6 +83,38 @@
 						src="images/front/logo.png"> <!-- <span>내 아이를 부탁해</span> -->
 					</a>
 				</h1>
+				<%
+					if (babyMemberDto != null) {
+						if (babyMemberDto.getAuth() == 1) {
+				%>
+				<ul class="gnb clearfix">
+					<li><a href="">회원정보관리</a>
+						<ul class="sub_menu">
+							<!-- <li><a href="">회원정보 관리</a></li>
+							<li><a href=""></a></li> -->
+						</ul></li>
+					<li><a href="">Service</a>
+						<ul class="sub_menu">
+							<li><a href="">돌봄 신청</a></li>
+							<li><a href="">구인구직</a></li>
+						</ul></li>
+
+					<li><a href="">고객센터</a>
+						<ul class="sub_menu">
+							<li><a href="">오시는길</a></li>
+							<li><a href="">Q&A</a></li>
+						</ul></li>
+
+					<li><a href="">커뮤니티</a>
+						<ul class="sub_menu">
+							<li><a href="">후기게시판</a></li>
+							<li><a href="">자유게시판</a></li>
+						</ul></li>
+
+				</ul>
+				<%
+					} else {
+				%>
 				<ul class="gnb clearfix">
 					<li><a href="">Mypage</a>
 						<ul class="sub_menu">
@@ -96,6 +142,11 @@
 						</ul></li>
 
 				</ul>
+				<%
+					}
+					}
+				%>
+
 			</div>
 		</div>
 	</header>

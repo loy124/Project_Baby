@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
 </head>
 <style>
 body {
@@ -23,9 +24,10 @@ body {
 	text-align: left;
 }
 
-.label {
+.blackLabel {
 	display: inline-block;
 	width: 80px;
+	color: black;
 }
 
 .form-check {
@@ -54,7 +56,7 @@ body {
 			<div class="form-container">
 				<input type="hidden" name="type" value="registerMemberAf">
 				<div class="form-id">
-					<span class="label">id(이메일)</span> <input type="text" id="id"
+					<span class="blackLabel">id(이메일)</span> <input type="text" id="id"
 						name="id" size="20"> <span id="idcheck"
 						style="font-size: 8px"> <input type="button" id="btn"
 						value="id확인"> <span class="id-check-text"></span>
@@ -68,26 +70,26 @@ body {
 					</div>
 				</div>
 				<div class="form-password">
-					<span class="label">패스워드</span><input type="text" name="password"
-						size="20">
+					<span class="blackLabel">패스워드</span><input type="text"
+						name="password" size="20">
 				</div>
 				<div class="form-name">
-					<span class="label">이름</span><input type="text" name="name"
+					<span class="blackLabel">이름</span><input type="text" name="name"
 						size="20">
 				</div>
 				<div class="form-age">
-					<span class="label">나이</span><input type="text" name="age"
+					<span class="blackLabel">나이</span><input type="text" name="age"
 						size="20">
 
 				</div>
 				<div class="form-gender">
-					<span class="label">성별</span> <input type="radio" name="gender"
-						value="남"> <span>남</span> <input type="radio"
-						name="gender" value="여"><span>여</span>
+					<span class="blackLabel">성별</span> <input type="radio"
+						name="gender" value="남"> <span>남</span> <input
+						type="radio" name="gender" value="여"><span>여</span>
 				</div>
 
 				<div class="form-phone-number">
-					<span class="label">휴대폰 번호</span> <input style="width: 70px"
+					<span class="blackLabel">휴대폰 번호</span> <input style="width: 70px"
 						type="text" class="phone-number" name="numberFirst">&nbsp;-&nbsp;<input
 						style="width: 70px" class="phone-number" type="text"
 						name="numberSecond">&nbsp;-&nbsp;<input
@@ -119,7 +121,7 @@ body {
 				</div>
 				<div class="form-submit">
 					<!-- <input type="submit" value="회원가입" id="submitBtn"> -->
-					<button type="button" id="submitBtn">회원가입</button>
+					<button type="button" class="btn btn-primary" id="submitBtn">회원가입</button>
 					<span class="submit-text"></span>
 				</div>
 			</div>
@@ -274,12 +276,11 @@ body {
 				$(".check-email-text").html("인증번호가 올바르지 않습니다. 다시 확인하세요");
 			}
 		});
-		
 
-		$("#submitBtn").click(function(){
-			
+		$("#submitBtn").click(function() {
+
 			$("#register-form").submit();
-		});		
-</script>
+		});
+	</script>
 </body>
 </html>

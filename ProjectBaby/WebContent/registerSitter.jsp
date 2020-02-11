@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 </head>
 <style>
 body {
@@ -23,7 +23,7 @@ body {
 	text-align: left;
 }
 
-.label {
+.blackLabel {
 	display: inline-block;
 	width: 80px;
 }
@@ -48,7 +48,7 @@ body {
 			<div class="form-container">
 				<input type="hidden" name="type" value="registerSitterAf">
 				<div class="form-id">
-					<span class="label">id(이메일)</span> <input type="text" id="id"
+					<span class="blackLabel">id(이메일)</span> <input type="text" id="id"
 						name="id" size="20"> <span id="idcheck"
 						style="font-size: 8px"> <input type="button" id="btn"
 						value="id확인"> <span class="id-check-text">id 확인시
@@ -63,26 +63,26 @@ body {
 					</div>
 				</div>
 				<div class="form-password">
-					<span class="label">패스워드</span><input type="text" name="password"
+					<span class="blackLabel">패스워드</span><input type="text" name="password"
 						size="20">
 				</div>
 				<div class="form-name">
-					<span class="label">이름</span><input type="text" name="name"
+					<span class="blackLabel">이름</span><input type="text" name="name"
 						size="20">
 				</div>
 				<div class="form-age">
-					<span class="label">나이</span><input type="text" name="age"
+					<span class="blackLabel">나이</span><input type="text" name="age"
 						size="20">
 
 				</div>
 				<div class="form-gender">
-					<span class="label">성별</span> <input type="radio" name="gender"
+					<span class="blackLabel">성별</span> <input type="radio" name="gender"
 						value="남"> <span>남</span> <input type="radio"
 						name="gender" value="여"><span>여</span>
 				</div>
 
 				<div class="form-phone-number">
-					<span class="label">휴대폰 번호</span> <input type="text"
+					<span class="blackLabel">휴대폰 번호</span> <input type="text"
 						name="numberFirst" style="width: 70px">&nbsp;-&nbsp;<input
 						type="text" name="numberSecond" style="width: 70px">&nbsp;-&nbsp;<input
 						type="text" name="numberThird" style="width: 70px">
@@ -112,13 +112,13 @@ body {
 				</div>
 
 				<div class="form-want-pay">
-					<span>원하는 시급 </span> <input type="number" name="wantPay" min="8590"
+					<span  class="blackLabel">원하는 시급 </span> <input type="number" name="wantPay" min="8590"
 						value="8590"><span>원</span>
 				</div>
 
 				<div class="form-career">
-					<span>경력</span> <select name="career">
-						<option value="신입">신입</option>
+					<span  class="blackLabel">경력</span> <select name="career">
+						<option selected value="신입">신입</option>
 						<option value="1~3년">1~3년</option>
 						<option value="4~5년">4~5년</option>
 						<option value="5년이상">5년이상</option>
@@ -127,18 +127,20 @@ body {
 
 				<div>근무</div>
 				<div class="form-want-day-of-week">
-					<span>원하는 요일</span> <span><input type="checkbox" value="월">월</span>
+					<span  class="blackLabel">원하는 요일</span>
+					 <span><input type="checkbox" name="wantDate" value="월">월</span>
 					<span><input type="checkbox" name="wantDate" value="화">화</span>
 					<span><input name="wantDate" type="checkbox" value="수">수</span>
 					<span><input name="wantDate" type="checkbox" value="목">목</span>
-					<span> <input name="wantDate" type="checkbox" value="금">금
-					</span> <span><input name="wantDate" type="checkbox" value="토">토</span>
+					<span> <input name="wantDate" type="checkbox" value="금">금</span> 
+					<span><input name="wantDate" type="checkbox" value="토">토</span>
 					<span><input name="wantDate" type="checkbox" value="일">일</span>
 				</div>
 
 				<div class="form-want-address">
-					<span>원하는 지역</span> <select name="wantLocal">
-						<option value="서울">서울</option>
+					<span  class="blackLabel">원하는 지역</span>
+					 <select name="wantLocal">
+						<option selected value="서울">서울</option>
 						<option value="경기도">경기도</option>
 						<option value="강원도">강원도</option>
 						<option value="충청남도">충청남도</option>
@@ -151,12 +153,13 @@ body {
 				</div>
 
 				<div class="form-want-time">
-					<span>원하는 시간대</span> <select name="wantTime">
-						<option>6시 ~ 10시</option>
-						<option>10시 ~ 12시</option>
-						<option>12시 ~ 16시</option>
-						<option>16시 ~ 20시</option>
-						<option>20시 ~ 24시</option>
+					<span>원하는 시간대</span> 
+					<select name="wantTime">
+						<option selected value="6시~10시">6시 ~ 10시</option>
+						<option value="10시~12시">10시 ~ 12시</option>
+						<option value="12시~16시">12시 ~ 16시</option>
+						<option value="16시~20시">16시 ~ 20시</option>
+						<option value="20시~24시">20시 ~ 24시</option>
 					</select>
 				</div>
 
@@ -167,7 +170,7 @@ body {
 
 				<div class="form-submit">
 					<!-- <input type="submit" value="회원가입" id="submitBtn"> -->
-					<button type="button" id="submitBtn">회원가입</button>
+					<button type="button" class="btn btn-primary" id="submitBtn">회원가입</button>
 					<span class="submit-text"></span>
 				</div>
 			</div>

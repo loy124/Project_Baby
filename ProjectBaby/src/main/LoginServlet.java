@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet{
 				System.out.println("아이디가 있어요");
 				HttpSession session = req.getSession();
 				session.setAttribute("login", babyMemberDto);
-				session.setMaxInactiveInterval(30 * 60 * 60);
+				/* session.setMaxInactiveInterval(30 * 60 * 60); */
 				System.out.println(babyMemberDto.toString());
 				System.out.println(babyMemberDto.getName());
 				String name = URLEncoder.encode(babyMemberDto.getName(), "UTF-8");

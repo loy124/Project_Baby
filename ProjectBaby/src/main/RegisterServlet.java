@@ -77,7 +77,7 @@ public class RegisterServlet extends HttpServlet {
 				String wantLocal = req.getParameter("wantLocal");
 				String wantTime = req.getParameter("wantTime");
 				String introduce = req.getParameter("introduce");
-				
+			
 				BabyMemberDto sitterDto = new BabyMemberDto(id, password, name, age, gender, address, phoneNumber, wantPay, career, introduce, wantDate, wantLocal, wantTime);
 				boolean isS = babyMemberDao.registerSitter(sitterDto);
 				System.out.println(isS);

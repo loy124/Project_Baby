@@ -111,7 +111,7 @@ public class BabyMemberDto {
 	public void setPoint(String point) {
 		this.point = point;
 	}
-	public String getcustomerRequestDateDate() {
+	public String getcustomerRequestDate() {
 		return customerRequestDate;
 	}
 	public void setcustomerRequestDate(String customerRequestDate) {
@@ -309,6 +309,22 @@ public class BabyMemberDto {
 		this.gender = gender;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
+	}
+	public BabyMemberDto(String id, String address, String phoneNumber, String bankAccount, int auth, String license,
+			String wantPay, String career, String introduce, String[] wantDate, String wantLocal, String wantTime) {
+		super();
+		this.id = id;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+		this.bankAccount = bankAccount;
+		this.auth = auth;
+		this.license = license;
+		this.wantPay = wantPay;
+		this.career = career;
+		this.introduce = introduce;
+		this.wantDate = wantDate;
+		this.wantLocal = wantLocal;
+		this.wantTime = wantTime;
 	}
 
 	

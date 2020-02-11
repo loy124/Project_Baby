@@ -49,6 +49,10 @@
 	height: 80px;
 	width: 400px;
 }
+
+.btn{
+margin-top:20px;
+}
 </style>
 <body>
 	<%@ include file="./include/header.jsp"%>

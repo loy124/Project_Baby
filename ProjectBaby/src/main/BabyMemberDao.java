@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import db.DBClose;
@@ -114,14 +115,62 @@ public class BabyMemberDao {
 	
 	
 	public boolean registerSitter(BabyMemberDto dto) {
-	      String sql = "INSERT INTO BABY_MEMBER (ID, PASSWORD, NAME, AGE, GENDER, ADDRESS, MONEY,"
+	      String sql = "INSERT INTO BABY_MEMBER ("
+	      		+ "ID,"
+	      		+ " PASSWORD,"
+	      		+ " NAME, "
+	      		+ "AGE, "
+	      		+ "GENDER,"
+	      		+ " ADDRESS,"
+	      		+ " MONEY,"
 	      		+ " PHONE_NUMBER,"
-	            + " BANK_ACCOUNT, BANK_ACCOUNT_MONEY, AUTH, POINT, "
-	            + " CUSTOMER_REQUEST_DATE, REGISTER_DATE, UN_REGISTER_DATE,"
-	            + "LICENSE, WANT_PAY, CAREER, HIRE_DATE, EXPIRE_DATE, PROFILE_PHOTO, "
-	            + "INTRODUCE, START_WORK_DATE, END_WORK_DATE, WANT_DATE, WANT_LOCAL, WANT_TIME ) "
-	            + " VALUES(?, ?, ?, ?, ?, ?, 0, ?, 0, 0, 5, 0, null, SYSDATE, null, null, "
-	            + " ?, ?, null, null, null, ?, null, null, ?, ?, ?)";
+	            + " BANK_ACCOUNT,"
+	            + " BANK_ACCOUNT_MONEY,"
+	            + " AUTH,"
+	            + " POINT, "
+	            + " CUSTOMER_REQUEST_DATE,"
+	            + " REGISTER_DATE, "
+	            + "UN_REGISTER_DATE,"
+	            + "LICENSE,"
+	            + " WANT_PAY, "
+	            + "CAREER,"
+	            + " HIRE_DATE,"
+	            + " EXPIRE_DATE,"
+	            + " PROFILE_PHOTO, "
+	            + "INTRODUCE,"
+	            + " START_WORK_DATE,"
+	            + " END_WORK_DATE,"
+	            + " WANT_DATE,"
+	            + " WANT_LOCAL,"
+	            + " WANT_TIME ) "
+	            + " VALUES("
+	            + "?, "
+	            + "?, "
+	            + "?, "
+	            + "?, "
+	            + "?, "
+	            + "?, "
+	            + "0, "
+	            + "?, " //폰넘버
+	            + "0, "
+	            + "0, "
+	            + "5, "
+	            + "0, "
+	            + "null, "
+	            + "SYSDATE, "
+	            + "null, " //날짜
+	            + "null, " //라이센스
+	            + " ?,"    //원하는 돈
+	            + " ?, "  //경력
+	            + "null,"
+	            + " null, "
+	            + "null," // 사진
+	            + " ?, " // 소개
+	            + "null,"
+	            + " null,"
+	            + " ?, "
+	            + "?,"
+	            + " ?)";
 	      Connection conn = null;
 	      PreparedStatement psmt = null;
 	      int count = 0;
@@ -142,9 +191,9 @@ public class BabyMemberDao {
 	         psmt.setString(i++, dto.getIntroduce());
 	         
 	         String[] wantDate = dto.getWantDate();
-	         String str = "";
-	         for (int j = 0; j < wantDate.length; j++) {
-	            str = str + "," + wantDate[j];
+	         String str = wantDate[0];
+	         for (int j = 0; j < wantDate.length -1; j++) {
+	            str = str + "," + wantDate[j + 1];
 	         }
 	         
 	         psmt.setString(i++, str);
@@ -225,8 +274,8 @@ public class BabyMemberDao {
 						rs.getString(i++),
 						rs.getString(i++), 
 						arrArray,
-						rs.getString(i++),
-						rs.getString(i++));
+						rs.getString(25),
+						rs.getString(26));
 						
 			}
 		} catch (SQLException e) {
@@ -241,11 +290,40 @@ public class BabyMemberDao {
 	}
 	
 	public List<BabyMemberDto> getMemberList() {
-		String sql =" SELECT ID, NAME, AGE, GENDER, ADDRESS, MONEY, PHONE_NUMBER, " +
-				  " BANK_ACCOUNT, BANK_ACCOUNT_MONEY, AUTH, POINT, " +
-				  " CUSTOMER_REQUEST_DATE, REGISTER_DATE, UN_REGISTER_DATE, " +
-				  " LICENSE, WANT_PAY, CAREER, HIRE_DATE, EXPIRE_DATE, PROFILE_PHOTO, " +
-				  " INTRODUCE, START_WORK_DATE, END_WORK_DATE, WANT_DATE, WANT_LOCAL, WANT_TIME "
+				/*
+				 * + "ID, NAME, AGE, GENDER, ADDRESS, MONEY, PHONE_NUMBER, " +
+				 * " BANK_ACCOUNT, BANK_ACCOUNT_MONEY, AUTH, POINT, " +
+				 * " CUSTOMER_REQUEST_DATE, REGISTER_DATE, UN_REGISTER_DATE, " +
+				 * " LICENSE, WANT_PAY, CAREER, HIRE_DATE, EXPIRE_DATE, PROFILE_PHOTO, " +
+				 * " INTRODUCE, START_WORK_DATE, END_WORK_DATE, WANT_DATE, WANT_LOCAL, WANT_TIME "
+				 */
+				String sql =" SELECT "
+						+ "ID,"
+			      		+ " NAME, "
+			      		+ "AGE, "
+			      		+ "GENDER,"
+			      		+ " ADDRESS,"
+			      		+ " MONEY,"
+			      		+ " PHONE_NUMBER,"
+			            + " BANK_ACCOUNT,"
+			            + " BANK_ACCOUNT_MONEY,"
+			            + " AUTH,"
+			            + " POINT, "
+			            + " CUSTOMER_REQUEST_DATE,"
+			            + " REGISTER_DATE, "
+			            + "UN_REGISTER_DATE,"
+			            + "LICENSE,"
+			            + " WANT_PAY, "
+			            + "CAREER,"
+			            + " HIRE_DATE,"
+			            + " EXPIRE_DATE,"
+			            + " PROFILE_PHOTO, "
+			            + "INTRODUCE,"
+			            + " START_WORK_DATE,"
+			            + " END_WORK_DATE, "
+			            + " WANT_DATE, "
+			            + " WANT_LOCAL, "
+			            + " WANT_TIME" 
 				  + " FROM BABY_MEMBER ";
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -298,9 +376,9 @@ public class BabyMemberDao {
 						rs.getString(i++),
 						rs.getString(i++), 
 						arrArray,
-						rs.getString(i++),
+						rs.getString(25),
 						
-						rs.getString(i++));
+						rs.getString(26));
 						System.out.println("babyMemberDto=" + babyMemberDto.toString());
 				
 						list.add(babyMemberDto);
@@ -344,6 +422,7 @@ public class BabyMemberDao {
 					System.out.println("arr"+ arr);
 					System.out.println("test");
 					arrArray = arr.split(",");
+					
 				}
 				System.out.println("split까지 체크");
 
@@ -378,8 +457,10 @@ public class BabyMemberDao {
 						rs.getString(i++),
 						rs.getString(i++), 
 						arrArray,
-						rs.getString(i++),
-						rs.getString(i++));
+						rs.getString(25),
+						rs.getString(26));
+				
+				System.out.println("sql내 babyMember" + babyMemberDto.toString());
 						
 			}
 		} catch (SQLException e) {
@@ -393,6 +474,44 @@ public class BabyMemberDao {
 		
 	}
 	
+	
+	  public boolean memberAdminUpdate(BabyMemberDto babyMemberDto) { 
+		  String sql = "UPDATE BABY_MEMBER SET ADDRESS = ?, BANK_ACCOUNT = ?, AUTH = ?"
+		  		+ " LICENSE = ?, WANT_PAY = ?, CAREER = ?, INTRODUCE = ?, WANT_DATE, WANT_LOCAL, WANT_TIME "
+		  		+ "   WHERE ID = ? ";
+		  Connection conn = null;
+		  PreparedStatement psmt = null;
+		  int count = 0;
+		  
+		  try {
+			  conn = DBConnection.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, babyMemberDto.getAddress());
+			psmt.setString(2, babyMemberDto.getBankAccount());
+			psmt.setInt(3, babyMemberDto.getAuth());
+			psmt.setString(4, babyMemberDto.getLicense());
+			psmt.setString(5, babyMemberDto.getWantPay());
+			psmt.setString(6, babyMemberDto.getCareer());
+			psmt.setString(7, babyMemberDto.getIntroduce());
+			String str = "";
+			for(int i = 0; i < babyMemberDto.getWantDate().length - 1; i++) {
+				str = babyMemberDto.getWantDate()[0] + babyMemberDto.getWantDate()[i+1]; 
+			}
+			psmt.setString(8, str);
+			psmt.setString(9, babyMemberDto.getWantLocal());
+			psmt.setString(10, babyMemberDto.getWantTime());
+			psmt.setString(11, babyMemberDto.getId());
+			
+			count = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		  
+		  return count > 0 ? true : false; 
+	  }
+	 
 	
 	/*
 	 * public int getAllMember(String choice, String searchWord) { String sql =

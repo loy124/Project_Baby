@@ -105,7 +105,7 @@
 						<tr>
 							<th>휴대폰 번호</th>
 							<td><input class="form-control"
-								name="phone-number" value="<%=dto.getPhoneNumber()%>"></td>
+								name="phoneNumber" value="<%=dto.getPhoneNumber()%>"></td>
 						</tr>
 						<tr>
 							<th>계좌번호</th>
@@ -153,7 +153,7 @@
 						</tr>
 						<tr>
 							<th>원하는 시급</th>
-							<td><input class="form-control" name="wantpay"
+							<td><input class="form-control" name="wantPay"
 								value="<%=dto.getWantPay()%>"></td>
 						</tr>
 						<tr>

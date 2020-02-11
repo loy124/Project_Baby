@@ -11,13 +11,14 @@ public class SitterBoardDto {
 	private String originalFileName;
 	private int readCount;
 	private String registerDate;
-
+	private int del;
+	
 	public SitterBoardDto() {
 
 	}
 
 	public SitterBoardDto(int seq, String id, String title, String content, String fileName, String originalFileName,
-			int readCount, String registerDate) {
+			int readCount, String registerDate, int del) {
 		super();
 		this.seq = seq;
 		this.id = id;
@@ -27,7 +28,9 @@ public class SitterBoardDto {
 		this.originalFileName = originalFileName;
 		this.readCount = readCount;
 		this.registerDate = registerDate;
+		this.del = del;
 	}
+
 
 	public int getSeq() {
 		return seq;
@@ -92,12 +95,21 @@ public class SitterBoardDto {
 	public void setRegisterDate(String registerDate) {
 		this.registerDate = registerDate;
 	}
+	
+	public int getDel() {
+		return del;
+	}
+	
+	public void setDel(int del) {
+		this.del = del;
+	}
+	
 
 	@Override
 	public String toString() {
 		return "SitterBoardDto [seq=" + seq + ", id=" + id + ", title=" + title + ", content=" + content + ", fileName="
 				+ fileName + ", originalFileName=" + originalFileName + ", readCount=" + readCount + ", registerDate="
-				+ registerDate + "]";
+				+ registerDate + ", del=" + del + "]";
 	}
 
 }

@@ -57,5 +57,49 @@
 		}
 		}
 	%>
+
+	<!--  -->
+	<%
+		if (type.equals("adminUpdate")) {
+			if (isS == true) {
+	%>
+	<script>
+		alert("(관리자에서)회원정보 수정이 완료되었습니다")
+		location.href = "admin?type=moveAdmin";
+	</script>
+	<%
+		} else {
+	%>
+	<script>
+		alert("(관리자에서)회원정보 수정이 되지 않았습니다.")
+		location.href = "admin?type=moveAdmin";
+	</script>
+	<%
+		}
+		}
+	%>
+
+	<!--  -->
+	<%
+		if (type.equals("deleteMember")) {
+			if (isS == true) {
+	%>
+	<script>
+		alert("(관리자에서)회원이 탈퇴처리되었습니다(AUTH = 7)")
+		location.href = "admin?type=moveAdmin";
+	</script>
+	<%
+		} else {
+	%>
+	<script>
+		alert("회원이 탈퇴처리되지 않았습니다"ㄴ)
+		location.href = "admin?type=moveAdmin";
+	</script>
+	<%
+		}
+		}
+	%>
+
+
 </body>
 </html>

@@ -224,6 +224,10 @@ input {
 	$("#adminUpdate").click(function() {
 		location.href= "adminUpdate?type=moveUpdate&id=<%=dto.getId()%>";
 		});
+	
+	$("#adminDelete").click(function() {
+		location.href= "adminDelete?type=deleteAf&id=<%=dto.getId()%>";
+		});
 	</script>
 </body>
 </html>

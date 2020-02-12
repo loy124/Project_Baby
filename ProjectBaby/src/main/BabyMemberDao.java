@@ -474,10 +474,37 @@ public class BabyMemberDao {
 		
 	}
 	
+	public boolean memberAdminUpdate(BabyMemberDto babyMemberDto) { 
+		  String sql = "UPDATE BABY_MEMBER SET ADDRESS = ?, PHONE_NUMBER = ?, BANK_ACCOUNT = ?, AUTH = ?"		  		
+		  		+ " WHERE ID = ? ";
+		  Connection conn = null;
+		  PreparedStatement psmt = null;
+		  int count = 0;
+		  
+		  try {
+			  conn = DBConnection.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, babyMemberDto.getAddress());
+			psmt.setString(2, babyMemberDto.getPhoneNumber());
+			psmt.setString(3, babyMemberDto.getBankAccount());
+			psmt.setInt(4, babyMemberDto.getAuth());
+			psmt.setString(5, babyMemberDto.getId());
+		
+			count = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		  
+		  return count > 0 ? true : false; 
+	  }
+	 
+
 	
-	  public boolean memberAdminUpdate(BabyMemberDto babyMemberDto) { 
-		  String sql = "UPDATE BABY_MEMBER SET ADDRESS = ?, BANK_ACCOUNT = ?, AUTH = ?"
-		  		+ " LICENSE = ?, WANT_PAY = ?, CAREER = ?, INTRODUCE = ?, WANT_DATE, WANT_LOCAL, WANT_TIME "
+	  public boolean sitterAdminUpdate(BabyMemberDto babyMemberDto) { 
+		  String sql = "UPDATE BABY_MEMBER SET ADDRESS = ?, PHONE_NUMBER = ?, BANK_ACCOUNT = ?, AUTH = ?, "
+		  		+ " LICENSE = ?, WANT_PAY = ?, CAREER = ?, INTRODUCE = ?, WANT_DATE = ?, WANT_LOCAL = ?, WANT_TIME = ?"
 		  		+ "   WHERE ID = ? ";
 		  Connection conn = null;
 		  PreparedStatement psmt = null;
@@ -487,20 +514,21 @@ public class BabyMemberDao {
 			  conn = DBConnection.getConnection();
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, babyMemberDto.getAddress());
-			psmt.setString(2, babyMemberDto.getBankAccount());
-			psmt.setInt(3, babyMemberDto.getAuth());
-			psmt.setString(4, babyMemberDto.getLicense());
-			psmt.setString(5, babyMemberDto.getWantPay());
-			psmt.setString(6, babyMemberDto.getCareer());
-			psmt.setString(7, babyMemberDto.getIntroduce());
+			psmt.setString(2, babyMemberDto.getPhoneNumber());
+			psmt.setString(3, babyMemberDto.getBankAccount());
+			psmt.setInt(4, babyMemberDto.getAuth());
+			psmt.setString(5, babyMemberDto.getLicense());
+			psmt.setString(6, babyMemberDto.getWantPay());
+			psmt.setString(7, babyMemberDto.getCareer());
+			psmt.setString(8, babyMemberDto.getIntroduce());
 			String str = "";
 			for(int i = 0; i < babyMemberDto.getWantDate().length - 1; i++) {
 				str = babyMemberDto.getWantDate()[0] + babyMemberDto.getWantDate()[i+1]; 
 			}
-			psmt.setString(8, str);
-			psmt.setString(9, babyMemberDto.getWantLocal());
-			psmt.setString(10, babyMemberDto.getWantTime());
-			psmt.setString(11, babyMemberDto.getId());
+			psmt.setString(9, str);
+			psmt.setString(10, babyMemberDto.getWantLocal());
+			psmt.setString(11, babyMemberDto.getWantTime());
+			psmt.setString(12, babyMemberDto.getId());
 			
 			count = psmt.executeUpdate();
 			
@@ -511,6 +539,25 @@ public class BabyMemberDao {
 		  
 		  return count > 0 ? true : false; 
 	  }
+
+	  //삭제 만들기
+		public boolean deleteMember(String id){
+			String sql = "UPDATE BABY_MEMBER SET AUTH = 7 WHERE ID = ? ";
+			Connection conn = null;
+			PreparedStatement psmt = null;
+			int count = 0;
+			
+			try {
+				conn = DBConnection.getConnection();
+				psmt= conn.prepareStatement(sql);
+				psmt.setString(1, id);
+				count = psmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return count > 0 ? true : false;
+		}
 	 
 	
 	/*

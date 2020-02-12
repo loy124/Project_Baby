@@ -326,6 +326,14 @@ public class BabyMemberDto {
 		this.wantLocal = wantLocal;
 		this.wantTime = wantTime;
 	}
+	public BabyMemberDto(String id, String address, String phoneNumber, String bankAccount, int auth) {
+		super();
+		this.id = id;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+		this.bankAccount = bankAccount;
+		this.auth = auth;
+	}
 
 	
 	

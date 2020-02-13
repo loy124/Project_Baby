@@ -1,7 +1,8 @@
 package admin;
 
-public class AdminDto {
-	public class Admin {
+import java.io.Serializable;
+
+public class AdminDto  implements Serializable{
 
 		private int seq;
 		private String id;
@@ -9,10 +10,10 @@ public class AdminDto {
 		private String content;
 		private int del;
 
-		public Admin() {
+		public AdminDto() {
 			
 		}
-		public Admin(int seq, String id, String title, String content, int del) {
+		public AdminDto(int seq, String id, String title, String content, int del) {
 			super();
 			this.seq = seq;
 			this.id = id;
@@ -67,5 +68,5 @@ public class AdminDto {
 			this.del = del;
 		}
 
-	}
+	
 }

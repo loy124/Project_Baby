@@ -31,12 +31,105 @@ public class AdminServlet extends HttpServlet{
 	    String type = req.getParameter("type");
 	    
 	    if(type.equals("moveAdmin")) {
+	 
 	    	BabyMemberDao babyMemberDao = BabyMemberDao.getInstance();
-	    	List<BabyMemberDto> list = babyMemberDao.getMemberList();
-	    	for(int i = 0; i < list.size(); i++) {
-	    		System.out.println("list="+ list.get(i).toString());
+			/*
+			 * for(int i = 0; i < list.size(); i++) { System.out.println("list="+
+			 * list.get(i).toString()); }
+			 */
+	    	int memberCount = 0;
+	    	System.out.println("memberCount = " + memberCount);
+	    	String address = "";
+	    	String wantD[] = null;
+	    	address = req.getParameter("address");
+	    	wantD = req.getParameterValues("wantDate");
+	    	String wantDate = "";
+	    	if(wantD != null) {
+	    		for(int i = 0; i < wantD.length; i++) {
+		    		if(i!= 0) {
+		    			wantDate = wantDate.trim() +"," +wantD[i].trim();
+		    		} else {
+		    			wantDate = wantD[0];
+		    		}
+		    	}
 	    	}
+	    	String pageNumber = req.getParameter("pageNumber");
+	    	System.out.println("페이지 남바:" + pageNumber);
+	    	int page = -1;
+	    	
+	    	if(pageNumber != null) {
+	    		page = Integer.parseInt(pageNumber);
+	    	}else {
+	    		page = 0;
+	    	}
+	    	System.out.println("페이지 남바:" + page);
+			/*
+			 * // List<BabyMemberDto> list = babyMemberDao.getMemberList();
+			 */
+
+	    	memberCount = babyMemberDao.getAllMember(address, wantDate, "");
+	    	
+	    	
+	    	List<BabyMemberDto> list = babyMemberDao.getMemberPagingList(address, wantDate, "", page);
+	    	
+	
 	    	req.setAttribute("memberList", list);
+	    	req.setAttribute("memberCount", memberCount);
+	    	forward("admin.jsp", req, resp);
+	    }else if (type.equals("searchMember")) {
+	    	String address = req.getParameter("address").trim();;
+	    	String wantD[] = req.getParameterValues("wantDate");
+	    	String wantDate = "";
+	    	
+	    	if(wantD != null) {
+	    		for(int i = 0; i < wantD.length; i++) {
+		    		if(i!= 0) {
+		    			wantDate = wantDate.trim() +"," +wantD[i].trim();
+		    		} else {
+		    			wantDate = wantD[0];
+		    		}
+		    	}
+	    	}
+	    	System.out.println("wantDate =" + wantDate);
+	    	String pageNumber = req.getParameter("pageNumber");
+	    	int page =  0;
+	    	int memberCount = 0;
+	    	System.out.println("pageNumber" + pageNumber);
+	    	
+			/* 상세검색시 사용 String wantTime = req.getParameter("wantTime"); */
+	    	BabyMemberDao babyMemberDao = BabyMemberDao.getInstance();
+	    	memberCount = babyMemberDao.getAllMember(address, wantDate, "");
+	    	System.out.println("memberCount = " + memberCount);
+			/* List<BabyMemberDto> list = babyMemberDao.getMemberList(); */
+
+	    	if(pageNumber != null) {
+	    		page = Integer.parseInt(pageNumber);
+	    	}else {
+	    		page = 0;
+	    	}
+	    	List<BabyMemberDto> list = babyMemberDao.getMemberPagingList(address, wantDate, "", page );
+	
+	    	req.setAttribute("memberList", list);
+	    	req.setAttribute("memberCount", memberCount);
+	    	forward("admin.jsp", req, resp);
+	    	//페이징 Dao 짜기및 페이지 표시하기
+	    }else if (type.equals("page")) {
+	    	String pageNumber = req.getParameter("pageNumber");
+	    	int page =  0;
+	    	int memberCount = 0;
+	    	if(pageNumber != null) {
+	    		page = Integer.parseInt(pageNumber);
+	    	}
+	    	String wantDate = req.getParameter("wantDate");
+	    	System.out.println("원하는날 =" + wantDate);
+	    	System.out.println(pageNumber);
+	    	String address = req.getParameter("address");
+	    	//페이징 다오 소환및 보내기
+	    	BabyMemberDao babyMemberDao = BabyMemberDao.getInstance();
+	    	memberCount = babyMemberDao.getAllMember(address, wantDate, "");
+	    	List<BabyMemberDto> list = babyMemberDao.getMemberPagingList(address, wantDate, "", page);
+	    	req.setAttribute("memberList", list);
+	    	req.setAttribute("memberCount", memberCount);
 	    	forward("admin.jsp", req, resp);
 	    }
 	}

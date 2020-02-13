@@ -1,50 +1,52 @@
 package sitterboard;
 
-public class SitterBoardCommentDto {
+import java.io.Serializable;
 
-      private int seq;
-      private String boardComment;
-      private String registerDate;
-      
-      public SitterBoardCommentDto() {
-         // TODO Auto-generated constructor stub
-      }
+public class SitterBoardCommentDto implements Serializable {
 
-      public SitterBoardCommentDto(int seq, String boardComment, String registerDate) {
-         super();
-         this.seq = seq;
-         this.boardComment = boardComment;
-         this.registerDate = registerDate;
-      }
+	private int seq;
+	private String boardComment;
+	private String registerDate;
 
-      public int getSeq() {
-         return seq;
-      }
+	public SitterBoardCommentDto() {
+		// TODO Auto-generated constructor stub
+	}
 
-      public void setSeq(int seq) {
-         this.seq = seq;
-      }
+	public SitterBoardCommentDto(int seq, String boardComment, String registerDate) {
+		super();
+		this.seq = seq;
+		this.boardComment = boardComment;
+		this.registerDate = registerDate;
+	}
 
-      public String getComment() {
-         return boardComment;
-      }
+	public int getSeq() {
+		return seq;
+	}
 
-      public void setComment(String comment) {
-         this.boardComment = comment;
-      }
+	public void setSeq(int seq) {
+		this.seq = seq;
+	}
 
-      public String getRegisterDate() {
-         return registerDate;
-      }
+	public String getComment() {
+		return boardComment;
+	}
 
-      public void setRegister_date(String registerDate) {
-         this.registerDate = registerDate;
-      }
+	public void setComment(String comment) {
+		this.boardComment = comment;
+	}
 
-      @Override
-      public String toString() {
-         return "SitterBoardCommentDto [seq=" + seq + ", boardComment=" + boardComment + ", registerDate=" + registerDate + "]";
-      }
-      
-      
-   }
+	public String getRegisterDate() {
+		return registerDate;
+	}
+
+	public void setRegister_date(String registerDate) {
+		this.registerDate = registerDate;
+	}
+
+	@Override
+	public String toString() {
+		return "SitterBoardCommentDto [seq=" + seq + ", boardComment=" + boardComment + ", registerDate=" + registerDate
+				+ "]";
+	}
+
+}

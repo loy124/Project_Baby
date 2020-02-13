@@ -193,11 +193,15 @@
 						<tr>
 
 							<%
-								String str = dto.getWantDate()[0];
-									for (int i = 0; i < dto.getWantDate().length - 1; i++) {
-										str = dto.getWantDate()[0] + "," + dto.getWantDate()[i + 1];
+							String str = "";
+								for (int i = 0; i < dto.getWantDate().length; i++) {
+									if (i == 0) {
+										str = dto.getWantDate()[0];
+									} else {
+										str = str +","+ dto.getWantDate()[i];
 									}
-							%>
+								}
+						%>
 							<th>원하는 요일</th>
 							<td><input class="form-control" name="wantDate"
 								value="<%=str%>"></td>

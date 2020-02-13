@@ -95,13 +95,13 @@ input {
 						<td><input class="form-control" readonly="readonly"
 							name="address" value="<%=dto.getAddress()%>"></td>
 					</tr>
-					
+
 					<tr>
 						<th>휴대폰 번호</th>
 						<td><input class="form-control" readonly="readonly"
 							name="phone-number" value="<%=dto.getPhoneNumber()%>"></td>
 					</tr>
-					
+
 					<tr>
 						<th>계좌번호</th>
 						<td><input class="form-control" readonly="readonly"
@@ -187,9 +187,13 @@ input {
 					</tr>
 					<tr>
 						<%
-							String str = dto.getWantDate()[0];
-								for (int i = 0; i < dto.getWantDate().length - 1; i++) {
-									str = dto.getWantDate()[0] + "," + dto.getWantDate()[i + 1];
+							String str = "";
+								for (int i = 0; i < dto.getWantDate().length; i++) {
+									if (i == 0) {
+										str = dto.getWantDate()[0];
+									} else {
+										str = str +","+ dto.getWantDate()[i];
+									}
 								}
 						%>
 						<th>원하는 날</th>

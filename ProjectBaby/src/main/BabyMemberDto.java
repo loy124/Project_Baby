@@ -1,6 +1,8 @@
 package main;
 
-public class BabyMemberDto {
+import java.io.Serializable;
+
+public class BabyMemberDto implements Serializable{
 
 	private String id;
 	private String password;

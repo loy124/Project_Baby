@@ -1,6 +1,8 @@
 package sitterboard;
 
-public class SitterBoardDto {
+import java.io.Serializable;
+
+public class SitterBoardDto implements Serializable {
 
 	private int seq;
 	private String id;
@@ -12,7 +14,7 @@ public class SitterBoardDto {
 	private int readCount;
 	private String registerDate;
 	private int del;
-	
+
 	public SitterBoardDto() {
 
 	}
@@ -30,7 +32,6 @@ public class SitterBoardDto {
 		this.registerDate = registerDate;
 		this.del = del;
 	}
-
 
 	public int getSeq() {
 		return seq;
@@ -95,15 +96,14 @@ public class SitterBoardDto {
 	public void setRegisterDate(String registerDate) {
 		this.registerDate = registerDate;
 	}
-	
+
 	public int getDel() {
 		return del;
 	}
-	
+
 	public void setDel(int del) {
 		this.del = del;
 	}
-	
 
 	@Override
 	public String toString() {

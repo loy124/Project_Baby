@@ -1,17 +1,18 @@
 package mypage;
 
-public class PointDto {
+import java.io.Serializable;
+
+public class PointDto implements Serializable {
 	private String id;
 	private String commission;
-	
 
 	@Override
 	public String toString() {
 		return "Point [id=" + id + ", commission=" + commission + "]";
 	}
-	
+
 	public PointDto() {
-		
+
 	}
 
 	public PointDto(String id, String commission) {
@@ -32,7 +33,7 @@ public class PointDto {
 		return commission;
 	}
 
-public void setCommission(String commission) {
-   this.commission = commission;
-}
+	public void setCommission(String commission) {
+		this.commission = commission;
+	}
 }

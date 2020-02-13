@@ -9,7 +9,7 @@ CREATE TABLE SITTER_BOARD
     CONTENT               VARCHAR2(2000)    NULL, 
     FILE_NAME             VARCHAR2(1000)    NULL, 
     ORIGINAL_FILE_NAME    VARCHAR2(2000)    NULL, 
-    READCOUNT             NUMBER(80)        NULL, 
+    READCOUNT             NUMBER(30)        NULL, 
     REGISTER_DATE         DATE             NULL,
     DEL					  NUMBER(30)	   NULL,
     CONSTRAINT SITTER_BOARD_PK PRIMARY KEY (SEQ)

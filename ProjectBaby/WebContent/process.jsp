@@ -92,8 +92,29 @@
 		} else {
 	%>
 	<script>
-		alert("회원이 탈퇴처리되지 않았습니다"ㄴ)
+		alert("회원이 탈퇴처리되지 않았습니다");
 		location.href = "admin?type=moveAdmin";
+	</script>
+	<%
+		}
+		}
+	%>
+	
+	
+	<%
+		if (type.equals("kakao")) {
+			if (isS == true) {
+	%>
+	<script>
+		alert("결제가 완료되었습니다")
+		location.href = "kakao?type=moveMypagePoint";
+	</script>
+	<%
+		} else {
+	%>
+	<script>
+		alert("결제가 완료되지 않았습니다")
+		location.href = "kakao?type=moveMypagePoint";
 	</script>
 	<%
 		}

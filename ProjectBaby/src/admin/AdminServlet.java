@@ -72,7 +72,8 @@ public class AdminServlet extends HttpServlet{
 	    	
 	    	List<BabyMemberDto> list = babyMemberDao.getMemberPagingList(address, wantDate, "", page);
 	    	
-	
+	    	req.setAttribute("address", address);
+	    	req.setAttribute("wantDate", wantDate);
 	    	req.setAttribute("memberList", list);
 	    	req.setAttribute("memberCount", memberCount);
 	    	forward("admin.jsp", req, resp);
@@ -109,6 +110,8 @@ public class AdminServlet extends HttpServlet{
 	    	}
 	    	List<BabyMemberDto> list = babyMemberDao.getMemberPagingList(address, wantDate, "", page );
 	
+	    	req.setAttribute("address", address);
+	    	req.setAttribute("wantDate", wantDate);
 	    	req.setAttribute("memberList", list);
 	    	req.setAttribute("memberCount", memberCount);
 	    	forward("admin.jsp", req, resp);
@@ -128,6 +131,8 @@ public class AdminServlet extends HttpServlet{
 	    	BabyMemberDao babyMemberDao = BabyMemberDao.getInstance();
 	    	memberCount = babyMemberDao.getAllMember(address, wantDate, "");
 	    	List<BabyMemberDto> list = babyMemberDao.getMemberPagingList(address, wantDate, "", page);
+	    	req.setAttribute("address", address);
+	    	req.setAttribute("wantDate", wantDate);
 	    	req.setAttribute("memberList", list);
 	    	req.setAttribute("memberCount", memberCount);
 	    	forward("admin.jsp", req, resp);

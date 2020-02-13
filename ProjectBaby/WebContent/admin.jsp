@@ -1,22 +1,48 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-</head>
-<body>
-	<%
+<%
 		//카운트
 		
 		List<BabyMemberDto> list = (List<BabyMemberDto>) request.getAttribute("memberList");
 		//String sMemberCount =  (String)request.getAttribute("memberCount");
 		int memberCount = (int)request.getAttribute("memberCount");
+		String address = (String)request.getAttribute("address");
+		String wantDate = (String)request.getAttribute("wantDate");
+		String wantDateIndex[] = wantDate.split(",");
 		
+		
+		String day[] = {"월", "화", "수", "목", "금", "토", "일"};
+		
+		if(wantDateIndex != null){
+			for(int i = 0; i < wantDateIndex.length; i ++){
+				System.out.println(wantDateIndex[i] + "aa");
+				for(int j = 0; j< day.length; j++){
+					if(wantDateIndex[i].equals(day[j])){
+						%>
+						<script>
+						$(document).ready(function () {
+							
+							$("input[value=<%=wantDateIndex[i]%>]").prop("checked", true);
+						});
+						</script>
+						<%
+					}
+				}
+			}
+		}
+		
+		System.out.println("주소:" + address);
+		System.out.println("원하는날:" + wantDate);
 		if(list != null){
 			
 			for(int i = 0; i < list.size(); i++){
@@ -35,6 +61,10 @@
 			memberPage = memberPage + 1;
 		}
 	%>
+
+</head>
+<body>
+	
 	<%@ include file="./include/header.jsp"%>
 	<!-- <table class="table table-striped .table-bordered .table-hover">
   
@@ -120,8 +150,10 @@
 	</div>
 	<%@ include file="./include/footer.jsp"%>
 	<script type="text/javascript">
+	//페이징상태에도 주소값을 저장
+	$("input[name=address]").val(<%=request.getAttribute("address")%>);
 	function goPage(pageNum){
-		let address = $("#choice").val();
+		let address = $("input[name=address]").val();
 		let arr=[];
 		let wantDate = $("input:checkbox[name=wantDay]:checked").each(function(){
 			//console.log("값 + " + this.value);

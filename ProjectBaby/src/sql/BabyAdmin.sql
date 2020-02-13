@@ -3,7 +3,7 @@ DROP SEQUENCE BABY_ADMIN_SEQ;
 
 CREATE TABLE BABY_ADMIN
 (
-    SEQ        NUMBER(80)        NOT NULL, 
+    SEQ        NUMBER(30)        NOT NULL, 
     ID         VARCHAR2(300)     NULL, 
     TITLE      VARCHAR2(200)     NULL, 
     CONTENT    VARCHAR2(2000)    NULL, 

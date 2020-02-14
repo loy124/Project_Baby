@@ -1,6 +1,7 @@
 package main;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class BabyMemberDto implements Serializable{
 
@@ -22,6 +23,8 @@ public class BabyMemberDto implements Serializable{
 
 	private String registerDate;
 	private String unRegisterDate;
+	
+	
 
 	//여기서부터 Sitter에서만 받아오는 부분 
 	private String license;
@@ -39,6 +42,11 @@ public class BabyMemberDto implements Serializable{
 	private String[] wantDate;
 	private String wantLocal;
 	private String wantTime;
+	
+	//추가된 부분 
+	private String SitterId; //예약자 아이디 
+	
+	private String requestReceiveDate; //예약받을경우 예약 받은날짜 
 	
 
 	public String getId() {
@@ -203,16 +211,38 @@ public class BabyMemberDto implements Serializable{
 	public void setWantTime(String wantTime) {
 		this.wantTime = wantTime;
 	}
+	
+	public String getCustomerRequestDate() {
+		return customerRequestDate;
+	}
+	public void setCustomerRequestDate(String customerRequestDate) {
+		this.customerRequestDate = customerRequestDate;
+	}
+	public String getSitterId() {
+		return SitterId;
+	}
+	public void setSitterId(String sitterId) {
+		SitterId = sitterId;
+	}
+	public String getRequestReceiveDate() {
+		return requestReceiveDate;
+	}
+	public void setRequestReceiveDate(String requestReceiveDate) {
+		this.requestReceiveDate = requestReceiveDate;
+	}
+	
 	@Override
 	public String toString() {
 		return "BabyMemberDto [id=" + id + ", password=" + password + ", name=" + name + ", age=" + age + ", gender="
 				+ gender + ", address=" + address + ", money=" + money + ", phoneNumber=" + phoneNumber
 				+ ", bankAccount=" + bankAccount + ", bankAccountMoney=" + bankAccountMoney + ", auth=" + auth
 				+ ", point=" + point + ", customerRequestDate=" + customerRequestDate + ", registerDate=" + registerDate
-				+ ", unRegisterDate=" + unRegisterDate + ", license=" + license + ", wantPay=" + wantPay + ", career="
-				+ career + ", hireDate=" + hireDate + ", expireDate=" + expireDate + ", profilePhoto=" + profilePhoto
-				+ ", introduce=" + introduce + ", startWorkDate=" + startWorkDate + ", endWorkDate=" + endWorkDate
-				+ ", wantDate=" + wantDate + ", wantLocal=" + wantLocal + ", wantTime=" + wantTime + "]";
+				+ ", unRegisterDate=" + unRegisterDate + ", SitterId=" + SitterId + ", license=" + license
+				+ ", wantPay=" + wantPay + ", career=" + career + ", hireDate=" + hireDate + ", expireDate="
+				+ expireDate + ", profilePhoto=" + profilePhoto + ", introduce=" + introduce + ", startWorkDate="
+				+ startWorkDate + ", endWorkDate=" + endWorkDate + ", wantDate=" + Arrays.toString(wantDate)
+				+ ", wantLocal=" + wantLocal + ", wantTime=" + wantTime + ", requestReceiveDate=" + requestReceiveDate
+				+ "]";
 	}
 	public BabyMemberDto(String id, String password, String name, int age, String gender, String address, String money,
 			String phoneNumber, String bankAccount, String bankAccountMoney, int auth, String point,
@@ -283,6 +313,8 @@ public class BabyMemberDto implements Serializable{
 		this.wantLocal = wantLocal;
 		this.wantTime = wantTime;
 	}
+	
+	
 	public BabyMemberDto(String id, String password, String name, int age, String gender, String address,
 			String phoneNumber, String wantPay, String career, String introduce, String[] wantDate,
 			String wantLocal, String wantTime) {
@@ -301,6 +333,9 @@ public class BabyMemberDto implements Serializable{
 		this.wantLocal = wantLocal;
 		this.wantTime = wantTime;
 	}
+	
+	
+	
 	public BabyMemberDto(String id, String password, String name, int age, String gender, String address,
 			String phoneNumber) {
 		super();
@@ -336,8 +371,127 @@ public class BabyMemberDto implements Serializable{
 		this.bankAccount = bankAccount;
 		this.auth = auth;
 	}
+	
+	
+	//시터 검색하기 (성별, 자격, 원하는시급, 경력, 원하는 날짜, 원하는 지역, 원하는 시간)
+		public BabyMemberDto(String gender, String license, String career, String[] wantDate, String wantLocal,
+				String wantTime) {
+			super();
+			this.gender = gender;
+			this.license = license;
+			this.career = career;
+			this.wantDate = wantDate;
+			this.wantLocal = wantLocal;
+			this.wantTime = wantTime;
+		}
 
+		//시터 리스트 뿌리기(이름, 나이, 성별, 폰번호, 자격, 원하는 시급, 경력, 고용날짜, 이력서 사진, 소개, 원하는 지역)
+		public BabyMemberDto(String name, int age, String gender, String phoneNumber, String license,
+				String wantPay, String career, String hireDate, String profilePhoto, String introduce, String wantLocal) {
+			super();
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+			this.phoneNumber = phoneNumber;
+			this.license = license;
+			this.wantPay = wantPay;
+			this.career = career;
+			this.hireDate = hireDate;
+			this.profilePhoto = profilePhoto;
+			this.introduce = introduce;
+			this.wantLocal = wantLocal;
+		}
+	
+		public BabyMemberDto(String id, String name, int age, String gender, String address, String money, String phoneNumber,
+				String bankAccount, String bankAccountMoney, int auth, String point, String customerRequestDate,
+				String registerDate, String unRegisterDate, String license, String wantPay, String career, String hireDate,
+				String expireDate, String profilePhoto, String introduce, String startWorkDate, String endWorkDate,
+				String[] wantDate, String wantLocal, String wantTime, String sitterId, String requestReceiveDate) {
+			super();
+			this.id = id;
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+			this.address = address;
+			this.money = money;
+			this.phoneNumber = phoneNumber;
+			this.bankAccount = bankAccount;
+			this.bankAccountMoney = bankAccountMoney;
+			this.auth = auth;
+			this.point = point;
+			this.customerRequestDate = customerRequestDate;
+			this.registerDate = registerDate;
+			this.unRegisterDate = unRegisterDate;
+			this.license = license;
+			this.wantPay = wantPay;
+			this.career = career;
+			this.hireDate = hireDate;
+			this.expireDate = expireDate;
+			this.profilePhoto = profilePhoto;
+			this.introduce = introduce;
+			this.startWorkDate = startWorkDate;
+			this.endWorkDate = endWorkDate;
+			this.wantDate = wantDate;
+			this.wantLocal = wantLocal;
+			this.wantTime = wantTime;
+			SitterId = sitterId;
+			this.requestReceiveDate = requestReceiveDate;
+		}
 	
 	
 	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -173,7 +173,8 @@ public class BabyMemberDao {
 				+ " BANK_ACCOUNT, BANK_ACCOUNT_MONEY, AUTH, POINT, "
 				+ " CUSTOMER_REQUEST_DATE, REGISTER_DATE, UN_REGISTER_DATE, "
 				+ " LICENSE, WANT_PAY, CAREER, HIRE_DATE, EXPIRE_DATE, PROFILE_PHOTO, "
-				+ " INTRODUCE, START_WORK_DATE, END_WORK_DATE, WANT_DATE, WANT_LOCAL, WANT_TIME " + " FROM BABY_MEMBER "
+				+ " INTRODUCE, START_WORK_DATE, END_WORK_DATE, WANT_DATE, WANT_LOCAL, WANT_TIME, "
+				+ "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE " + " FROM BABY_MEMBER "
 				+ "WHERE ID = ? AND PASSWORD = ? ";
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -205,7 +206,7 @@ public class BabyMemberDao {
 						rs.getString(i++), rs.getInt(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
 						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
 						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
-						arrArray, rs.getString(25), rs.getString(26));
+						arrArray, rs.getString(25), rs.getString(26), rs.getString(27), rs.getString(28));
 
 			}
 		} catch (SQLException e) {
@@ -225,7 +226,7 @@ public class BabyMemberDao {
 				+ " BANK_ACCOUNT," + " BANK_ACCOUNT_MONEY," + " AUTH," + " POINT, " + " CUSTOMER_REQUEST_DATE,"
 				+ " REGISTER_DATE, " + "UN_REGISTER_DATE," + "LICENSE," + " WANT_PAY, " + "CAREER," + " HIRE_DATE,"
 				+ " EXPIRE_DATE," + " PROFILE_PHOTO, " + "INTRODUCE," + " START_WORK_DATE," + " END_WORK_DATE, "
-				+ " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME" + " FROM BABY_MEMBER ";
+				+ " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE " + " FROM BABY_MEMBER ";
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
@@ -259,7 +260,7 @@ public class BabyMemberDao {
 
 						rs.getString(i++), rs.getString(i++), rs.getString(i++), arrArray, rs.getString(25),
 
-						rs.getString(26));
+						rs.getString(26), rs.getString(27), rs.getString(28));
 				System.out.println("babyMemberDto=" + babyMemberDto.toString());
 
 				list.add(babyMemberDto);
@@ -275,13 +276,72 @@ public class BabyMemberDao {
 		return list;
 
 	}
+	
+public List<BabyMemberDto> getSitterList() {
+		
+		String sql = " SELECT " + "ID," + " NAME, " + "AGE, " + "GENDER," + " ADDRESS," + " MONEY," + " PHONE_NUMBER,"
+				+ " BANK_ACCOUNT," + " BANK_ACCOUNT_MONEY," + " AUTH," + " POINT, " + " CUSTOMER_REQUEST_DATE,"
+				+ " REGISTER_DATE, " + "UN_REGISTER_DATE," + "LICENSE," + " WANT_PAY, " + "CAREER," + " HIRE_DATE,"
+				+ " EXPIRE_DATE," + " PROFILE_PHOTO, " + "INTRODUCE," + " START_WORK_DATE," + " END_WORK_DATE, "
+				+ " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE " + " FROM BABY_MEMBER WHERE AUTH = 4";
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		List<BabyMemberDto> list = new ArrayList<BabyMemberDto>();
+		try {
+			conn = DBConnection.getConnection();
+			psmt = conn.prepareStatement(sql);
+			System.out.println("psmt");
+			rs = psmt.executeQuery();
+			int i = 1;
+			String arrArray[] = null;
+
+			while (rs.next()) {
+				String arr = rs.getString(24);
+				if (arr != null) {
+					System.out.println("arr" + arr);
+					System.out.println("test");
+					arrArray = arr.split(",");
+				}
+
+				System.out.println(i);
+				i = 1;
+				BabyMemberDto babyMemberDto = new BabyMemberDto(rs.getString(i++), rs.getString(i++), rs.getInt(i++),
+						rs.getString(i++), rs.getString(i++),
+
+						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getInt(i++),
+
+						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
+
+						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
+
+						rs.getString(i++), rs.getString(i++), rs.getString(i++), arrArray, rs.getString(25),
+
+						rs.getString(26), rs.getString(27), rs.getString(28));
+				System.out.println("babyMemberDto=" + babyMemberDto.toString());
+
+				list.add(babyMemberDto);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, rs);
+		}
+
+		return list;
+
+	}
+	
+	
 
 	public BabyMemberDto getDetail(String id) {
 		String sql = " SELECT ID, NAME, AGE, GENDER, ADDRESS, MONEY, PHONE_NUMBER, "
 				+ " BANK_ACCOUNT, BANK_ACCOUNT_MONEY, AUTH, POINT, "
 				+ " CUSTOMER_REQUEST_DATE, REGISTER_DATE, UN_REGISTER_DATE, "
 				+ " LICENSE, WANT_PAY, CAREER, HIRE_DATE, EXPIRE_DATE, PROFILE_PHOTO, "
-				+ " INTRODUCE, START_WORK_DATE, END_WORK_DATE, WANT_DATE, WANT_LOCAL, WANT_TIME " + " FROM BABY_MEMBER "
+				+ " INTRODUCE, START_WORK_DATE, END_WORK_DATE, WANT_DATE, WANT_LOCAL, WANT_TIME, " + " SITTER_ID, SITTER_REQUEST_RECIEVE_DATE " + " FROM BABY_MEMBER "
 				+ " WHERE ID = ?";
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -317,7 +377,7 @@ public class BabyMemberDao {
 						rs.getString(i++), rs.getInt(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
 						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
 						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
-						arrArray, rs.getString(25), rs.getString(26));
+						arrArray, rs.getString(25), rs.getString(26), rs.getString(27), rs.getString(28));
 
 				System.out.println("sql내 babyMember" + babyMemberDto.toString());
 

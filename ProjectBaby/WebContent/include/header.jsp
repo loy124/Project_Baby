@@ -19,10 +19,10 @@
 <link rel="apple-touch-icon" sizes="144x144"
 	href="./images/front/icon_144.png">
 
-<link href="css/front/reset.css" rel="stylesheet">
-<link href="css/front/common.css" rel="stylesheet">
-<link href="css/front/layout.css" rel="stylesheet">
-<link href="css/front/style.css" rel="stylesheet">
+<link href="./css/front/reset.css" rel="stylesheet">
+<link href="./css/front/common.css" rel="stylesheet">
+<link href="./css/front/layout.css" rel="stylesheet">
+<link href="./css/front/style.css" rel="stylesheet">
 
 <script src="js/front/jquery-3.1.0.min.js"></script>
 <script
@@ -33,7 +33,7 @@
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js">
 <!-- 부가적인 테마 -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
@@ -113,7 +113,7 @@
 						</ul></li>
 					<li><a href="">Service</a>
 						<ul class="sub_menu">
-							<li><a href="">돌봄 신청</a></li>
+							<li><a href="employee.jsp">돌봄 신청</a></li>
 							<li><a href="">구인구직</a></li>
 						</ul></li>
 
@@ -130,7 +130,37 @@
 						</ul></li>
 
 				</ul>
-				<%	}
+				<%	}else {
+					%>
+					<ul class="gnb clearfix">
+					<li><a href="">Mypage</a>
+						<ul class="sub_menu">
+							<li><a href="mypage_main.jsp">예약내역 확인</a></li>
+							<li><a href="mypage_main.jsp">지난 이력확인</a></li>
+							<li><a href="mypage_point.jsp">내 포인트 관리</a></li>
+							<li><a href="mypage_profile.jsp">내 계정 관리</a></li>
+						</ul></li>
+					<li><a href="">Service</a>
+						<ul class="sub_menu">
+							<li><a href="employee.jsp">돌봄 신청</a></li>
+							<li><a href="">구인구직</a></li>
+						</ul></li>
+
+					<li><a href="">고객센터</a>
+						<ul class="sub_menu">
+							<li><a href="">오시는길</a></li>
+							<li><a href="">Q&A</a></li>
+						</ul></li>
+
+					<li><a href="">커뮤니티</a>
+						<ul class="sub_menu">
+							<li><a href="">후기게시판</a></li>
+							<li><a href="">자유게시판</a></li>
+						</ul></li>
+
+				</ul>
+				<%
+					}
 					} else {
 				%>
 				<ul class="gnb clearfix">
@@ -143,7 +173,7 @@
 						</ul></li>
 					<li><a href="">Service</a>
 						<ul class="sub_menu">
-							<li><a href="">돌봄 신청</a></li>
+							<li><a href="employee.jsp">돌봄 신청</a></li>
 							<li><a href="">구인구직</a></li>
 						</ul></li>
 

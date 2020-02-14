@@ -3,12 +3,6 @@
 	pageEncoding="UTF-8"%>
 
 
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <%
 		//카운트
@@ -176,8 +170,7 @@
 		location.href = link;
 	}
 	</script>
-</body>
-</html>
+
 
 
 

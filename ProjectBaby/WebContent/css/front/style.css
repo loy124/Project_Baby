@@ -1,0 +1,494 @@
+/*------------------ registerSelect (회원가입) 페이지) ------------------*/
+
+
+
+
+
+
+
+
+
+/*------------------ employee(구인(채용) 페이지) ------------------*/
+.employee .cont2 {
+	padding: 0;
+}
+.employee .emp_layout{
+    background-color: #fff;
+    padding: 50px 30px 0;
+}
+.employee .lay_border{
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+    z-index: 1;
+    text-align: left;
+
+}
+
+
+.employee .lay_border.title{
+	background: url(../../images/front/employeeCont1_bg.png) no-repeat right center;
+	background-size: 625px;
+}
+
+
+.employee .lay_border h2{
+    font-size: 33px;
+	line-height: 1.45;
+	font-weight: 300;
+}
+
+.employee .lay_border h2 strong{
+    font-weight: 600;
+}
+
+.employee .lay_border h2 strong span{
+	color: #88afe0;
+}
+
+.employee .lay_border{
+	min-width: 300px;
+}
+
+.employee .lay_border p{
+
+}
+.employee .lay_border .select_wrap{
+    display: flex;
+   /*  margin: 25px 0 20px 0; */
+    padding: 25px;
+}
+.employee .select_wrap .selectName{
+	width: 33%;
+	display: inline-block;
+	font-size: 15px;
+    line-height: 1.67;
+    margin: 25px 27px 20px 0;
+}
+.employee .select_wrap .selectName:nth-child(2){
+	margin-right: 0;
+}
+.employee .select_wrap .selectName:last-child{
+	margin-right: 0;
+}
+.employee .select_wrap .selectName form.location svg{
+	display: inline-block;
+	margin: 0;
+	color: rgba(0, 0, 0, 0.87);
+	fill: #ff5300;
+	height: 20px; width: 20px;
+	user-select: none;
+	transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+	position: absolute;
+	left: 32px;
+    top: 90px;
+}
+
+
+.employee .select_wrap .selectName span{
+	display: block;
+	margin-bottom: 5px;
+}
+.employee .selectName span.sel_title{
+	font-weight: bold;
+}
+
+.employee .select_wrap .selectName input{
+	text-indent: 25px; width: 312px;
+	box-sizing: border-box; height: 40px;
+	border: 1px solid rgb(211, 211, 211);
+	padding-left: 10px; font-size: 1rem;
+}
+
+.employee .selectName .week{
+
+}
+.employee .select_wrap .selectName button{
+    color: rgba(0, 0, 0, 0.87);
+    background-color: white;
+	border: 1px solid rgb(211, 211, 211);
+    box-sizing: border-box;
+    display: inline-block;
+    font-family: "Noto Sans KR", sans-serif;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+    outline: none;
+    font-size: inherit;
+    font-weight: inherit;
+    position: relative;
+    z-index: 1;
+    height: 30px;
+    line-height: 30px;
+    min-width: 30px;
+    transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    border-radius: 30px;
+    user-select: none;
+    overflow: hidden;
+    text-align: center;
+    width: 30px;
+    min-height: 30px;
+}
+
+
+.employee .select_wrap .selectName button.sel_click {
+	color: #fff;
+	background-color: #88afe0;
+}
+
+.employee .select_wrap .selectName.selectTime button{
+	border-radius: 3px;
+	width: 100px;
+}
+
+.employee .refine_search{
+
+}
+
+.employee .refine_searchBtnWrap .refineBtn{
+	width:100%;
+}
+
+.employee .refine_searchBtnWrap{
+	border: 1px solid #d3d3d3;
+	padding: 0 !important;
+}
+
+.employee .refine_search .sel_choice .selectName{
+	width: 32%;
+}
+
+.employee .refine_search input[type=checkbox]{
+	width: 15px;
+}
+.employee .refine_search .sel_choice{
+	width: 100%;
+	padding: 0px 20px;
+}
+.employee .refine_search .refineBtn{
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+}
+
+
+.employee .refineBtn input.rf{
+    border: 10px;
+    box-sizing: border-box;
+    display: inline-block;
+    font-family: "Noto Sans KR", sans-serif;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+    outline: none;
+    font-size: inherit;
+    font-weight: inherit;
+    position: relative;
+    vertical-align: middle;
+    z-index: 1;
+    height: 40px;
+    line-height: 36px;
+    min-width: 88px;
+    color: rgba(0, 0, 0, 0.87);
+    transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    border-radius: 2px;
+    user-select: none;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0);
+    text-align: center;
+    flex-basis: 85%;
+    width: 80%;
+}
+
+.employee .refineBtn input.reset{
+    border-width: 10px 10px 10px 1px;
+    border-top-style: initial;
+    border-right-style: initial;
+    border-bottom-style: initial;
+    border-left-style: solid;
+    border-top-color: initial;
+    border-right-color: initial;
+    border-bottom-color: initial;
+    border-left-color: rgb(224, 224, 224);
+    border-image: initial;
+    box-sizing: border-box;
+    display: inline-block;
+    font-family: "Noto Sans KR", sans-serif;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+    outline: none;
+    font-size: inherit;
+    font-weight: inherit;
+    position: relative;
+    vertical-align: middle;
+    z-index: 1;
+    height: 40px;
+    line-height: 36px;
+    min-width: 88px;
+    color: rgba(0, 0, 0, 0.87);
+    transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    border-radius: 2px;
+    user-select: none;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0);
+    text-align: center;
+    flex-basis: 15%;
+}
+
+.employee .refine_search .range{
+	position: relative;
+    width: 100%;
+    height: 5px;
+}
+.employee .refine_search .range input{
+    width: 100%;
+    position: absolute;
+    top: 2px;
+    height: 0;
+    -webkit-appearance: none;
+    overflow: visible;
+}
+.employee .refine_search .range-labels{
+    margin: 18px -41px 0;
+    padding: 0;
+}
+.employee .refine_search .range-labels .active {
+    color: #37adbf;
+}
+.employee .refine_search .range-labels li{
+	position: relative;
+    float: left;
+    width: 90.25px;
+    text-align: center;
+    color: #b2b2b2;
+    font-size: 14px;
+    cursor: pointer;
+    display: list-item;
+}
+.employee .refine_search .range-labels li::before{
+    position: absolute;
+    top: -25px;
+    right: 0;
+    left: 0;
+    content: "";
+    margin: 0 auto;
+    width: 9px;
+    height: 9px;
+    background: #b2b2b2;
+    border-radius: 50%;
+}
+
+
+.employee .sitter_wrap .card_wrap{
+	margin: 9px 0;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 0 0 3px 0 hsla(0,0%,67%,.5);
+    padding: 20px 10px 10px;
+    position: relative;
+    cursor: pointer;
+    width: 565px;
+}
+
+.employee .d1{
+	display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}
+.employee .d1 .photo_layout{
+	-ms-flex: 1 1 0%;
+    flex: 1 1 0%;
+    width: 60px;
+    max-width: 120px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    position: relative;
+}
+.employee .d1 .photo_wrap{
+	width:70px;
+	height:70px;
+}
+.employee .photo_layout > div{
+	margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+}
+.employee .photo_layout img{
+	-o-object-fit: cover;
+    object-fit: cover;
+    animation-name: _2X2KR;
+    animation-duration: .4s;
+    vertical-align: middle;
+}
+.employee .photo_layout img, _3xT8G{
+    width: 70px;
+    height: 70px;
+    border-radius: 90px;
+}
+
+.employee .d1 .info_layout{
+	-ms-flex: 3 1 0%;
+    flex: 3 1 0%;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin-left: 10px;
+    width: calc(100% - 100px);
+}
+.employee .d1 .info_layout .info_content{
+   justify-content: space-between;
+   margin-bottom: -2px;
+   display: -ms-flexbox;
+
+   display: flex;
+   -ms-flex-direction: row;
+   flex-direction: row;
+   -ms-flex-align: center;
+   align-items: center;
+   margin-bottom: 5px;
+}
+.employee .d1 .info_layout .sitter_info{
+	display: -ms-flexbox;
+   display: flex;
+   -ms-flex-direction: row;
+   flex-direction: row;
+   -ms-flex-align: center;
+   align-items: center;
+   margin-bottom: 5px;
+}
+.employee .d1 .sitter_name{
+	color: #000;
+    font-size: 1em;
+    font-weight: 700;
+    margin-right: 5px;
+}
+.employee .d1 .sitter_date{
+    color: #595959;
+    font-size: .75em;
+    font-weight: 400;
+}
+.employee .d1 .info_content button{
+	border: 10px; box-sizing: border-box;
+	display: inline-block;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	text-decoration: none;
+	margin: 0px; padding: 0px;
+	outline: none; font-size: 0px;
+	font-weight: inherit;
+	position: relative;
+	z-index: 1;
+	overflow: visible;
+	transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+	width: 28px; height: 28px; background: none;
+}
+.employee .d1 .info_content{
+    color: #595959;
+    font-size: .75em;
+    font-weight: 400;
+}
+.employee .d1 .info_content .local{
+    font-weight: 400;
+    text-align: left;
+    color: #595959;
+}
+.employee .d1 .info_content .sitter_age{
+	position: relative;
+}
+.employee .d1 .info_content .sitter_age:before {
+    content: "";
+    position: absolute;
+    left: 22px;
+    top: 1px;
+    width: 1px;
+    height: 10px;
+    background-color: #ccc;
+    margin: 0 7px;
+}
+.employee .d1 .info_content.info_txt_align{
+	justify-content: inherit;
+}
+.employee .d1 .info_content .want_pay{
+    margin-left: 13px;
+}
+.employee .d1 .info_content .badge{
+	display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 65px;
+    height: 23px;
+    border-radius: 11.5px;
+    background-color: #f4c000;
+    margin-left: 6px;
+}
+.employee .d1 .info_content .badge .badge_txt{
+    margin-left: 2px;
+    font-size: 10px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.employee .d2{
+	margin-top:10px;
+	border-top: 1px solid #e8e8e8;
+	display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 15px 15px 5px;
+}
+.employee .d2 .info_content{
+	width: 100%;
+}
+.employee .d2 .info_content p{
+	text-align: center;
+    font-weight: 400;
+    color: #595959;
+}
+
+
+/* containerWrap */
+.containerWrap.employee{
+	background-color: #f0f0f0;
+}
+
+.employee .inner{
+	margin: 0;
+	padding: 0;
+}
+
+.employee .content{
+	padding: 0;
+}
+
+.employee .cont2 .inner{
+	margin-top: 25px;
+    margin-bottom: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

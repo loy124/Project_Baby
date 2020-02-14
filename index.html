@@ -1,0 +1,87 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            border: 1px solid black;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: auto;
+        }
+        
+        .profile-content {
+            background-color: bisque;
+            width: 50%;
+        }
+        
+        .profile-container {
+            display: flex;
+        }
+        
+        .profile-title-wrap {
+            display: flex;
+        }
+        
+        .profile-title-wrap div:nth-child(1) {
+            flex-grow: 1;
+        }
+        
+        .profile-title-wrap div:nth-child(2) {
+            flex-grow: 4;
+        }
+        
+        .main-container {
+            display: flex;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="main-container">
+        <div>
+            메뉴 넣을곳
+        </div>
+        <div>
+            <div>
+                예약 내역 확인
+            </div>
+            <div class="profile-container">
+                <img class="profile-img" src="./user.PNG">
+                <div class="profile-content">
+                    <div class="profile-information">간단한 프로필[상세보기]</div>
+                    <div class>
+                        <div class="profile-title-wrap profile-name">
+                            <div class="aa">aaa</div>
+                            <div>aaa</div>
+                        </div>
+
+                        <div class="profile-title-wrap profile-phone-number">
+                            <div class="aa">aaa</div>
+                            <div>aaa</div>
+                        </div>
+                        <div class="profile-title-wrap profile-id">
+                            <div class="aa">aaa</div>
+                            <div>aaa</div>
+                        </div>
+                    </div>
+                    <div>상세보기: 회원가입시 넣었던 것 경력사항등 자기소개 디테일</div>
+                </div>
+            </div>
+            <div>
+                <div>
+
+                    <div>예약 날짜</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

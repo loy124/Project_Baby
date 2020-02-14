@@ -48,7 +48,10 @@ public class AdminUpdateServlet extends HttpServlet {
 				String career = req.getParameter("career");
 				String introduce = req.getParameter("introduce");
 				String date = req.getParameter("wantDate");
-				String[] wantDate = date.split(",");
+				String[] wantDate = null;
+				if(date != null) {
+					wantDate = date.split(",");
+				}
 				String wantLocal = req.getParameter("wantLocal");
 				// String wantLocal
 

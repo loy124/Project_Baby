@@ -134,7 +134,7 @@ int point = pointDao.getPoint(dto.getId()); */
 						<b class="abs" style="font-size: 13pt;">▶ 포인트 충전</b>
 					</p>
 					<br>
-
+					<!-- 서블릿으로 변경할것 -->
 					<form action="kakao.jsp">
 						<p>
 							<span>id:</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 

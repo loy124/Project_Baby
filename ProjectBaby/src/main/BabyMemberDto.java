@@ -438,18 +438,7 @@ public class BabyMemberDto implements Serializable{
 			this.requestReceiveDate = requestReceiveDate;
 		}
 	
-	
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 }
 
 

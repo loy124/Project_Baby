@@ -10,6 +10,88 @@
 	background-color: #ff7928 !important; 
 
 }
+/* -- 팝업창 -- */
+
+.lp_bg, .popupBox{
+	display: none;
+}
+
+
+.lp_bg{
+	position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 550;
+}
+.popup_wrap{
+	position: absolute;
+    bottom: -390px;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    text-align: center;
+}
+
+.popup_wrap .popup_inner {
+    display: inline-block;
+    margin: 0 auto;
+}
+.popup_wrap .popup_inner p{
+	text-align: left;
+}
+.popupBox {
+    margin: 0 5px;
+    float: left;
+    padding: 25px;
+}
+
+#layer1 {
+    background-color: #fff;
+    width: 420px;
+    /* display: none; */
+    padding-bottom: 10px;
+    text-align: right;
+    z-index: 997;
+}
+
+#layer1 .layerInner {
+    position: relative;
+}
+
+.popup_wrap input[type="checkbox"] {
+    vertical-align: middle;
+    margin-right: 7px;
+}
+
+
+
+
+.lp_box {
+    position: fixed;
+    background: #fff;
+    z-index: 9999;
+}
+.lp_box, .lp_bg, .lp_bg2 {
+    display: none;
+}
+.lp_box, .lp_bg, .lp_bg2 {
+    display: none;
+}
+
+.btn_close_lp {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.lp_cn {
+    box-sizing: border-box;
+    padding: 30px 20px 20px;
+    font-family: 'NanumSquare';
+}
 </style>
 <%@ include file="./include/header.jsp"%>
 
@@ -138,11 +220,40 @@
 	<!--// container_inner -->
 </div>
 <!--// container -->
+<div class="popup_wrap">
+		<div class="popup_inner">
+			<div id="layer1" class="popupBox empBox" >
+				<div class="layerInner">
+					<div>
+						<p>이름 : </p>
+						<p>나이 :   </p>
+						<p>희망 지역 :  </p>
+						<p>희망 시급 :  </p>
+						<p>희망 요일 :  </p>
 
+						<p>고용하시겠습니까?</p>
+						<form action="">
+							<input type="button" value="예">
+							<input type="button" class="popClose" value="아니오">
+						</form>
+					</div>
+				</div>
+				<!-- <input type="checkbox" name="popCheck" id="pop03" onClick="" /><label for="pop03">오늘 하루 창 열지않기</label> -->
+				<!-- <a href="#" onClick="layerX(this);" class="popClose">[닫기]</a> -->
+			</div>
+
+			</div>
+			
+	
+		</div>
 
 <!-- 요일 선택시 버튼 수정 -->
 <script type="text/javascript">
+	
+	let dataJson;
 	$(document).ready(function(){
+		
+		
 	$.ajax({
 		url : "./employee",
 		type : "get",
@@ -154,16 +265,44 @@
 		},
 		success : function(data) {
 			console.log(data);
-			
+			dataJson = data;
 			let arr = data.map(i => {
 				$(".list-inner").append(list(i));
+				
 				console.log(i);
-			});
+			});	
+			/* 
+			$(window).on("load", (function() {
+				  // 로딩 완료되었을때
+				  console.log("로딩완료");
+				  $(".sitter_wrap").click(function() {
+					  alert("되요");
+				  	$('.lp_bg, .popup_wrap .popupBox').show();
+				  });
+				  
+				  $('.empBox .popClose').click(function() {
+				  	$('.lp_bg, .popup_wrap .popupBox').hide();
+				  });
+				}));
+			 */
 			
 			
+			$(window).ready(function() {
+				  // 로딩 완료되었을때
+				  console.log("로딩완료");
+				  $(".sitter_wrap").click(function() {
+				  	 $('.lp_bg, .popup_wrap .popupBox').show(); 
+				  	$(popupList(data)).show();
+				  });
+				  
+				  $('.empBox .popClose').click(function() {
+				  	$('.lp_bg, .popup_wrap .popupBox').hide();
+				  });
+				});
 			
-
 		}
+		
+		 console.log(dataJson);
 	});
 	$("#seachBtn").click(function(){
 		var genderList = [];
@@ -177,6 +316,8 @@
 		$(this).toggleClass("click-button-event");
 	});
 	
+	
+	
 	});
 	
 	function existElement(el){
@@ -186,6 +327,8 @@
 			return "기재되지 않음";
 		}
 	}
+	
+	
 	
 
 	function list(data){ 
@@ -253,6 +396,37 @@
            
 	
 ;}
+	
+	
+	function popupList(popupdata){
+		return `<div class="popup_wrap">
+		<div class="popup_inner">
+			<div id="layer1" class="popupBox empBox" >
+				<div class="layerInner">
+					<div>
+						<p>이름 : `+existElement(popupdata.name)+ ` </p>
+						<p>나이 : `+existElement(popupdata.age)+ `  </p>
+						<p>희망 지역 : `+existElement(popupdata.wantLocal) +`  </p>
+						<p>희망 시급 : `+existElement(popupdata.wantPay) +`  </p>
+						<p>희망 요일 : `+existElement(popupdata.wantDate) +` </p>
+
+						<p>고용하시겠습니까?</p>
+						<form action="">
+							<input type="button" value="예">
+							<input type="button" class="popClose" value="아니오">
+						</form>
+					</div>
+				</div>
+				<!-- <input type="checkbox" name="popCheck" id="pop03" onClick="" /><label for="pop03">오늘 하루 창 열지않기</label> -->
+				<!-- <a href="#" onClick="layerX(this);" class="popClose">[닫기]</a> -->
+			</div>
+
+			</div>
+		</div>`
+	}
+	
+	
+	
 
 	</script>
 

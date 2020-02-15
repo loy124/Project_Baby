@@ -176,6 +176,7 @@ public class BabyMemberDao {
 				+ " INTRODUCE, START_WORK_DATE, END_WORK_DATE, WANT_DATE, WANT_LOCAL, WANT_TIME, "
 				+ "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE " + " FROM BABY_MEMBER "
 				+ "WHERE ID = ? AND PASSWORD = ? ";
+		
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;

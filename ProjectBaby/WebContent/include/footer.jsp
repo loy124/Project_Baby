@@ -46,7 +46,7 @@
 		<h3 class="lp_sbj font_square"><a href="index.html">
 				<p>로그인</p>
 			</a></h3>
-		<a href="#n" class="btn_close_lp"><img src="images/front/ko/ico_close_lp_s.png" alt="닫기"></a>
+		<a href="#n" class="btn_close_lp"><img src="images/front/ico_close_lp_s.png" alt="닫기"></a>
 
 		<div class="lp_cn tc">
 			<input type="email" class="user_email mb5" placeholder="이메일" style="width: 100%;">

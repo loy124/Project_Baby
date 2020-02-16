@@ -181,8 +181,7 @@
 		</div>
 		
 		
-		<div class="boxs box2">
-		
+		<div class="boxs box2">	
 			<p>
 				<b class="title" style="font-size: 15pt; color: #82a3d4;">예약 내역 확인</b>
 			</p>

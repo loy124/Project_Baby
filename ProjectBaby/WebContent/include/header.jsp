@@ -107,7 +107,7 @@
 						<li><a href="">Mypage</a>
 						<ul class="sub_menu">
 							<li><a href="mypage_main.jsp">예약내역 확인</a></li>
-							<li><a href="mypage_main.jsp">지난 이력확인</a></li>
+							<li><a href="mypage_imageUpdate.jsp">프로필 사진 업데이트</a></li>
 							<li><a href="mypage_point.jsp">내 포인트 관리</a></li>
 							<li><a href="mypage_profile.jsp">내 계정 관리</a></li>
 						</ul></li>
@@ -136,7 +136,7 @@
 					<li><a href="">Mypage</a>
 						<ul class="sub_menu">
 							<li><a href="mypage_main.jsp">예약내역 확인</a></li>
-							<li><a href="mypage_main.jsp">지난 이력확인</a></li>
+					<li><a href="mypage_imageUpdate.jsp">프로필 사진 업데이트</a></li>
 							<li><a href="mypage_point.jsp">내 포인트 관리</a></li>
 							<li><a href="mypage_profile.jsp">내 계정 관리</a></li>
 						</ul></li>
@@ -164,13 +164,6 @@
 					} else {
 				%>
 				<ul class="gnb clearfix">
-					<li><a href="">Mypage</a>
-						<ul class="sub_menu">
-							<li><a href="mypage_main.jsp">예약내역 확인</a></li>
-							<li><a href="mypage_main.jsp">지난 이력확인</a></li>
-							<li><a href="mypage_point.jsp">내 포인트 관리</a></li>
-							<li><a href="mypage_profile.jsp">내 계정 관리</a></li>
-						</ul></li>
 					<li><a href="">Service</a>
 						<ul class="sub_menu">
 							<li><a href="employee.jsp">돌봄 신청</a></li>

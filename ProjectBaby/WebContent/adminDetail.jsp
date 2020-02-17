@@ -65,7 +65,11 @@ input {
 						<%
 							} else if (dto.getAuth() == 7) {
 						%>
-						<td colspan="2" align="center">회원 정보 : 시터(탈퇴처리)</td>
+						<td colspan="2" align="center">회원 정보 : 시터(회원 탈퇴된 아이디)</td>
+						<%
+							} else if (dto.getAuth() == 8) {
+						%>
+						<td colspan="2" align="center">회원 정보 : 시터(고용중)</td>
 						<%
 							}
 						%>
@@ -188,11 +192,13 @@ input {
 					<tr>
 						<%
 							String str = "";
-								for (int i = 0; i < dto.getWantDate().length; i++) {
-									if (i == 0) {
-										str = dto.getWantDate()[0];
-									} else {
-										str = str +","+ dto.getWantDate()[i];
+								if (dto.getWantDate() != null) {
+									for (int i = 0; i < dto.getWantDate().length; i++) {
+										if (i == 0) {
+											str = dto.getWantDate()[0];
+										} else {
+											str = str + "," + dto.getWantDate()[i];
+										}
 									}
 								}
 						%>
@@ -230,7 +236,8 @@ input {
 		});
 	
 	$("#adminDelete").click(function() {
-		location.href= "adminDelete?type=deleteAf&id=<%=dto.getId()%>";
+		location.href= "adminDelete?type=deleteAf&id=<%=dto.getId()%>
+		";
 		});
 	</script>
 </body>

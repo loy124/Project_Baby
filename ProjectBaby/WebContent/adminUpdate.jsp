@@ -48,9 +48,17 @@
 							%>
 							<td colspan="2" align="center">회원 정보 : 시터(거부됨)</td>
 							<%
+								} else if (dto.getAuth() == 7) {
+							%>
+							<td colspan="2" align="center">회원 정보 : 시터(회원 탈퇴된 아이디)</td>
+							<%
+								}
+							else if (dto.getAuth() == 8) {
+							%>
+							<td colspan="2" align="center">회원 정보 : 시터(고용중)</td>
+							<%
 								}
 							%>
-
 
 						</tr>
 						<tr>
@@ -104,8 +112,8 @@
 						</tr>
 						<tr>
 							<th>휴대폰 번호</th>
-							<td><input class="form-control"
-								name="phoneNumber" value="<%=dto.getPhoneNumber()%>"></td>
+							<td><input class="form-control" name="phoneNumber"
+								value="<%=dto.getPhoneNumber()%>"></td>
 						</tr>
 						<tr>
 							<th>계좌번호</th>
@@ -193,15 +201,15 @@
 						<tr>
 
 							<%
-							String str = "";
-								for (int i = 0; i < dto.getWantDate().length; i++) {
-									if (i == 0) {
-										str = dto.getWantDate()[0];
-									} else {
-										str = str +","+ dto.getWantDate()[i];
+								String str = "";
+									for (int i = 0; i < dto.getWantDate().length; i++) {
+										if (i == 0) {
+											str = dto.getWantDate()[0];
+										} else {
+											str = str + "," + dto.getWantDate()[i];
+										}
 									}
-								}
-						%>
+							%>
 							<th>원하는 요일</th>
 							<td><input class="form-control" name="wantDate"
 								value="<%=str%>"></td>

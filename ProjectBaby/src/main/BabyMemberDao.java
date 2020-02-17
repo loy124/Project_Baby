@@ -150,7 +150,6 @@ public class BabyMemberDao {
 						str = str + wantDate[0];
 					}
 				}
-
 			}
 
 			psmt.setString(i++, str);
@@ -174,9 +173,9 @@ public class BabyMemberDao {
 				+ " CUSTOMER_REQUEST_DATE, REGISTER_DATE, UN_REGISTER_DATE, "
 				+ " LICENSE, WANT_PAY, CAREER, HIRE_DATE, EXPIRE_DATE, PROFILE_PHOTO, "
 				+ " INTRODUCE, START_WORK_DATE, END_WORK_DATE, WANT_DATE, WANT_LOCAL, WANT_TIME, "
-				+ "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE " + " FROM BABY_MEMBER "
+				+ " SITTER_ID, SITTER_REQUEST_RECIEVE_DATE, realFileName, USER_ID, WORKING_HOUR " 
+				+ " FROM BABY_MEMBER "
 				+ "WHERE ID = ? AND PASSWORD = ? ";
-		
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
@@ -208,6 +207,9 @@ public class BabyMemberDao {
 						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
 						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
 						arrArray, rs.getString(25), rs.getString(26), rs.getString(27), rs.getString(28));
+				babyMemberDto.setRealFileName(rs.getString(29));
+				babyMemberDto.setUserId(rs.getString(30));
+				babyMemberDto.setWorkingHour(rs.getString(31));
 
 			}
 		} catch (SQLException e) {
@@ -227,7 +229,7 @@ public class BabyMemberDao {
 				+ " BANK_ACCOUNT," + " BANK_ACCOUNT_MONEY," + " AUTH," + " POINT, " + " CUSTOMER_REQUEST_DATE,"
 				+ " REGISTER_DATE, " + "UN_REGISTER_DATE," + "LICENSE," + " WANT_PAY, " + "CAREER," + " HIRE_DATE,"
 				+ " EXPIRE_DATE," + " PROFILE_PHOTO, " + "INTRODUCE," + " START_WORK_DATE," + " END_WORK_DATE, "
-				+ " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE " + " FROM BABY_MEMBER ";
+				+ " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE , realFileName, USER_ID, WORKING_HOUR " + " FROM BABY_MEMBER ";
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
@@ -263,7 +265,9 @@ public class BabyMemberDao {
 
 						rs.getString(26), rs.getString(27), rs.getString(28));
 				System.out.println("babyMemberDto=" + babyMemberDto.toString());
-
+				babyMemberDto.setRealFileName(rs.getString(29));
+				babyMemberDto.setUserId(rs.getString(30));
+				babyMemberDto.setWorkingHour(rs.getString(31));
 				list.add(babyMemberDto);
 			}
 
@@ -284,7 +288,7 @@ public List<BabyMemberDto> getSitterList() {
 				+ " BANK_ACCOUNT," + " BANK_ACCOUNT_MONEY," + " AUTH," + " POINT, " + " CUSTOMER_REQUEST_DATE,"
 				+ " REGISTER_DATE, " + "UN_REGISTER_DATE," + "LICENSE," + " WANT_PAY, " + "CAREER," + " HIRE_DATE,"
 				+ " EXPIRE_DATE," + " PROFILE_PHOTO, " + "INTRODUCE," + " START_WORK_DATE," + " END_WORK_DATE, "
-				+ " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE " + " FROM BABY_MEMBER WHERE AUTH = 4";
+				+ " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE , realFileName, USER_ID, WORKING_HOUR " + " FROM BABY_MEMBER WHERE AUTH = 4";
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
@@ -320,7 +324,9 @@ public List<BabyMemberDto> getSitterList() {
 
 						rs.getString(26), rs.getString(27), rs.getString(28));
 				System.out.println("babyMemberDto=" + babyMemberDto.toString());
-
+				babyMemberDto.setRealFileName(rs.getString(29));
+				babyMemberDto.setUserId(rs.getString(30));
+				babyMemberDto.setWorkingHour(rs.getString(31));
 				list.add(babyMemberDto);
 			}
 
@@ -342,8 +348,8 @@ public List<BabyMemberDto> getSitterList() {
 				+ " BANK_ACCOUNT, BANK_ACCOUNT_MONEY, AUTH, POINT, "
 				+ " CUSTOMER_REQUEST_DATE, REGISTER_DATE, UN_REGISTER_DATE, "
 				+ " LICENSE, WANT_PAY, CAREER, HIRE_DATE, EXPIRE_DATE, PROFILE_PHOTO, "
-				+ " INTRODUCE, START_WORK_DATE, END_WORK_DATE, WANT_DATE, WANT_LOCAL, WANT_TIME, " + " SITTER_ID, SITTER_REQUEST_RECIEVE_DATE " + " FROM BABY_MEMBER "
-				+ " WHERE ID = ?";
+				+ " INTRODUCE, START_WORK_DATE, END_WORK_DATE, WANT_DATE, WANT_LOCAL, WANT_TIME, " + " SITTER_ID, SITTER_REQUEST_RECIEVE_DATE, realFileName, USER_ID, WORKING_HOUR " + " FROM BABY_MEMBER "
+				+ " WHERE ID = ? ";
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
@@ -379,6 +385,9 @@ public List<BabyMemberDto> getSitterList() {
 						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
 						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
 						arrArray, rs.getString(25), rs.getString(26), rs.getString(27), rs.getString(28));
+					babyMemberDto.setRealFileName(rs.getString(29));
+					babyMemberDto.setUserId(rs.getString(30));
+					babyMemberDto.setWorkingHour(rs.getString(31));
 
 				System.out.println("sql내 babyMember" + babyMemberDto.toString());
 
@@ -611,6 +620,32 @@ public List<BabyMemberDto> getSitterList() {
 		return list;
 
 	}
+	
+	public int insertImageFile(String loginId, String fileName, String fileRealName) {
+
+	      String sql = " UPDATE BABY_MEMBER " + " SET FILENAME = ?, REALFILENAME = ? " + " WHERE ID = ? ";
+
+	      Connection conn = null;
+	      PreparedStatement psmt = null;
+
+	      try {
+	         conn = DBConnection.getConnection();
+	         psmt = conn.prepareStatement(sql);
+	         psmt.setString(1, fileName);
+	         psmt.setString(2, fileRealName);
+	         psmt.setString(3, loginId);
+
+	         return psmt.executeUpdate(); // return이 나오면 무조건 끝이 난다. 숫자로 표출된다. 초기값은 0 그외에는 1이상
+
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally { // 무조건 실행된다
+	         DBClose.close(psmt, conn, null);
+	      }
+
+	      return -1; // 실패한 경우 여기까지 내려온다.
+
+	   }
 
 	/*
 	 * public int getAllMember(String choice, String searchWord) { String sql =

@@ -73,6 +73,60 @@ public class PointDao {
 		return count > 0 ? true : false;
 	}
 	
+	//포인트 차감 결제하기
+	public boolean payPoint(String userId, String sitterId, int point) {
+		String sql1 = " UPDATE BABY_MEMBER SET POINT = POINT - ? WHERE ID = ? ";
+
+		String sql2 = " UPDATE BABY_MEMBER SET POINT = POINT + ? WHERE ID = ? ";
+
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		int count = 0;
+
+		try {
+			conn = DBConnection.getConnection();
+			conn.setAutoCommit(false);
+			psmt = conn.prepareStatement(sql1);
+			psmt.setInt(1, point);
+			psmt.setString(2, userId);
+
+			count = psmt.executeUpdate();
+
+			psmt.clearParameters();
+
+			// 커미션에 돈 넣기
+			
+			psmt = conn.prepareStatement(sql2);
+			psmt.setInt(1, point);
+			psmt.setString(2, sitterId);
+			
+			count = psmt.executeUpdate();
+			
+			conn.commit();
+			
+		} catch (SQLException e) {
+			System.out.println("fail");
+			
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.setAutoCommit(true);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			DBClose.close(psmt, conn, null);
+		}
+		return count > 0 ? true : false;
+	}
+	
 	public int getPoint(String id) {
 		String sql =  "SELECT SUM(TO_NUMBER(NVL(POINT, 0))) FROM  BABY_MEMBER WHERE ID = ?";
 		

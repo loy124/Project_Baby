@@ -153,6 +153,63 @@ public class EmployeeDao {
 		return sitterList;
 
 	}
+	
+	
+	public boolean updateHire(String userId, BabyMemberDto babySitterDto) {
+		
+		String sql1 = " UPDATE BABY_MEMBER SET SITTER_ID = ?, CUSTOMER_REQUEST_DATE = SYSDATE, WHERE ID = ?" ;
+
+		String sql2 = " UPDATE BABY_MEMBER SET USER_ID = ?, SITTER_REQUEST_RECIEVE_DATE = ?, START_WORK_DATE = ?,"
+				+ " END_WORK_DATE = ?, WORKING_HOUR = ?, AUTH = 8 WHERE ID = ?";
+
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		int count = 0;
+
+		try {
+			conn = DBConnection.getConnection();
+			conn.setAutoCommit(false);
+			psmt = conn.prepareStatement(sql1);
+			psmt.setString(1, babySitterDto.getId());
+			psmt.setString(2, userId);
+			count = psmt.executeUpdate();
+			psmt.clearParameters();
+			
+			// 커미션에 돈 넣기
+			psmt = conn.prepareStatement(sql2);
+			psmt.setString(1, userId);
+			psmt.setString(2, babySitterDto.getRequestReceiveDate());
+			psmt.setString(3, babySitterDto.getStartWorkDate());
+			psmt.setString(4, babySitterDto.getStartWorkDate());
+			psmt.setString(5, babySitterDto.getWorkingHour());
+			psmt.setString(6, babySitterDto.getSitterId());
+			
+			count = psmt.executeUpdate();
+			
+			conn.commit();
+			
+		} catch (SQLException e) {
+			System.out.println("fail");
+			
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.setAutoCommit(true);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			DBClose.close(psmt, conn, null);
+		}
+		return count > 0 ? true : false;
+	}
 
 
 

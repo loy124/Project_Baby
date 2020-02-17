@@ -1,184 +1,130 @@
-<%@page import="mypage.PointDao"%>
 <%@page import="main.BabyMemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 
 <%@ include file="./include/header.jsp"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
+
 .abs {
 	color: #ff9999
 }
 
-.cont1 {
-	padding: 35px;
+.mypage .boxs {
+    display: flex; 
+	flex-direction: row;
+	float: left;
+
+	/*     margin-right: 10px; */
 }
 
-/* .wrap_first{
-    width: 30%;
-   margin: 20px;
-  padding-bottom: 200px;
-
-    border:1px solid black;
-}	
- */
-.top_user_point {
-	/*    margin: 50px;
- */
-	/* border: 1px solid black; */
-	
+.mypage .box1 {
+	flex-direction: column;
+	height: 550px;
+	width: 300px;
+	text-align: center;
+	/*   align-self:center; */
+	background-color: rgba(205,255,254,0.8);
 }
 
-#MyPoint {
-	margin-left: 150px;
-	position: absolute;
-	left: 25%;
-	top: 20%;
+.mypage .box2 {
+	flex-direction: column;
+    height: 550px;
+	width: 370px;
+	background-color: rgba(190, 255, 239, 0.8);
+	font-size: 20px;
+	 padding-left: 50px;
 }
 
+.mypage .box3 {
+	flex-direction: column;
+    height: 550px;
+	width: 430px;
+	background-color: rgba(190, 255, 239, 0.8);
+	/* background-color: black; */
+		font-size: 20px;
+			 padding-top: 122px;
+	/* 	 padding-right: 50px; */
+}
+.kakao_submit{
+ visibility: hidden;
+}
+.menu>a:hover {
+text-decoration:underline;
+color: #ff9999;
 
-#MyAccount{
-	margin-left: 150px;
-	position: absolute;
-	left: 25%;
-	top: 26%;
-}
-/* .withdrawBtn{
-  position: absolute;
-  background-color: #f0f0f0;
-   margin-left:150px;
-  left: 50%;
-  top: 25%;
-}
+}  
+  
 
-.depositBtn{
-  position: absolute;
-  background-color: #f0f0f0;
-   margin-left:150px;
-  left: 40%;
-  top: 25%;
-} */
-.pointBtn {
-	position: absolute;
-	/* background-color: #f0f0f0; */
-	margin-left: 150px;
-	left: 30%;
-	top: 32%;
-}
-
-.kakao_submit {
-	position: absolute;
-	/* background-color: #f0f0f0; */
-	margin-left: 300px;
-	left: 35%;
-	top: 15%;
-}
 </style>
 
 <%
-BabyMemberDto dto = (BabyMemberDto)request.getSession().getAttribute("login");
-/* PointDao pointDao = PointDao.getInstance();
-int point = pointDao.getPoint(dto.getId()); */
+	BabyMemberDto dto = (BabyMemberDto) request.getSession().getAttribute("login");
+
 %>
 
 
 <!-- content 영역 -->
-<div class="containerWrap main">
-	<div class="container_inner">
-		<!-- 필요 없으면 div 삭제 (필요한거 남기고!) 배결색은 style만 삭제하면 되요~~!! -->
-		<div class="cont1 content clearfix" style="background-color: #BEFFEF;">
+
+<div class="container_inner mypage">
+	<!-- 필요 없으면 div 삭제 (필요한거 남기고!) 배결색은 style만 삭제하면 되요~~!! -->
+	<div class="cont1 content clearfix mypage"
+		style=" height: 550px">
+
+		<div class="boxs box1">
+			<p style="padding-top: 30px;">
+				<b class="abs" style="font-size: 25pt;">MyPage</b>
+			</p>
 
 
-			<div class="wrap_first">
-				<p>
-					<b class="abs" style="font-size: 20pt;">MyPage</b>
-				</p>
 
+			<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<table>
+					<%
+						if (dto.getRealFileName() == null || dto.getRealFileName() == "null") {
+					%>
+					<span><img src='./image/user.png'
+						style="border-radius: 100%;" width='110x' height='110px'> </span>
+					<%
+						} else {
+					%>
 
+					<span><img
+						src='http://localhost:8090/ProjectBaby/upload/<%=dto.getRealFileName()%>'
+						style="border-radius: 100%;" width='110x' height='110px'> </span>
+					<%
+						}
+					%>
+			</table>
 
-				<div class="top_user_point">
+			<br>
 
-					<br> <br>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<table>
-						<tr>
-
-							<span><img src='./image/user.PNG' width='110x' height='110px'></span>
-
-							<span id="MyPoint">MyPoint : &nbsp;&nbsp; <%=dto.getPoint() %> </span>
-
-                            <span id="MyAccount">My Account : &nbsp;&nbsp; <%=dto.getBankAccount() %> </span>
-
-							<div class="pointBtn">
-
-
-								<!-- <input type="submit" value="결제하기"> <input	type="reset" value="취소하기"> -->
-
-								<a href="payment.jsp"><input type="button"
-									class="depositBtn" value="충전" style="width: 60px;"></a>&nbsp;&nbsp;
-								<input type="button" class="withdrawBtn" style="width: 60px;"
-									value="출금">
-									
-									
-									
-							</div>
-						</tr>
-					</table>
-
-				</div>
-
-
-				<div class="kakao_submit">
-
-					<p>
-						<b class="abs" style="font-size: 13pt;">▶ 포인트 충전</b>
-					</p>
-					<br>
-					<!-- 서블릿으로 변경할것 -->
-					<form action="kakao.jsp">
-						<p>
-							<span>id:</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-							<input name="id" style="width: 210px;" placeholder="purple.stu.ing@gmail.com" readonly="readonly" value="<%=babyMemberDto.getId()%>">
-							<!-- 값 가져오기 -->
+			<table style="background-color: #f0f0f0; height: 30px;">
+				<col width="130px">
+				<tr>
+					<td style="text-align: center; font-size: 15pt;">
+						<p style="padding-top: 5px;"><%=dto.getName()%>님
 						</p>
-						<br>
-
-						<span>point:</span> <input name="totalPrice" style="width: 210px;"
-							placeholder="충전 할 포인트를 입력해주세요"> <br> <br> 
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="submit" value="결제하기">
-							 <input type="reset" value="취소하기">
-					</form>
-
-				</div>
-
-
-
-
-				<br>
-
-				<table align="left" ; style="background-color: #f0f0f0" ; size="30"
-					; height="5">
-					<col width="200">
-					<tr>
-						<td style="text-align: center">
-							<p>UserName</p>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<p style="font-size: 5pt; text-align: center; font-weight: bold;">
-								bitcamp1104@gmail.com</p>
-						</td>
-					</tr>
-				</table>
-				<br> <br>
-
-				<table align="left"; style="background-color: #f0f0f0; size: '30'; font-size: 10pt; height: '10';">
-					<col width="200">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p
+							style="font-size: 9pt; text-align: center; font-weight: bold; padding-bottom: 10px;">
+							<%=dto.getId()%></p>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<div>
+				<table
+					style="background-color: #f0f0f0; size: '30'; font-size: '14px'; height: '13px'; margin-left: 50px;">
+					<col width="200px">
 					<tr>
 						<td style="text-align: center;">
-							<p style="margin: 3px; padding-top: 10px;">
+							<p style="margin: 3px; padding-top: 17px;" class="menu">
 								<a href="mypage_main.jsp">예약 내역 확인</a>
 							</p>
 						</td>
@@ -186,56 +132,140 @@ int point = pointDao.getPoint(dto.getId()); */
 
 					<tr>
 						<td style="text-align: center;">
-							<p style="margin: 3px;">
-								<a href="mypage_reservation.jsp">지난 이력 확인</a> <!-- <a href="bbsWrite?type=write"> -->
+							<p style="margin: 3px;" class="menu">
+								<a href="mypage_imageUpdate.jsp">프로필 사진 업데이트</a>
+						
 							</p>
 						</td>
 					</tr>
 
 					<tr>
 						<td style="text-align: center;">
-							<p style="margin: 3px; color: #ff9999;">
-								&nbsp;&nbsp;<img src='./image/arrow.png' width='10px'
-									height='10px' /> &nbsp; <a href="mypage_point.jsp">내 포인트
-									관리</a>
+							<p style="margin: 3px;" class="menu">
+								&nbsp;&nbsp;<img src='./image/arrow.png' width='10px' height='10px' /> &nbsp;
+								<a href="mypage_point.jsp">내 포인트 관리</a>
+								<!-- <a href="bbsWrite?type=write"> -->
 							</p>
 						</td>
 					</tr>
 
 					<tr>
 						<td style="text-align: center">
-							<p style="margin: 3px; padding-bottom: 10px;">
-								<a href="mypage_profile.jsp">내 계정 관리</a>
+							<p style="margin: 3px; color: #ff9999; padding-bottom: 17px;"
+								class="menu">
+							 <a href="mypage_profile.jsp">내 계정 관리</a>
 							</p>
 						</td>
 					</tr>
 
 				</table>
-
 			</div>
-
-
-
-			<!-- 
-	<a href="bbsWrite?type=write">예약 내역 확인</a>
-	<a href="bbsWrite?type=write">지난 이력 확인</a>
-	<a href="bbsWrite?type=write">내 포인트 관리</a>
-	<a href="bbsWrite?type=write">내 계정 관리</a> 
-	 -->
-
-
-
-
-
-
-
-
-
 		</div>
-		<!-- 	<div class="cont2 content clearfix" style="background-color: #eee;"></div>
-		<div class="cont3 content clearfix" style="background-color: #ccc;"></div> -->
+
+
+		<div class="boxs box2">
+
+			<p  style="padding-top: 50px;" >
+				<b class="title" style="font-size: 15pt; color: #82a3d4;">포인트 충전</b>
+			</p>
+			<br>
+			    <table>
+			          <tr style="height: 60px;">
+			          <td>
+							<span id="MyPoint"><b>MyPoint : </b> &nbsp;&nbsp; <%=dto.getPoint() %> </span>
+                      </td>
+                       </tr>
+                       <tr style="height: 60px;">
+                       <td>
+                            <span id="MyAccount"><b>My Account : </b> &nbsp;&nbsp; <%=dto.getBankAccount() %> </span>
+                       </td>
+                       </tr>
+                       <tr style="height: 45px;">
+                       <td>
+							<div class="pointBtn" style="padding-left:50px"><br>
+
+
+								<!-- <input type="submit" value="결제하기"> <input	type="reset" value="취소하기"> -->
+
+								<input type="button" onclick="view()"
+									class="depositBtn" value="충전" style="width: 80px;">&nbsp;&nbsp;
+								<input type="button" class="withdrawBtn" style="width: 80px;"
+									value="출금">
+								</div>	
+					   </td>
+					    </tr>
+									
+				</table>					
+										
+	
+			
+		</div>
+		<div class="boxs box3">
+			<div class="kakao_submit" >
+
+					<form action="kakao.jsp">
+					<table>
+					    <tr style="height:60px;">
+						       <td>
+							<span><b>id: </b></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+							<input name="id" style="width: 265px;" placeholder="purple.stu.ing@gmail.com"  readonly="readonly" value="<%=babyMemberDto.getId()%>" >
+							<!-- 값 가져오기 -->
+						       </td>
+						</tr>
+						<tr style="height:60px;">       
+						     <td>
+                              
+						<span><b>point: </b></span> <input name="totalPrice" style="width: 265px;"
+							placeholder="충전 할 포인트를 입력해주세요"> <br> <br> 
+						     </td>
+						</tr>
+					
+					  <tr style="height: 45px;">
+                       <td>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="submit" value="결제하기"> &nbsp;
+							 <input type="reset" value="취소하기">
+						</td>
+						</tr>
+						</table>	
+					</form>
+
+				</div>
+				<script type="text/javascript">
+			
+
+				function view() {
+
+				   /*  $("#hh").hide();                            // 숨기기. 영역도 같이 사라짐.
+
+				    $("#hh").toggle();                         // hide(), show() 함수가 toggle 됨. */
+
+				    $(".kakao_submit").css('visibility', 'visible'); // 숨기기. 영역은 같이 사라지지 않음.
+
+			/* 	    $("#hh1").attr("disabled", "true"); // 숨기기는 아님. form 으로 전달되지 않음. */
+
+				}
+
+
+
+			
+				
+				
+				</script>
+				
+				
+		</div>
+
+		<!-- ============================================================================================================================= -->
+
 	</div>
 </div>
+
+
+
+
+
 <!--// container -->
 
 

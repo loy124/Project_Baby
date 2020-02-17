@@ -73,7 +73,7 @@ margin-top:20px;
 		</div>
 	</div>
 
-
 	<%@ include file="./include/footer.jsp"%>
 </body>
+
 </html>

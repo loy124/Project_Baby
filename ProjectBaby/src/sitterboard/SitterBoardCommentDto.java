@@ -12,6 +12,16 @@ public class SitterBoardCommentDto implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	
+	public SitterBoardCommentDto(int seq, String boardComment) {
+		super();
+		this.seq = seq;
+		this.boardComment = boardComment;
+	}
+
+
+
 	public SitterBoardCommentDto(int seq, String boardComment, String registerDate) {
 		super();
 		this.seq = seq;

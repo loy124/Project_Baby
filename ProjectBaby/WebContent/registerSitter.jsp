@@ -121,7 +121,7 @@ body {
 						<option selected value="신입">신입</option>
 						<option value="1~3년">1~3년</option>
 						<option value="4~5년">4~5년</option>
-						<option value="5년이상">5년이상</option>
+						<option value="5년초과">5년초과</option>
 					</select>
 				</div>
 

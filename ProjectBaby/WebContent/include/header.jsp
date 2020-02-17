@@ -114,7 +114,7 @@
 					<li><a href="">Service</a>
 						<ul class="sub_menu">
 							<li><a href="employee.jsp">돌봄 신청</a></li>
-							<li><a href="">구인구직</a></li>
+							<li><a href="searchSitterBoard">구인구직</a></li>
 						</ul></li>
 
 					<li><a href="">고객센터</a>
@@ -143,7 +143,7 @@
 					<li><a href="">Service</a>
 						<ul class="sub_menu">
 							<li><a href="employee.jsp">돌봄 신청</a></li>
-							<li><a href="">구인구직</a></li>
+							<li><a href="searchSitterBoard">구인구직</a></li>
 						</ul></li>
 
 					<li><a href="">고객센터</a>
@@ -167,7 +167,7 @@
 					<li><a href="">Service</a>
 						<ul class="sub_menu">
 							<li><a href="employee.jsp">돌봄 신청</a></li>
-							<li><a href="">구인구직</a></li>
+							<li><a href="searchSitterBoard">구인구직</a></li>
 						</ul></li>
 
 					<li><a href="">고객센터</a>

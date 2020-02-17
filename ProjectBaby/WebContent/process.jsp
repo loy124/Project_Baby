@@ -121,6 +121,111 @@
 		}
 	%>
 
+	<%
+	if(type.equals("write")){
+		if(isS){
+			%>
+			<script type="text/javascript">
+			alert("글이 작성되었습니다.");
+			/* location.href="sitterWrite?type=moveSitterBoardList"; */
+			location.href="searchSitterBoard";
+			</script>
+			<%
+		}else{
+			%>
+			<script type="text/javascript">
+			alert("다시 작성해 주십시오.");
+			location.href="searchSitterBoard";
+			</script>
+			<%
+		}
+	}
+	%>
+	
+	<%
+	if(type.equals("updateBoard")){
+		if(isS){
+			%>
+			<script type="text/javascript">
+			alert("글이 수정되었습니다.");
+			/* location.href="sitterWrite?type=moveSitterBoardList"; */
+			location.href="searchSitterBoard";
+			</script>
+			<%
+		}else{
+			%>
+			<script type="text/javascript">
+			alert("다시 수정해 주십시오.");
+			location.href="searchSitterBoard";
+			</script>
+			<%
+		}
+	}
+	%>
+	
+	<%
+	if(type.equals("delete")){
+		if(isS){
+			%>
+			<script type="text/javascript">
+			alert("정말 삭제하시겠습니까?");
+			alert("글이 삭제되었습니다.");
+			/* location.href="sitterWrite?type=moveSitterBoardList"; */
+			location.href="searchSitterBoard";
+			</script>
+			<%
+		}else{
+			%>
+			<script type="text/javascript">
+			alert("삭제 되지 않았습니다.");
+			location.href="searchSitterBoard";
+			</script>
+			<%
+		}
+	}
+	%>
+	
+		<%
+	if(type.equals("oksitter")){
+		if(isS){
+			%>
+			<script type="text/javascript">
+			alert("승인되었습니다.");
+			/* location.href="sitterWrite?type=moveSitterBoardList"; */
+			location.href="searchSitterBoard";
+			</script>
+			<%
+		}else{
+			%>
+			<script type="text/javascript">
+			alert("승인되지 않았습니다..");
+			location.href="searchSitterBoard";
+			</script>
+			<%
+		}
+	}
+	%>
+	
+		<%
+	if(type.equals("nositter")){
+		if(isS){
+			%>
+			<script type="text/javascript">
+			alert("반려되었습니다.");
+			/* location.href="sitterWrite?type=moveSitterBoardList"; */
+			location.href="searchSitterBoard";
+			</script>
+			<%
+		}else{
+			%>
+			<script type="text/javascript">
+			alert("반려되지 않았습니다.");
+			location.href="searchSitterBoard";
+			</script>
+			<%
+		}
+	}
+	%>s
 
 </body>
 </html>

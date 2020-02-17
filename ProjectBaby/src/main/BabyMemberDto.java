@@ -43,7 +43,7 @@ public class BabyMemberDto implements Serializable {
 
 	// 수정
 	// 추가된 부분
-	private String SitterId; // 예약자 아이디
+	private String sitterId; // 예약자 아이디
 
 	private String requestReceiveDate; // 예약받을경우 예약 받은날짜
 
@@ -280,11 +280,11 @@ public class BabyMemberDto implements Serializable {
 	}
 
 	public String getSitterId() {
-		return SitterId;
+		return sitterId;
 	}
 
 	public void setSitterId(String sitterId) {
-		SitterId = sitterId;
+		this.sitterId = sitterId;
 	}
 
 	public String getRequestReceiveDate() {
@@ -337,7 +337,7 @@ public class BabyMemberDto implements Serializable {
 				+ career + ", hireDate=" + hireDate + ", expireDate=" + expireDate + ", profilePhoto=" + profilePhoto
 				+ ", introduce=" + introduce + ", startWorkDate=" + startWorkDate + ", endWorkDate=" + endWorkDate
 				+ ", wantDate=" + Arrays.toString(wantDate) + ", wantLocal=" + wantLocal + ", wantTime=" + wantTime
-				+ ", SitterId=" + SitterId + ", requestReceiveDate=" + requestReceiveDate + ", fileName=" + fileName
+				+ ", SitterId=" + sitterId + ", requestReceiveDate=" + requestReceiveDate + ", fileName=" + fileName
 				+ ", realFileName=" + realFileName + ", userId=" + userId + ", workingHour=" + workingHour + "]";
 	}
 
@@ -529,7 +529,7 @@ public class BabyMemberDto implements Serializable {
 		this.wantDate = wantDate;
 		this.wantLocal = wantLocal;
 		this.wantTime = wantTime;
-		SitterId = sitterId;
+		this.sitterId = sitterId;
 		this.requestReceiveDate = requestReceiveDate;
 	}
 
@@ -566,7 +566,7 @@ public class BabyMemberDto implements Serializable {
 		this.wantDate = wantDate;
 		this.wantLocal = wantLocal;
 		this.wantTime = wantTime;
-		SitterId = sitterId;
+		this.sitterId = sitterId;
 		this.requestReceiveDate = requestReceiveDate;
 		this.fileName = fileName;
 		this.realFileName = realFileName;
@@ -607,7 +607,7 @@ public class BabyMemberDto implements Serializable {
 		this.wantDate = wantDate;
 		this.wantLocal = wantLocal;
 		this.wantTime = wantTime;
-		SitterId = sitterId;
+		this.sitterId = sitterId;
 		this.requestReceiveDate = requestReceiveDate;
 		this.fileName = fileName;
 		this.realFileName = realFileName;

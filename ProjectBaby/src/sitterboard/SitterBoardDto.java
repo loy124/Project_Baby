@@ -18,6 +18,25 @@ public class SitterBoardDto implements Serializable {
 	public SitterBoardDto() {
 
 	}
+	
+	
+	
+	
+	public SitterBoardDto(String id) {
+		super();
+		this.id = id;
+	}
+
+
+	public SitterBoardDto(String id, String title, String content, String fileName, String originalFileName) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.content = content;
+		this.fileName = fileName;
+		this.originalFileName = originalFileName;
+	}
+
 
 	public SitterBoardDto(int seq, String id, String title, String content, String fileName, String originalFileName,
 			int readCount, String registerDate, int del) {

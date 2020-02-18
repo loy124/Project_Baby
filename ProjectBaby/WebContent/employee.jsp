@@ -138,7 +138,7 @@
 										d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
 								</svg>
 								<input type="hidden" name="choice" value="sitterMember">
-								<input type="text" name="address" placeholder="지역을 입력하세요">
+								<input type="text" name="address" id="address" placeholder="지역을 입력하세요">
 							</form>
 
 							<form action="empChoice" class="selectName selectWeek">
@@ -180,13 +180,14 @@
 						<div class="select_wrap refine_search">
 							<form class="selectName selectTime">
 								<span class="sel_title">성별</span> <input type="checkbox"
-									name="gender" id="">여자 <input type="checkbox"
-									name="gender" id="">남자
+									name="gender"  id="woman">여자
+									 <input type="checkbox"
+									name="gender"  id="man">남자
 							</form>
 
 							<form class="selectName">
-								<span class="sel_title">인증</span> <input type="checkbox"
-									name="licece">인증된 시터
+								<span class="sel_title">경력</span>
+								<input type="checkbox" name="career" id="career">경력있음
 							</form>
 						</div>
 					</div>
@@ -210,10 +211,10 @@
 							</p> -->
 
 						<form class="refineBtn">
-							<input class="rf" type="button" id="searchBtn" value="검색하기">
+							<input class="rf" type="button" id="searchBtn" onclick="ajaxSearch()" value="검색하기">
 							<!-- 타입수정 -->
 							<input type="reset" value="초기화" class="reset">
-							</from>
+						</from>
 					</div>
 				</div>
 			</div>
@@ -227,20 +228,27 @@
 </div>
 <div class="test111"></div>
 
+
+<!-- 고용 팝업 --->
+	<div class="lp_bg"></div>
+	<div class="popup_wrap">
+
+	</div>
+
 <%@ include file="./include/footer.jsp"%>
 <!-- 요일 선택시 버튼 수정 -->
 <script type="text/javascript">
 
 	let dataJson;
 	$(document).ready(function(){
-		
-	$.ajax({
+
+	 $.ajax({
 		url : "./employee",
 		type : "get",
 		data : {
 			/* "id" : $("#id").val() */
 			"type" : "getSitterList",
-			
+
 
 		},
 		success : function(data) {
@@ -253,85 +261,88 @@
 				index = i;
 
 				console.log("길이" +dataJson.length);
-	
+
 				dataJson.map((d, i) => {
 					$(`#popupIndex`+i).click(function(){
 						$(".test111").append(popupList(d));
-						
-						
+
+
 					});
-					
-					
+
+
 				});
-				
+
 				$(window).on("load",function(){
 					$(".popClose").click(function(){
 						console.log("되냐");
 						$(".test111").remove();
-						
+
 					});
 				})
-				
-				
-			
+
+
+
 				/* $(".test111").append(popupList(data[index])); */
-			});	
-			
+			});
+
 			 /* $(".test111").append(popupList(data[index])); */
 			$(document).ready(function() {
 				  // 로딩 완료되었을때
 				  console.log("로딩완료");
 				  $(".card_wrap").click(function() {
 				  	 $('.lp_bg, .popup_wrap .popupBox').show();
-				  	
-							console.log("이거 실화냐");		
+
+							console.log("이거 실화냐");
 							$('.empBox .popClose, .lp_bg').click(function() {
 								  console.log("씨알도 안먹힘ㅋ");
-								 
+
 							  	$('.lp_bg, .popup_wrap .popupBox').hide();
-							  }); 
+							  });
 				  });
-				  			  
+
 				});
-			
+
 		}
-		
+
 	});
 		 console.log(dataJson);
 
-		 
+	//검색 버튼 눌렀을때
 	$("#seachBtn").click(function(){
 		var genderList = [];
 		$('input[name="gender"]:checked').each(function(i){
 			genderList.push($(this).val());
 		})
-		
-		}); 
+
+		});
 	//버튼 클릭시 색깔 토글
 	$(".wantDate-btn").click(function(){
 		$(this).toggleClass("click-button-event");
 	});
-	
-	
-	
+
+
+
 	});
-	
+
+	//정보가 기재되어 있지 않은 경우
 	function existElement(el){
 		if(el !== null && el !== false && el !== 0 && el !== undefined){
 			return el;
 		}else{
 			return "기재되지 않음";
 		}
-	}
+	};
 
-	
-	
-	//인덱스값을 추가로 파라미터로 넣어서 함수를 짜보도록 하자
-	function list(data, index){ 
+
+
+
+
+	//인덱스값을 추가로 파라미터로 넣어서 함수를 짜보도록 하자 (고용팝업)
+	function list(data, index){
 
 		return ` <div class="sitter_wrap">
 	               <div class="card_wrap" id="popupIndex`+index+`">
-	                  <div class="d1"> 
+	                  <div class="d1">
 	                     <div class="photo_layout">
 	                        <div class="_3xT8G" style="display: none;">
 	                           <div mode="indeterminate" value="0" min="0" max="100" style="position: relative; display: inline-block; width: 70px; height: 70px;">
@@ -341,9 +352,9 @@
 	                                 </svg>
 	                              </div>
 	                           </div>
-	                        </div> 
+	                        </div>
 
-	                        <div class="photo_wrap"> 
+	                        <div class="photo_wrap">
 	                           <img alt="프로필 이미지" src="./images/front/profile_w.png">
 	                        </div>
 	                     </div>
@@ -351,55 +362,53 @@
 	                     <div class="info_layout">
 	                        <div class="info_content">
 	                           <div class="name_wrap">
-	                              <p id="s_name" class="sitter_info sitter_name"> 
-															이름 =`+ existElement(data.name) +
-																	 `
-	                              </p> 
-	                           </div> 
-	                           <button tabindex="0" type="button" style=""> 
-	                           <div> 
-	                              <img src="https://s3.ap-northeast-2.amazonaws.com/momsitter-service/momsitter-app/static/public/favorites/s-list-like-off.png" alt="favorites"> 
-	                           </div> 
-	                           </button> 
-	                        </div> 
-
-	                        <div class="info_content">
-	                           <div> 
-	                              <span class="local"></span> 
-	                           </div> 
-	                        </div> 
-
-	                        <div class="info_content info_txt_align"> 
-	                           <div class="sitter_age"> 나이: ` +existElement(data.age)+ `
-														 </div>
-	                           <span class="want_pay">희망시급 : `+existElement(data.wantMoney) + ` </span> 
+	                              <p id="s_name" class="sitter_info sitter_name">
+															이름 =`+ existElement(data.name) +`
+	                              </p>
+	                           </div>
+	                           <button tabindex="0" type="button" style="">
+	                           <div>
+	                              <img src="https://s3.ap-northeast-2.amazonaws.com/momsitter-service/momsitter-app/static/public/favorites/s-list-like-off.png" alt="favorites">
+	                           </div>
+	                           </button>
 	                        </div>
 
-	                        <div id="sitter_review" class="info_content"> 
-	                           <div class="review_count">후기: `+existElement()+`</div> 
-	                                 <div class="badge"> 
-                             
+	                        <div class="info_content">
+	                           <div>
+	                              <span class="local"></span>
+	                           </div>
+	                        </div>
+
+	                        <div class="info_content info_txt_align">
+	                           <div class="sitter_age"> 나이: ` +existElement(data.age)+ `</div>
+	                           <span class="want_pay">희망시급 : `+existElement(data.wantMoney) + ` </span>
+	                        </div>
+
+	                        <div id="sitter_review" class="info_content">
+	                           <div class="review_count">후기: `+existElement()+`</div>
+	                                 <div class="badge">
+
                               <img src="https://s3.ap-northeast-2.amazonaws.com/momsitter-service/momsitter-app/static/public/kb/p-search-320-kb-logo.svg" width="11px" height="13px" alt="안전 보험 뱃지">
-                           </div> 
-                        </div> 
-                     </div> 
+                           </div>
+                        </div>
+                     </div>
                   </div>
 
-                  <div class="d2"> 
+                  <div class="d2">
                      <div class="info_content">
                         <p>최근 고용일자 :`+existElement(data.registerDate) +` <span></span></p>
                      </div>
                   </div>
-                  `
-           
-	
-;}
-	
-	
+                  `;
+
+
+	};
+
+
 	function popupList(popupdata){
-		
+
 		/* datepicker 설정 */
-		$(function() {	
+		$(function() {
 			$('.datePicker').datepicker({
 			    format: "yyyy-mm-dd",	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
 			    startDate: '-0d',	//달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
@@ -411,20 +420,20 @@
 			   /*  daysOfWeekDisabled : [0,6],	//선택 불가능한 요일 설정 0 : 일요일 ~ 6 : 토요일 */
 			    daysOfWeekHighlighted : [3], //강조 되어야 하는 요일 설정
 			    disableTouchKeyboard : false,	//모바일에서 플러그인 작동 여부 기본값 false 가 작동 true가 작동 안함.
-			    immediateUpdates: true,	//사용자가 보는 화면으로 바로바로 날짜를 변경할지 여부 기본값 :false 
-			    multidate : false, //여러 날짜 선택할 수 있게 하는 옵션 기본값 :false 
+			    immediateUpdates: true,	//사용자가 보는 화면으로 바로바로 날짜를 변경할지 여부 기본값 :false
+			    multidate : false, //여러 날짜 선택할 수 있게 하는 옵션 기본값 :false
 			    multidateSeparator :",", //여러 날짜를 선택했을 때 사이에 나타나는 글짜 2019-05-01,2019-06-01
 			    templates : {
 			        leftArrow: '&laquo;',
 			        rightArrow: '&raquo;'
-			    }, //다음달 이전달로 넘어가는 화살표 모양 커스텀 마이징 
+			    }, //다음달 이전달로 넘어가는 화살표 모양 커스텀 마이징
 			    showWeekDays : true ,// 위에 요일 보여주는 옵션 기본값 : true
 			    title: "예약할 날짜를 입력해주세요",	//캘린더 상단에 보여주는 타이틀
-			    todayHighlight : true ,	//오늘 날짜에 하이라이팅 기능 기본값 :false 
+			    todayHighlight : true ,	//오늘 날짜에 하이라이팅 기능 기본값 :false
 			    toggleActive : true,	//이미 선택된 날짜 선택하면 기본값 : false인경우 그대로 유지 true인 경우 날짜 삭제
-			    weekStart : 0 ,//달력 시작 요일 선택하는 것 기본값은 0인 일요일 
+			    weekStart : 0 ,//달력 시작 요일 선택하는 것 기본값은 0인 일요일
 			    language : "ko"	//달력의 언어 선택, 그에 맞는 js로 교체해줘야한다.
-			    
+
 			}).on("changeDate", function(e) {
 	            //이벤트의 종류
 	            //show : datePicker가 보이는 순간 호출
@@ -434,42 +443,44 @@
 	            //changeMonth : 월이 변경되면 호출
 	            //changeYear : 년이 변경되는 호출
 	            //changeCentury : 한 세기가 변경되면 호출 ex) 20세기에서 21세기가 되는 순간
-	            
+
 	            console.log(e);// 찍어보면 event 객체가 나온다.
-	            //간혹 e 객체에서 date 를 추출해야 하는 경우가 있는데 
+	            //간혹 e 객체에서 date 를 추출해야 하는 경우가 있는데
 	            // e.date를 찍어보면 Thu Jun 27 2019 00:00:00 GMT+0900 (한국 표준시)
-	            // 위와 같은 형태로 보인다. 
-	            // 추후에 yyyy-mm-dd 형태로 변경하는 코드를 업로드 하겠습니다. 
+	            // 위와 같은 형태로 보인다.
+	            // 추후에 yyyy-mm-dd 형태로 변경하는 코드를 업로드 하겠습니다.
 	       });
 			$(function() {
 		        $('.timepicker1').timepicker({
 		        	zindex: 99000,
-		        	dynamic: true
+		        	dynamic: true,
+		        	timeFormat: 'H:00'
 		        });
-		       
+
 		    });
-			
+
 		});//ready end
-		
+
 		/* datepicker 마무리 */
 		return `<div class="popup_wrap">
 		<div class="popup_inner">
 			<div id="layer1" class="popupBox empBox" >
 				<div class="layerInner">
 					<div>
-						<form action="hello.jsp">
-						<p>이름 : `+existElement(popupdata.name)+ ` </p>
-						<p>나이 : `+existElement(popupdata.age)+ `  </p>
-						<p>희망 지역 : `+existElement(popupdata.wantLocal) +`  </p>
-						<p>희망 시급 : `+existElement(popupdata.wantPay) +`  </p>
-						<p>희망 요일 : `+existElement(popupdata.wantDate) +` </p>
-						<p>희망 날짜 :  <input type="text" class="datePicker" style="width:200px;" class="form-control">
-						<p>시작 시간 :	<input style="width:200px;" type="text" class="timepicker1" name="time"/></p>
-						<p>종료 시간 :	<input style="width:200px;" type="text" class="timepicker1" name="time"/></p>
-						<p>고용하시겠습니까?</p>
+						<form action="reserve" method="post">
+							<input type="hidden" name="type" value="payReserve">
+							<input type="hidden" name="id" value="`+ popupdata.id +`">
+							<p>이름 : `+existElement(popupdata.name)+ ` </p>
+							<p>나이 : `+existElement(popupdata.age)+ `  </p>
+							<p>희망 지역 : `+existElement(popupdata.wantLocal) +`  </p>
+							<p name="wantPay">희망 시급 : `+existElement(popupdata.wantPay) +`  </p>
+							<p>희망 요일 : `+existElement(popupdata.wantDate) +` </p>
+							<p>희망 날짜 :  <input type="text" class="datePicker" name="wantDate" style="width:200px;" class="form-control">
+							<p>시작 시간 :	<input style="width:200px;" type="text" name="startWorkHour" class="timepicker1"/></p>
+							<p>종료 시간 :	<input style="width:200px;" type="text" name="endWorkHour" class="timepicker1" /></p>s
+							<p>고용하시겠습니까?</p>
 							<input type="submit" value="예">
 							<input type="button" class="popClose" value="아니오">
-							
 						</form>
 					</div>
 				</div>
@@ -478,9 +489,9 @@
 			</div>
 			</div>
 		</div>`
-	}
-	
-	
+	};
+
+
 
 	</script>
 
@@ -488,6 +499,10 @@
 
 
 </script>
+
+
+<script src="js/front/searchResult.js"></script>
+
 
 
 

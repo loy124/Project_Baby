@@ -157,9 +157,9 @@ public class EmployeeDao {
 	
 	public boolean updateHire(String userId, BabyMemberDto babySitterDto) {
 		
-		String sql1 = " UPDATE BABY_MEMBER SET SITTER_ID = ?, CUSTOMER_REQUEST_DATE = SYSDATE, WHERE ID = ?" ;
+		String sql1 = " UPDATE BABY_MEMBER SET SITTER_ID = ?, CUSTOMER_REQUEST_DATE = SYSDATE WHERE ID = ?" ;
 
-		String sql2 = " UPDATE BABY_MEMBER SET USER_ID = ?, SITTER_REQUEST_RECIEVE_DATE = ?, START_WORK_DATE = ?,"
+		String sql2 = " UPDATE BABY_MEMBER SET USER_ID = ?, SITTER_REQUEST_RECIEVE_DATE = SYSDATE, START_WORK_DATE = ? ,"
 				+ " END_WORK_DATE = ?, WORKING_HOUR = ?, AUTH = 8 WHERE ID = ?";
 
 		Connection conn = null;
@@ -178,11 +178,10 @@ public class EmployeeDao {
 			// 커미션에 돈 넣기
 			psmt = conn.prepareStatement(sql2);
 			psmt.setString(1, userId);
-			psmt.setString(2, babySitterDto.getRequestReceiveDate());
-			psmt.setString(3, babySitterDto.getStartWorkDate());
-			psmt.setString(4, babySitterDto.getStartWorkDate());
-			psmt.setString(5, babySitterDto.getWorkingHour());
-			psmt.setString(6, babySitterDto.getSitterId());
+			psmt.setString(2, babySitterDto.getStartWorkDate());
+			psmt.setString(3, babySitterDto.getEndWorkDate());
+			psmt.setString(4, babySitterDto.getWorkingHour());
+			psmt.setString(5, babySitterDto.getId());
 			
 			count = psmt.executeUpdate();
 			

@@ -225,7 +225,29 @@
 			<%
 		}
 	}
-	%>s
+	%>
+	
+	
+		<%
+	if(type.equals("reserve")){
+		if(isS){
+			%>
+			<script type="text/javascript">
+			alert("예약이 완료되었습니다");
+			/* location.href="sitterWrite?type=moveSitterBoardList"; */
+			location.href="mypage_main.jsp";
+			</script>
+			<%
+		}else{
+			%>
+			<script type="text/javascript">
+			alert("예약이 완료되지 않았습니다");
+			location.href="mypage_main.jsp";
+			</script>
+			<%
+		}
+	}
+	%>
 
 </body>
 </html>

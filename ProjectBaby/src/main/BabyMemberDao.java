@@ -647,6 +647,104 @@ public List<BabyMemberDto> getSitterList() {
 
 	   }
 
+	
+	public ArrayList<BabyMemberDto> getSearchList(String address, String career, String gender) {
+		System.out.println("hi0");
+		String sql ="";
+		if(gender.equals("none") && career.equals("신입")) {
+			sql = " SELECT " + " NAME, " + "AGE, " + "GENDER," + " MONEY," + " PHONE_NUMBER,"
+					+ " CUSTOMER_REQUEST_DATE,"
+					+ " REGISTER_DATE, " + "LICENSE," + " WANT_PAY, " + "CAREER," + " HIRE_DATE,"
+					+ " EXPIRE_DATE," + " PROFILE_PHOTO, " + " START_WORK_DATE," + " END_WORK_DATE, "
+					+ " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE "
+					+ " FROM BABY_MEMBER WHERE AUTH = 4 AND CAREER='" + career + "' "
+							+ "AND WANT_LOCAL='" + address + "'";
+		}
+		else if(!(gender.equals("none")) && career.equals("신입")) {
+			sql = " SELECT " + " NAME, " + "AGE, " + "GENDER," + " MONEY," + " PHONE_NUMBER,"
+					+ " CUSTOMER_REQUEST_DATE,"
+					+ " REGISTER_DATE, " + "LICENSE," + " WANT_PAY, " + "CAREER," + " HIRE_DATE,"
+					+ " EXPIRE_DATE," + " PROFILE_PHOTO, " + " START_WORK_DATE," + " END_WORK_DATE, "
+					+ " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE "
+					+ " FROM BABY_MEMBER WHERE AUTH = 4 AND CAREER='" + career + "'"
+					+ "AND WANT_LOCAL='" + address + "'" + " AND GENDER='" + gender + "' ";
+		}
+		else if(gender.equals("none") && career.equals("경력")) {
+			sql = " SELECT " + " NAME, " + "AGE, " + "GENDER," + " MONEY," + " PHONE_NUMBER,"
+					+ " CUSTOMER_REQUEST_DATE,"
+					+ " REGISTER_DATE, " + "LICENSE," + " WANT_PAY, " + "CAREER," + " HIRE_DATE,"
+					+ " EXPIRE_DATE," + " PROFILE_PHOTO, " + " START_WORK_DATE," + " END_WORK_DATE, "
+					+ " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE "
+					+ " FROM BABY_MEMBER WHERE AUTH = 4 AND CAREER != '신입' "
+							+ "AND WANT_LOCAL='" + address + "'";
+
+		}
+		else {
+			sql = " SELECT " + " NAME, " + "AGE, " + "GENDER," + " MONEY," + " PHONE_NUMBER,"
+					+ " CUSTOMER_REQUEST_DATE,"
+					+ " REGISTER_DATE, " + "LICENSE," + " WANT_PAY, " + "CAREER," + " HIRE_DATE,"
+					+ " EXPIRE_DATE," + " PROFILE_PHOTO, " + " START_WORK_DATE," + " END_WORK_DATE, "
+					+ " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE "
+					+ " FROM BABY_MEMBER WHERE AUTH = 4 AND CAREER != '신입' "
+							+ "AND WANT_LOCAL='" + address + "' AND GENDER='" + gender + "' ";
+		}
+
+
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		ArrayList<BabyMemberDto> list = new ArrayList<BabyMemberDto>();
+
+		try {
+			System.out.println("hi1");
+			conn = DBConnection.getConnection();
+			psmt = conn.prepareStatement(sql);
+			System.out.println("psmt");
+			System.out.println(sql);
+			rs = psmt.executeQuery();
+			int i = 1;
+			String arrArray[] = null;
+
+			while (rs.next()) {
+				System.out.println("hi2");
+				BabyMemberDto babyMemberDto = new BabyMemberDto();
+				String arr = rs.getString(16);
+
+				 if (arr != null) {
+					 System.out.println("arr" + arr);
+					 System.out.println("test");
+					 arrArray = arr.split(",");
+					 babyMemberDto.setWantDate(arrArray);
+				}
+
+
+				System.out.println(i);
+				i = 1;
+
+				babyMemberDto = new BabyMemberDto(rs.getString(i++), rs.getInt(i++), rs.getString(i++),
+						rs.getString(i++), rs.getString(i++),
+
+						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
+
+						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
+
+						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++));
+
+				System.out.println("babyMemberDto=" + babyMemberDto.toString());
+
+				list.add(babyMemberDto);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, rs);
+		}
+
+		return list;
+
+	}
 	/*
 	 * public int getAllMember(String choice, String searchWord) { String sql =
 	 * " SELECT COUNT(*) FROM BABY_MEMBER ";

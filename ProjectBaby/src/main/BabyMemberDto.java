@@ -341,6 +341,9 @@ public class BabyMemberDto implements Serializable {
 				+ ", realFileName=" + realFileName + ", userId=" + userId + ", workingHour=" + workingHour + "]";
 	}
 
+	public BabyMemberDto() {
+		// TODO Auto-generated constructor stub
+	}
 	public BabyMemberDto(String id, String password, String name, int age, String gender, String address, String money,
 			String phoneNumber, String bankAccount, String bankAccountMoney, int auth, String point,
 			String customerRequestDate, String registerDate, String unRegisterDate, String license, String wantPay,
@@ -612,6 +615,32 @@ public class BabyMemberDto implements Serializable {
 		this.fileName = fileName;
 		this.realFileName = realFileName;
 		this.userId = userId;
+	}
+	
+	public BabyMemberDto(String name, int age, String gender, String money, String phoneNumber, String customerRequestDate,
+			String registerDate, String license, String wantPay, String career, String hireDate, String expireDate, String profilePhoto,
+			String startWorkDate, String endWorkDate, String wantLocal, String wantTime,
+			String sitterId, String requestReceiveDate) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+		this.money = money;
+		this.phoneNumber = phoneNumber;
+		this.customerRequestDate = customerRequestDate;
+		this.registerDate = registerDate;
+		this.license = license;
+		this.wantPay = wantPay;
+		this.career = career;
+		this.hireDate = hireDate;
+		this.expireDate = expireDate;
+		this.profilePhoto = profilePhoto;
+		this.startWorkDate = startWorkDate;
+		this.endWorkDate = endWorkDate;
+		this.wantLocal = wantLocal;
+		this.wantTime = wantTime;
+		this.sitterId = sitterId;
+		this.requestReceiveDate = requestReceiveDate;
 	}
 
 }

@@ -36,6 +36,7 @@ public class ReserveServlet extends HttpServlet {
 		String sitterId = req.getParameter("id");
 		System.out.println("아이디이이이" + sitterId);
 		String sWantPay = req.getParameter("wantPay");
+		System.out.println("원 하아아아는 도오오오온" + sWantPay);
 		String sStartWorkHour = req.getParameter("startWorkHour");
 		String sEndWorkHour = req.getParameter("endWorkHour");
 		String wantDate = req.getParameter("wantDate");

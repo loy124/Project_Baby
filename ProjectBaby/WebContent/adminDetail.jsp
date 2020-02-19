@@ -130,7 +130,7 @@ input {
 						<th>시터에게 요청한 날</th>
 						<td><input class="form-control" readonly="readonly"
 							name="customerRequestDate"
-							value="<%=dto.getcustomerRequestDate()%>"></td>
+							value="<%=dto.getCustomerRequestDate()%>"></td>
 					</tr>
 					<tr>
 						<th>가입날짜</th>

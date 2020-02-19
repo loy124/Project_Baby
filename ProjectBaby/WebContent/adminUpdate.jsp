@@ -139,7 +139,7 @@
 							<th>시터에게 요청한 날</th>
 							<td><input class="form-control" readonly="readonly"
 								name="customerRequestDate"
-								value="<%=dto.getcustomerRequestDate()%>"></td>
+								value="<%=dto.getCustomerRequestDate()%>"></td>
 						</tr>
 						<tr>
 							<th>가입날짜</th>
@@ -202,11 +202,13 @@
 
 							<%
 								String str = "";
-									for (int i = 0; i < dto.getWantDate().length; i++) {
-										if (i == 0) {
-											str = dto.getWantDate()[0];
-										} else {
-											str = str + "," + dto.getWantDate()[i];
+									if(dto.getWantDate() != null){
+										for (int i = 0; i < dto.getWantDate().length; i++) {
+											if (i == 0) {
+												str = dto.getWantDate()[0];
+											} else {
+												str = str + "," + dto.getWantDate()[i];
+											}
 										}
 									}
 							%>

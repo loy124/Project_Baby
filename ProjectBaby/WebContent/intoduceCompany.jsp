@@ -73,109 +73,23 @@
 	margin-left: 20px;
 }
 </style>
-<!-- content 영역 -->
-<%
-	// BabyMemberDto babyMemberDto = (BabyMemberDto)session.getAttribute("login");
-	if (babyMemberDto != null) {
-		System.out.println("로그인후 dto" + babyMemberDto.toString());
-		if (babyMemberDto.getAuth() == 1) {
-%>
-<script>
-	location.href = "admin?type=moveAdmin";
-</script>
-<%
-	}
-	}
-%>
 
 <script src="//unpkg.com/vue/dist/vue.js"></script>
 <script src="//unpkg.com/element-ui@2.13.0/lib/index.js"></script>
 <div id="app">
 	<div>
-		<template> <el-carousel :interval="4000" type="card"
-			height="200px"> <el-carousel-item v-for="list in lists"
-			:key="list.img"> <!-- <h3 class="medium">{{ item }}</h3> -->
-		<img style="width: 100%; height: auto;" :src="list.img"> </el-carousel-item> </el-carousel> </template>
-
-	</div>
-	<el-divider></el-divider>
-	<div class="baby-welcome">
-		<img style="width: 50%; border-radius: 10px;"
-			src="https://cdn.pixabay.com/photo/2017/09/03/09/16/baby-2709666_1280.jpg">
-		<div class="baby-welcome-text"
-			style="display: flex; flex-direction: column; justify-content: center">
-			<p>
-				<span style="color: #82B7E7; font-size: 40px;">방문해주셔서 감사합니다</span><br>
-				<span style="display: block; margin-top: 40px;"> <span>우리
-						Oh My baby는 2020년 업계 최초로 비트캠프 인증(BA)을 획득한 영유아 서비스 전문 브랜드입니다.<br>
-				</span> <span>국내 영유야 보육/탁아 서비스 시스템을 선도해서 대중화하였으며 높은 인지도와 고품질의 <br></span>
-					<span>영유아 관련 다양한 서비스를 제공하고 있습니다</span>
-				</span>
-			</p>
-			<div style="text-align: center; margin-top: 40px;">
-				<el-button style="width:200px; height:60px;" type="info">회사
-				소개 보기</el-button>
-			</div>
+		<template> <el-divider></el-divider>
+		<div>Oh My Baby 프로젝트 연대기</div>
+		<div style="margin-left: 40px;" class="block">
+			<el-timeline> <el-timeline-item
+				v-for="(activity, index) in activities" :key="index"
+				:icon="activity.icon" :type="activity.type" :color="activity.color"
+				:size="activity.size" :timestamp="activity.timestamp">
+			{{activity.content}} </el-timeline-item> </el-timeline>
 		</div>
-
+		</template>
 	</div>
-	<el-divider></el-divider>
-	<div class="box-container">
-		<div style="width: 960px; display: flex; flex-wrap: wrap;">
-			<div v-for="items in users" :key="items.name">
-				<el-card class="box-card">
-				<div slot="header" class="clearfix" style="text-align: center">
-					<span>이용자 후기</span>
-				</div>
-				<div class="text item">{{ '성명: ' + items.name }}</div>
-				<div class="text item">{{ '별점: ' + items.star  }}</div>
-				<div class="text item">{{ '이용자 후기: ' + items.review }}</div>
-				</el-card>
-			</div>
-		</div>
-	</div>
-	<!-- <div class="box-card-wrapper"
-			style="display: flex; justify-content: center">
-
-			<el-card class="box-card">
-			<div slot="header" class="clearfix">
-				<span>Card name</span>
-			</div>
-			<div v-for="o in 4" :key="o" class="text item">{{'List item ' +
-				o }}</div>
-			</el-card>
-			<el-card class="box-card">
-			<div slot="header" class="clearfix">
-				<span>Card name</span>
-			</div>
-			<div v-for="o in 4" :key="o" class="text item">{{'List item ' +
-				o }}</div>
-			</el-card>
-		</div>
- -->
-
-	<el-divider></el-divider>
-	<div>Oh My Baby 프로젝트 연대기</div>
-	<div style="margin-left: 40px;" class="block">
-		<el-timeline> <el-timeline-item
-			v-for="(activity, index) in activities" :key="index"
-			:icon="activity.icon" :type="activity.type" :color="activity.color"
-			:size="activity.size" :timestamp="activity.timestamp">
-		{{activity.content}} </el-timeline-item> </el-timeline>
-	</div>
-
 </div>
-<!-- <div class="containerWrap main">
-	<div class="container_inner">
-		필요 없으면 div 삭제 (필요한거 남기고!) 배결색은 style만 삭제하면 되요~~!!
-		<div class="cont1 content clearfix" style="background-color: #ccc;">
-		</div>
-		<div class="cont2 content clearfix" style="background-color: #eee;"></div>
-		<div class="cont3 content clearfix" style="background-color: #ccc;"></div>
-	</div>
-</div> -->
-<!--// container -->
-
 
 <%@ include file="./include/footer.jsp"%>
 

@@ -51,7 +51,9 @@ text-decoration:underline;
 color: #ff9999;
 
 }  
-
+.mypage .content {
+margin-bottom:100px;
+}  
 </style>
 
 <%
@@ -85,7 +87,7 @@ color: #ff9999;
 
 					<%	if (dto.getRealFileName() == null || dto.getRealFileName() == "null") {
 					%>
-				<span>	<img src='./image/user.png'
+				<span>	<img src='./image/mainImage.png'
 						style="border-radius: 100%;" width='110x' height='110px'> </span>
 					<%
 						} else {
@@ -260,7 +262,7 @@ color: #ff9999;
 							<td>원하는 시급 : </td>
 							<td>
 							 <input type="number" name="wantPay"
-								min="8590"  style="width: 134px; height: 30px;" value="<%=dto.getWantPay()%>">원
+								 min="8600" step=100  style="width: 134px; height: 30px;" value="<%=dto.getWantPay()%>">원
 						    </td> 
 						</tr>
 						<tr style=" height: 35px;">
@@ -406,13 +408,13 @@ color: #ff9999;
 					
 					<%	if (dto.getRealFileName() == null || dto.getRealFileName() == "null") {
 					%>
-				<span>	<img src='./image/user.png'
+				<span>	<img src='./image/mainImage.png'
 						style="border-radius: 100%;" width='110x' height='110px'> </span>
 					<%
 						} else {
 					%>
 
-				<span>	<img src='http://localhost:8097/ProjectBaby4/upload/<%=dto.getRealFileName()%>'
+				<span>	<img src='http://localhost:8090/ProjectBaby/upload/<%=dto.getRealFileName()%>'
 						style="border-radius: 100%;" width='110px' height='110px'> </span>
 					<%
 						}

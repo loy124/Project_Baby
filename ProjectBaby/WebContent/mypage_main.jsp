@@ -97,7 +97,16 @@ height: 155px;
 text-decoration:underline;
 color: #ff9999;
 
+}
+
+.mypage .content {
+margin-bottom:100px;
 }  
+
+.emptyUserID{
+text-align:center;
+font-size:30px;
+}
 
 </style>
 
@@ -155,7 +164,7 @@ color: #ff9999;
 
 		     		<%	if (dto.getRealFileName() == null || dto.getRealFileName() == "null") {
 					%>
-				<span>	<img src='./image/user.png'
+				<span>	<img src='./image/mainImage.png'
 						style="border-radius: 100%;" width='110px' height='110px'> </span>
 					<%
 						} else {
@@ -264,7 +273,59 @@ color: #ff9999;
 					
 
             </div>
-            <div class="row2 rows">
+           
+            
+        <%
+		if ((dto.getUserId()==null||dto.getUserId()=="null") && (dto.getSitterId()==null||dto.getSitterId()=="null")) { 
+		%>
+
+
+           <div class="row2 rows" style="padding-top:100px;"> <!-- #f0f0f0; -->
+
+       <div  class="alert alert-danger" role="alert" style="vertical-align:middle; ">
+         
+         
+         
+         
+         	<%
+		if (dto.getAuth() == 3 || dto.getAuth() == 9) { //일반회원의 경우
+	%>
+	  
+          	<p class="emptyUserID"> 
+          		<b>
+          		
+          		예약한 시터가 없습니다.
+          		</b>
+          	</p> 
+
+	  
+	<%
+		} else if (dto.getAuth() == 4 || dto.getAuth() == 5 || dto.getAuth() == 6 || dto.getAuth() == 8) { //시터의 경우
+        %>
+	
+	
+          	<p class="emptyUserID"> 
+          		<b>
+          		
+          		예약한 회원이 없습니다.
+          		</b>
+          	</p> 
+          	
+        <%
+		}
+	%>
+         
+         
+
+         
+
+          </div>
+        <%
+		}else{
+        %>
+         <div class="row2 rows">    
+            
+            
           <div class="items"> 
 	               <div class="item1" style="text-align:center;">
 	               	<!-- 	<p style="padding-top:30px;"><img src='./image/user.png' width='130x' height='130px'> </p> -->
@@ -274,39 +335,44 @@ color: #ff9999;
 				
 				
 				
-				
-	<%
-		if (dto.getAuth() == 3 || dto.getAuth() == 9) { //일반회원의 경우
-    			if (sitterDto.getRealFileName() == null || sitterDto.getRealFileName() == "null" ) {
-					%>
-					
-				<span>	<img src='./image/user.png'
-						style="border-radius: 100%;" width='130px' height='130px'> </span>
-						
-					<%
-						} else {
-					%>
+		
+		<%
 
-				<span>	<img src='http://localhost:8090/ProjectBaby/upload/<%=sitterDto.getRealFileName() %>'
-						style="border-radius: 100%;" width='130px' height='130px'> </span>
-					<%
-						}
-
-		} else if (dto.getAuth() == 4 || dto.getAuth() == 5 || dto.getAuth() == 6 || dto.getAuth() == 8) { //시터의 경우
-				if (userDto.getRealFileName() == null || userDto.getRealFileName() == "null" ) {
-					%>
-					
-			<span>	<img src='./image/user.png'
-					style="border-radius: 100%;" width='130px' height='130px'> </span>
-					<%
-						} else {
-					%>	
-				<span>	<img src='http://localhost:8090/ProjectBaby/upload/<%=userDto.getRealFileName() %>'
-						style="border-radius: 100%;" width='130px' height='130px'> </span>	
+	
+				if (dto.getAuth() == 3 || dto.getAuth() == 9) { //일반회원의 경우
+		    			if (sitterDto.getRealFileName() == null || sitterDto.getRealFileName() == "null" ) {
+							%>
+							
+						<span>	<img src='./image/mainImage.png'
+								style="border-radius: 100%;" width='130px' height='130px'> </span>
+								
 						
-				    <%	
-						}
-		}
+							<%
+								} else {
+							%>
+		
+						<span>	<img src='http://localhost:8090/ProjectBaby/upload/<%=sitterDto.getRealFileName() %>'
+								style="border-radius: 100%;" width='130px' height='130px'> </span>
+							<%
+								}
+		
+				} else if (dto.getAuth() == 4 || dto.getAuth() == 5 || dto.getAuth() == 6 || dto.getAuth() == 8) { //시터의 경우
+						if (userDto.getRealFileName() == null || userDto.getRealFileName() == "null" ) {
+							%>
+							
+					<span>	<img src='./image/mainImage.png'
+							style="border-radius: 100%;" width='130px' height='130px'> </span>
+							<%
+								} else {
+							%>	
+						<span>	<img src='http://localhost:8090/ProjectBaby/upload/<%=userDto.getRealFileName() %>'
+								style="border-radius: 100%;" width='130px' height='130px'> </span>	
+								
+						    <%	
+								}
+				}
+		
+	
 					%>
 								
 				
@@ -329,7 +395,8 @@ color: #ff9999;
 	
 	
 	 <%--      ==========================================   일반 회원 일때     =============================================     --%>    		
-					
+
+						
 					
 						<%
 							if (dto.getAuth() == 3 || dto.getAuth() == 9) {
@@ -464,6 +531,8 @@ color: #ff9999;
 		
 			<%
 				}
+				
+			
 			%>
       
             
@@ -473,12 +542,88 @@ color: #ff9999;
 						<b class="title" style="font-size: 13pt; color: #FFC561; text-decoration:underline;">상세 예약 내역</b>
 					</p>
 					<p style="font-size: 14px;">
-					<b>예약신청일: <%=dto.getRequestReceiveDate() %>&nbsp;&nbsp;&nbsp;&nbsp;
-					시작일 :<%=dto.getStartWorkDate() %> ~ 마감일 :<%=dto.getEndWorkDate() %> &nbsp;&nbsp;&nbsp;&nbsp;
-					총시간 : <%=dto.getWorkingHour() %>&nbsp;&nbsp;&nbsp;&nbsp;TotalPoint:</b>
+					<b>
+					
+					
+						<%
+						if (dto.getAuth() == 3 || dto.getAuth() == 9) { //일반회원의 경우
+					%>
+					  		예약신청일:<% if(dto.getCustomerRequestDate()==null||dto.getCustomerRequestDate()=="null"){%>
+							없음
+							<% 
+							}else{ 
+							%>
+		                    <%=dto.getCustomerRequestDate() %>				
+							<% }%>
+					  
+					  
+					  
+					<%
+						} else if (dto.getAuth() == 4 || dto.getAuth() == 5 || dto.getAuth() == 6 || dto.getAuth() == 8) { //시터의 경우
+				        %>
+					
+							예약신청일:<% if(dto.getRequestReceiveDate()==null||dto.getRequestReceiveDate()=="null"){%>
+							없음
+							<% 
+							}else{ 
+							%>
+		                    <%=dto.getRequestReceiveDate() %>				
+							<% }%>
+					
+					
+				        <%
+						}
+					%>
+									
+					
+					
+					
+					
+					
+					
+					
+					
+				&nbsp;&nbsp;&nbsp;&nbsp;
+					
+					시작일 : 
+					<% if(dto.getStartWorkDate()==null||dto.getStartWorkDate()=="null"){%>
+					없음
+					<% 
+					}else{ 
+					%>
+                    <%=dto.getStartWorkDate() %>				
+					<% }%>
+					~ 마감일 : 
+					<% if(dto.getEndWorkDate()==null||dto.getEndWorkDate()=="null"){%>
+					없음
+					<% 
+					}else{ 
+					%>
+                    <%=dto.getEndWorkDate() %>				
+					<% }%> &nbsp;&nbsp;&nbsp;&nbsp;
+					총시간 :
+					<% if(dto.getWorkingHour()==null||dto.getWorkingHour()=="null"){%>
+					없음
+					<% 
+					}else{ 
+					%>
+                    <%=dto.getWorkingHour() %>				
+					<% }%> &nbsp;&nbsp;&nbsp;&nbsp;
+				   
+					
+					</b>
+					
+					
+					<%-- 시작일 :<%=dto.getStartWorkDate() %> ~ 마감일 :<%=dto.getEndWorkDate() %> &nbsp;&nbsp;&nbsp;&nbsp;
+					총시간 : <%=dto.getWorkingHour() %>&nbsp;&nbsp;&nbsp;&nbsp;TotalPoint:</b> --%>
 					</p>
 					
             </div> 
+
+         <%
+		}
+            %>
+
 
        </div>
  

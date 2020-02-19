@@ -286,7 +286,7 @@ public class BabyMemberDao {
 
 		String sql = " SELECT " + "ID," + " NAME, " + "AGE, " + "GENDER," + " ADDRESS," + " MONEY," + " PHONE_NUMBER,"
 				+ " BANK_ACCOUNT," + " BANK_ACCOUNT_MONEY," + " AUTH," + " POINT, " + " CUSTOMER_REQUEST_DATE,"
-				+ " REGISTER_DATE, " + "UN_REGISTER_DATE," + "LICENSE," + " WANT_PAY, " + "CAREER," + " HIRE_DATE,"
+				+ " REGISTER_DATE, " + "UN_REGISTER_DATE," + "LICENSE," + " NVL(WANT_PAY, '8590'), " + "CAREER," + " HIRE_DATE,"
 				+ " EXPIRE_DATE," + " PROFILE_PHOTO, " + "INTRODUCE," + " START_WORK_DATE," + " END_WORK_DATE, "
 				+ " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE ,"
 				+ " NVL(REALFILENAME, 'noImage.png'), USER_ID, WORKING_HOUR " + " FROM BABY_MEMBER WHERE AUTH = 4";
@@ -543,13 +543,13 @@ public class BabyMemberDao {
 				+ " BANK_ACCOUNT," + " BANK_ACCOUNT_MONEY," + " AUTH," + " POINT, " + " CUSTOMER_REQUEST_DATE,"
 				+ " REGISTER_DATE, " + "UN_REGISTER_DATE," + "LICENSE," + " WANT_PAY, " + "CAREER," + " HIRE_DATE,"
 				+ " EXPIRE_DATE," + " PROFILE_PHOTO, " + "INTRODUCE," + " START_WORK_DATE," + " END_WORK_DATE, "
-				+ " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME ," + " NVL(REALFILENAME, 'noImage.png') " + " FROM  ";
+				+ " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME, NVL(REALFILENAME, 'noImage.png') "  + " FROM  ";
 
 		sql += "(SELECT ROW_NUMBER()OVER(ORDER BY SYSDATE) AS RNUM, " + "ID," + " NAME, " + "AGE, " + "GENDER,"
 				+ " ADDRESS," + " MONEY," + " PHONE_NUMBER," + " BANK_ACCOUNT," + " BANK_ACCOUNT_MONEY," + " AUTH," + " POINT, "
 				+ " CUSTOMER_REQUEST_DATE," + " REGISTER_DATE, " + "UN_REGISTER_DATE," + "LICENSE," + " WANT_PAY, " + "CAREER,"
 				+ " HIRE_DATE," + " EXPIRE_DATE," + " PROFILE_PHOTO, " + "INTRODUCE," + " START_WORK_DATE," + " END_WORK_DATE, "
-				+ " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME, " + " NVL(REALFILENAME, 'noImage.png')" + " FROM BABY_MEMBER ";
+				+ " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME, REALFILENAME " + " FROM BABY_MEMBER ";
 		sql += " ORDER BY SYSDATE) ";
 		sql += " WHERE RNUM >= ? AND RNUM <= ?";
 		String sqlWord = "";
@@ -608,7 +608,7 @@ public class BabyMemberDao {
 						rs.getString(i++), rs.getString(i++), rs.getString(i++), arrArray, rs.getString(25),
 
 						rs.getString(26));
-				babyMemberDto.setRealFileName(rs.getString(27));
+				 babyMemberDto.setRealFileName(rs.getString(27)); 
 				System.out.println("babyMemberDto=" + babyMemberDto.toString());
 
 				list.add(babyMemberDto);

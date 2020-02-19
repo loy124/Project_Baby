@@ -91,6 +91,10 @@
 	text-decoration: underline;
 	color: #ff9999;
 }
+
+.mypage .content {
+margin-bottom:100px;
+}  
 </style>
 
 <%
@@ -124,14 +128,14 @@
 					<%
 						if (dto.getRealFileName() == null || dto.getRealFileName() == "null") {
 					%>
-					<span><img src='./image/user.png'
+					<span><img src='./image/mainImage.png'
 						style="border-radius: 100%;" width='110x' height='110px'> </span>
 					<%
 						} else {
 					%>
 
 					<span><img
-						src='http://localhost:8090/ProjectBaby/upload/<%=dto.getRealFileName()%>'
+						src='http://localhost:8097/ProjectBaby5/upload/<%=dto.getRealFileName()%>'
 						style="border-radius: 100%;" width='110x' height='110px'> </span>
 					<%
 						}
@@ -224,13 +228,13 @@
 												
 					<%	if (dto.getRealFileName() == null || dto.getRealFileName() == "null") {
 					%>
-					<img src='./image/user.png'
+					<img src='./image/mainImage.png'
 						style="border-radius: 100%;" width='150px' height='150px'> 
 					<%
 						} else {
 					%>
 
-					<img src='http://localhost:8090/ProjectBaby/upload/<%=dto.getRealFileName()%>'
+					<img src='http://localhost:8097/ProjectBaby5/upload/<%=dto.getRealFileName()%>'
 						style="border-radius: 100%;" width='150px' height='150px'> 
 					<%
 						}

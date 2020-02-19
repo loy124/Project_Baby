@@ -1,7 +1,7 @@
 drop table BABY_MEMBER CASCADE CONSTRAINTS;
 
 update BABY_MEMBER  set auth = 4 where id ='aaa@aa.aa';
-select * from BABY_MEMBER;
+select * from BABY_MEMBER where AUTH = 4;
 
 CREATE TABLE BABY_MEMBER
 (
@@ -33,7 +33,7 @@ CREATE TABLE BABY_MEMBER
     WANT_LOCAL            VARCHAR2(400)      NULL, 
     WANT_TIME             VARCHAR2(300)      NULL,
 	SITTER_ID			  VARCHAR2(300)		 NULL,
-	SITTER_REQUEST_RECIEVE_DATE DATE		NULL,
+	SITTER_REQUEST_RECIEVE_DATE DATE		NULL, -- 시터예약을 했을때 버튼을눌렀을때 예약받은 시터의 시간(CUSTOMER_REQUEST_DATE 와 동일)
     CONSTRAINT BABY_MEMBER_PK PRIMARY KEY (ID)
 );
 

@@ -112,7 +112,7 @@ body {
 				</div>
 
 				<div class="form-want-pay">
-					<span  class="blackLabel">원하는 시급 </span> <input type="number" name="wantPay" min="8590"
+					<span  class="blackLabel">원하는 시급 </span> <input type="number" name="wantPay" min="8600" step = 100
 						value="8590"><span>원</span>
 				</div>
 
@@ -127,7 +127,7 @@ body {
 
 				<div>근무</div>
 				<div class="form-want-day-of-week">
-					<span  class="blackLabel">원하는 요일</span>
+					<span class="blackLabel">원하는 요일</span>
 					 <span><input type="checkbox" name="wantDate" value="월">월</span>
 					<span><input type="checkbox" name="wantDate" value="화">화</span>
 					<span><input name="wantDate" type="checkbox" value="수">수</span>

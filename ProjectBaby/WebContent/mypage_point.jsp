@@ -56,7 +56,9 @@ color: #ff9999;
 
 }  
   
-
+.mypage .content {
+margin-bottom:100px;
+}  
 </style>
 
 <%
@@ -84,7 +86,7 @@ color: #ff9999;
 					<%
 						if (dto.getRealFileName() == null || dto.getRealFileName() == "null") {
 					%>
-					<span><img src='./image/user.png'
+					<span><img src='./image/mainImage.png'
 						style="border-radius: 100%;" width='110x' height='110px'> </span>
 					<%
 						} else {

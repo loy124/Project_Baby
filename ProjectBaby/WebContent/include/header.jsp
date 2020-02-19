@@ -99,7 +99,7 @@
 						if (babyMemberDto.getAuth() == 1) {
 				%>
 				<ul class="gnb clearfix">
-					<li><a href="">회원정보관리</a>
+					<li><a href="mypage_point.jsp">회원정보관리</a>
 						<ul class="sub_menu">
 							<!-- <li><a href="">회원정보 관리</a></li>
 							<li><a href=""></a></li> -->
@@ -111,7 +111,7 @@
 							<li><a href="mypage_point.jsp">내 포인트 관리</a></li>
 							<li><a href="mypage_profile.jsp">내 계정 관리</a></li>
 						</ul></li>
-					<li><a href="">Service</a>
+					<li><a href="employee.jsp">Service</a>
 						<ul class="sub_menu">
 							<li><a href="employee.jsp">돌봄 신청</a></li>
 							<li><a href="searchSitterBoard">구인구직</a></li>
@@ -133,14 +133,14 @@
 				<%	}else {
 					%>
 					<ul class="gnb clearfix">
-					<li><a href="">Mypage</a>
+					<li><a href="mypage_point.jsp">Mypage</a>
 						<ul class="sub_menu">
 							<li><a href="mypage_main.jsp">예약내역 확인</a></li>
 					<li><a href="mypage_imageUpdate.jsp">프로필 사진 업데이트</a></li>
 							<li><a href="mypage_point.jsp">내 포인트 관리</a></li>
 							<li><a href="mypage_profile.jsp">내 계정 관리</a></li>
 						</ul></li>
-					<li><a href="">Service</a>
+					<li><a href="employee.jsp">Service</a>
 						<ul class="sub_menu">
 							<li><a href="employee.jsp">돌봄 신청</a></li>
 							<li><a href="searchSitterBoard">구인구직</a></li>
@@ -164,7 +164,7 @@
 					} else {
 				%>
 				<ul class="gnb clearfix">
-					<li><a href="">Service</a>
+					<li><a href="employee.jsp">Service</a>
 						<ul class="sub_menu">
 							<li><a href="employee.jsp">돌봄 신청</a></li>
 							<li><a href="searchSitterBoard">구인구직</a></li>

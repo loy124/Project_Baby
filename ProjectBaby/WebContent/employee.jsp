@@ -266,8 +266,6 @@
 				dataJson.map((d, i) => {
 					$(`#popupIndex`+i).click(function(){
 						$(".test111").append(popupList(d));
-
-
 					});
 
 
@@ -393,7 +391,7 @@ function haveImg(realFileName){
 
 	                        <div class="info_content info_txt_align">
 	                           <div class="sitter_age"> 나이: ` +existElement(data.age)+ `</div>
-	                           <span class="want_pay">희망시급 : `+existElement(data.wantMoney) + ` </span>
+	                           <span class="want_pay">희망시급 : `+existElement(data.wantPay) + ` </span>
 	                        </div>
 
 	                        <div id="sitter_review" class="info_content">
@@ -473,6 +471,7 @@ function haveImg(realFileName){
 
 		});//ready end
 
+		
 		/* datepicker 마무리 */
 		return `<div class="popup_wrap">
 		<div class="popup_inner">
@@ -480,15 +479,17 @@ function haveImg(realFileName){
 				<div class="layerInner">
 					<div>
 						<form action="reserve" method="post">
-							<input type="hidden" name="type" value="payReserve">
+							<textarea hidden name="type">payReserve</textarea>
+							<textarea hidden name="id">`+popupdata.id+`</textarea>
+							<textarea hidden name="wantPay">`+popupdata.wantPay+`</textarea>
 							<p>이름 : `+existElement(popupdata.name)+ ` </p>
 							<p>나이 : `+existElement(popupdata.age)+ `  </p>
 							<p>희망 지역 : `+existElement(popupdata.wantLocal) +`  </p>
-							<p name="wantPay">희망 시급 : `+existElement(popupdata.wantPay) +`  </p>
+							<p>희망 시급 : <span>`+existElement(popupdata.wantPay)+`</span> </p>	
 							<p>희망 요일 : `+existElement(popupdata.wantDate) +` </p>
 							<p>희망 날짜 :  <input type="text" class="datePicker" name="wantDate" style="width:200px;" class="form-control">
 							<p>시작 시간 :	<input style="width:200px;" type="text" name="startWorkHour" class="timepicker1"/></p>
-							<p>종료 시간 :	<input style="width:200px;" type="text" name="endWorkHour" class="timepicker1" /></p>s
+							<p>종료 시간 :	<input style="width:200px;" type="text" name="endWorkHour" class="timepicker1" /></p>
 							<p>고용하시겠습니까?</p>
 							<input type="submit" value="예">
 							<input type="button" class="popClose" value="아니오">

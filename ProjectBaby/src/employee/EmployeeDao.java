@@ -177,6 +177,7 @@ public class EmployeeDao {
 			
 			// 커미션에 돈 넣기
 			psmt = conn.prepareStatement(sql2);
+			
 			psmt.setString(1, userId);
 			psmt.setString(2, babySitterDto.getStartWorkDate());
 			psmt.setString(3, babySitterDto.getEndWorkDate());

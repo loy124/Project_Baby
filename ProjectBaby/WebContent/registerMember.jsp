@@ -101,7 +101,7 @@ body {
 				<div class="form-address">
 					<div>주소</div>
 					<div>
-						<input type="text" name="zipCode" id="sample4_postcode"
+						<input type="text" name="zipCode" id="sample4_postcode" 
 							placeholder="우편번호"> <input type="button"
 							onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
 					</div>

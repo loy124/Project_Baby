@@ -151,14 +151,6 @@ public class BabyMemberDto implements Serializable {
 		this.point = point;
 	}
 
-	public String getcustomerRequestDate() {
-		return customerRequestDate;
-	}
-
-	public void setcustomerRequestDate(String customerRequestDate) {
-		this.customerRequestDate = customerRequestDate;
-	}
-
 	public String getRegisterDate() {
 		return registerDate;
 	}

@@ -120,7 +120,7 @@
 					<li><a href="">고객센터</a>
 						<ul class="sub_menu">
 							<li><a href="">오시는길</a></li>
-							<li><a href="">Q&A</a></li>
+							<li><a href="qna.jsp">Q&A</a></li>
 						</ul></li>
 
 					<li><a href="">커뮤니티</a>
@@ -149,7 +149,7 @@
 					<li><a href="">고객센터</a>
 						<ul class="sub_menu">
 							<li><a href="">오시는길</a></li>
-							<li><a href="">Q&A</a></li>
+							<li><a href="qna.jsp">Q&A</a></li>
 						</ul></li>
 
 					<li><a href="">커뮤니티</a>
@@ -173,7 +173,7 @@
 					<li><a href="">고객센터</a>
 						<ul class="sub_menu">
 							<li><a href="">오시는길</a></li>
-							<li><a href="">Q&A</a></li>
+							<li><a href="qna.jsp">Q&A</a></li>
 						</ul></li>
 
 					<li><a href="">커뮤니티</a>

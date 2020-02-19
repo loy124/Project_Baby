@@ -100,8 +100,10 @@
 <script src="./js/front/bootstrap-datepicker.js"></script>
 <script src="./js/front/bootstrap-datepicker.ko.min.js"></script>
 
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+<link rel="stylesheet"
+	href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
 <%
 	//시터 리스트 뿌리는 list
@@ -138,7 +140,8 @@
 										d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
 								</svg>
 								<input type="hidden" name="choice" value="sitterMember">
-								<input type="text" name="address" id="address" placeholder="지역을 입력하세요">
+								<input type="text" name="address" id="address"
+									placeholder="지역을 입력하세요">
 							</form>
 
 							<form action="empChoice" class="selectName selectWeek">
@@ -180,14 +183,13 @@
 						<div class="select_wrap refine_search">
 							<form class="selectName selectTime">
 								<span class="sel_title">성별</span> <input type="checkbox"
-									name="gender"  id="woman">여자
-									 <input type="checkbox"
-									name="gender"  id="man">남자
+									name="gender" id="woman">여자 <input type="checkbox"
+									name="gender" id="man">남자
 							</form>
 
 							<form class="selectName">
-								<span class="sel_title">경력</span>
-								<input type="checkbox" name="career" id="career">경력있음
+								<span class="sel_title">경력</span> <input type="checkbox"
+									name="career" id="career">경력있음
 							</form>
 						</div>
 					</div>
@@ -211,10 +213,11 @@
 							</p> -->
 
 						<form class="refineBtn">
-							<input class="rf" type="button" id="searchBtn" onclick="ajaxSearch()" value="검색하기">
+							<input class="rf" type="button" id="searchBtn"
+								onclick="ajaxSearch()" value="검색하기">
 							<!-- 타입수정 -->
 							<input type="reset" value="초기화" class="reset">
-						</from>
+							</from>
 					</div>
 				</div>
 			</div>
@@ -230,10 +233,8 @@
 
 
 <!-- 고용 팝업 --->
-	<div class="lp_bg"></div>
-	<div class="popup_wrap">
-
-	</div>
+<div class="lp_bg"></div>
+<div class="popup_wrap"></div>
 
 <%@ include file="./include/footer.jsp"%>
 <!-- 요일 선택시 버튼 수정 -->
@@ -244,7 +245,7 @@
 
 	 $.ajax({
 		url : "./employee",
-		type : "get",
+		type : "post",
 		data : {
 			/* "id" : $("#id").val() */
 			"type" : "getSitterList",
@@ -252,7 +253,7 @@
 
 		},
 		success : function(data) {
-			console.log(data[0]);
+			console.log(data);
 			let index = 0;
 			dataJson = data;
 			console.log(dataJson.length);
@@ -334,6 +335,17 @@
 	};
 
 
+function haveImg(realFileName){
+	console.log("파일이름" + realFileName);
+		if(realFileName !== null && realFileName !== false && realFileName !== 0 
+				&&realFileName !== undefined &&realFileName !=="null" && realFileName !=="noImage"){
+				return "http://localhost:8090/ProjectBaby/upload/"+img;
+			}
+	else{
+		return "./images/front/profile_w.png";
+	}
+	}
+	
 
 
 
@@ -355,7 +367,7 @@
 	                        </div>
 
 	                        <div class="photo_wrap">
-	                           <img alt="프로필 이미지" src="./images/front/profile_w.png">
+	                           <img alt="프로필 이미지" src="`+haveImg(data.realFileName)+`">
 	                        </div>
 	                     </div>
 
@@ -469,7 +481,6 @@
 					<div>
 						<form action="reserve" method="post">
 							<input type="hidden" name="type" value="payReserve">
-							<input type="hidden" name="id" value="`+ popupdata.id +`">
 							<p>이름 : `+existElement(popupdata.name)+ ` </p>
 							<p>나이 : `+existElement(popupdata.age)+ `  </p>
 							<p>희망 지역 : `+existElement(popupdata.wantLocal) +`  </p>
@@ -495,10 +506,7 @@
 
 	</script>
 
-<script>
 
-
-</script>
 
 
 <script src="js/front/searchResult.js"></script>

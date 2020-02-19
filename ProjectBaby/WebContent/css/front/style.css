@@ -1,3 +1,54 @@
+/*------------------ Q&A 페이지) ------------------*/
+.qna {
+	background: #f5f5f5;
+}
+
+.qna .content {
+	background: #f5f5f5;
+	padding-bottom: 80px;
+}
+
+.qna h2 {
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.qna table {
+	width: 100%;
+	/* box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2); */
+}
+
+.qna table tr {
+	background-color: #fff;
+	border-bottom: 4px solid #f5f5f5;
+}
+
+.qna table tr td {
+	padding: 20px;
+}
+.qna table tr.title{
+    cursor: pointer;
+    font-size: 18px;
+}
+.qna table tr.title td p{
+    margin: 7px 0 0px;
+    color: #ccc;
+    font-size: 16px;
+}
+.qna table tr.ans{
+	display: none;
+}
+.qna table tr.ans td{
+
+}
+
+
+
+
+
+
+
+
 /*------------------ registerSelect (회원가입) 페이지) ------------------*/
 
 

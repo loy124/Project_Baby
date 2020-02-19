@@ -82,7 +82,7 @@ public class SearchResultServlet extends HttpServlet {
 
 		for(int i = 0 ; i < searchList.size() ; i++) {
 			json += "{";
-
+			
 			json += "\"name\":";
 			json += "\"" + searchList.get(i).getName() + "\",";
 
@@ -136,6 +136,9 @@ public class SearchResultServlet extends HttpServlet {
 
 			json += "\"sitterId\":";
 			json += "\"" + searchList.get(i).getSitterId() + "\",";
+			
+			json += "\"img\":";
+			json += "\"" + searchList.get(i).getRealFileName() + "\",";
 
 			json += "\"sitterRequestRecieveDate\":";
 			json += "\"" + searchList.get(i).getRequestReceiveDate() + "\"";

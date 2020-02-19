@@ -61,7 +61,6 @@ color: #ff9999;
 
 <%
 	BabyMemberDto dto = (BabyMemberDto) request.getSession().getAttribute("login");
-
 %>
 
 

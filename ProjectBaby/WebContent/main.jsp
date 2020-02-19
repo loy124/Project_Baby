@@ -47,6 +47,7 @@
 .box-card {
 	width: 300px;
 	margin-left: 20px;
+	margin-top: 30px;
 }
 
 .box-card-wrapper {
@@ -57,14 +58,20 @@
 	margin-bottom: 40px;
 }
 
-.baby-welcome{
-display: flex;
-}
-.baby-welcome-text{
-margin-left:20px;
+.box-container {
+	display: flex;
+	justify-content: center;
 }
 
+.baby-welcome {
+	display: flex;
+	margin-top: 60px;
+	padding-bottom: 60px;
+}
 
+.baby-welcome-text {
+	margin-left: 20px;
+}
 </style>
 <!-- content 영역 -->
 <%
@@ -93,74 +100,60 @@ margin-left:20px;
 	</div>
 	<el-divider></el-divider>
 	<div class="baby-welcome">
-		<img style="width:50%; border-radius: 10px;" src="https://cdn.pixabay.com/photo/2017/09/03/09/16/baby-2709666_1280.jpg">
-		<div class="baby-welcome-text" style="display:flex; flex-direction: column; justify-content: center">
+		<img style="width: 50%; border-radius: 10px;"
+			src="https://cdn.pixabay.com/photo/2017/09/03/09/16/baby-2709666_1280.jpg">
+		<div class="baby-welcome-text"
+			style="display: flex; flex-direction: column; justify-content: center">
 			<p>
-			<span style="color:#82B7E7; font-size:40px;">방문해주셔서 감사합니다</span><br>
-			<span style="display:block; margin-top: 40px;">
-			<span>우리 Oh My baby는 2020년 업계 최초로 비트캠프 인증(BA)을 획득한 영유아 서비스 전문 브랜드입니다.<br></span>
-			<span>국내 영유야 보육/탁아 서비스 시스템을 선도해서 대중화하였으며 높은 인지도와 고품질의 <br></span>
-			<span>영유아 관련 다양한 서비스를 제공하고 있습니다</span>
-			</span>
+				<span style="color: #82B7E7; font-size: 40px;">방문해주셔서 감사합니다</span><br>
+				<span style="display: block; margin-top: 40px;"> <span>우리
+						Oh My baby는 2020년 업계 최초로 비트캠프 인증(BA)을 획득한 영유아 서비스 전문 브랜드입니다.<br>
+				</span> <span>국내 영유야 보육/탁아 서비스 시스템을 선도해서 대중화하였으며 높은 인지도와 고품질의 <br></span>
+					<span>영유아 관련 다양한 서비스를 제공하고 있습니다</span>
+				</span>
 			</p>
-			<div style="text-align:center; margin-top: 40px;">
-			<el-button style="width:200px; height:60px;" type="info">회사 소개 보기</el-button>
+			<div style="text-align: center; margin-top: 40px;">
+				<el-button style="width:200px; height:60px;" type="info">회사
+				소개 보기</el-button>
 			</div>
 		</div>
 
 	</div>
 	<el-divider></el-divider>
 	<div class="box-container">
-		<div class="box-card-wrapper"
-			style="display: flex; justify-content: center">
-			<el-card class="box-card">
-			<div slot="header" class="clearfix">
-				<span>Card name</span>
+		<div style="width: 960px; display: flex; flex-wrap: wrap;">
+			<div v-for="items in users" :key="items.name">
+				<el-card class="box-card">
+				<div slot="header" class="clearfix" style="text-align: center">
+					<span>이용자 후기</span>
+				</div>
+				<div class="text item">{{ '성명: ' + items.name }}</div>
+				<div class="text item">{{ '별점: ' + items.star  }}</div>
+				<div class="text item">{{ '이용자 후기: ' + items.review }}</div>
+				</el-card>
 			</div>
-			<div v-for="o in 4" :key="o" class="text item">{{'List item ' +
-				o }}</div>
-			</el-card>
-			<el-card class="box-card">
-			<div slot="header" class="clearfix">
-				<span>Card name</span>
-			</div>
-			<div v-for="o in 4" :key="o" class="text item">{{'List item ' +
-				o }}</div>
-			</el-card>
-			<el-card class="box-card">
-			<div slot="header" class="clearfix">
-				<span>Card name</span>
-			</div>
-			<div v-for="o in 4" :key="o" class="text item">{{'List item ' +
-				o }}</div>
-			</el-card>
-		</div>
-
-		<div class="box-card-wrapper"
-			style="display: flex; justify-content: center">
-			<el-card class="box-card">
-			<div slot="header" class="clearfix">
-				<span>Card name</span>
-			</div>
-			<div v-for="o in 4" :key="o" class="text item">{{'List item ' +
-				o }}</div>
-			</el-card>
-			<el-card class="box-card">
-			<div slot="header" class="clearfix">
-				<span>Card name</span>
-			</div>
-			<div v-for="o in 4" :key="o" class="text item">{{'List item ' +
-				o }}</div>
-			</el-card>
-			<el-card class="box-card">
-			<div slot="header" class="clearfix">
-				<span>Card name</span>
-			</div>
-			<div v-for="o in 4" :key="o" class="text item">{{'List item ' +
-				o }}</div>
-			</el-card>
 		</div>
 	</div>
+	<!-- <div class="box-card-wrapper"
+			style="display: flex; justify-content: center">
+
+			<el-card class="box-card">
+			<div slot="header" class="clearfix">
+				<span>Card name</span>
+			</div>
+			<div v-for="o in 4" :key="o" class="text item">{{'List item ' +
+				o }}</div>
+			</el-card>
+			<el-card class="box-card">
+			<div slot="header" class="clearfix">
+				<span>Card name</span>
+			</div>
+			<div v-for="o in 4" :key="o" class="text item">{{'List item ' +
+				o }}</div>
+			</el-card>
+		</div>
+ -->
+
 	<el-divider></el-divider>
 	<div>Oh My Baby 프로젝트 연대기</div>
 	<div style="margin-left: 40px;" class="block">
@@ -214,20 +207,49 @@ let app1 = new Vue({
 			          content: '팀프로젝트 시작',
 			          timestamp: '2020-02-04 10:00',
 			          color: '#0bbd87'
-			        }]
-			      /*   user:[{
-			        	name: 홍길동
-			        },{
-			        	name: 일지매
-			        },{
-			        	name: 정수동
+			        }],
+			         users:[{
+			        	name: "홍길동",
+			        	star: "⭐⭐⭐⭐⭐",
+			        	review: "너무 친절하게 돌봐주세요"
+			        },
+			        {
+			        	name: "일지매",
+			        	star: "⭐⭐⭐⭐⭐",
+			        	review: "너무 친절하게 돌봐주세요"
+			        },
+			        {
+			        	name: "정수동",
+			        	star: "⭐⭐⭐⭐⭐",
+			        	review: "너무 친절하게 돌봐주세요"
+			        }, 
+			        {
+			        	name: "정보라",
+			        	star: "⭐⭐⭐⭐⭐",
+			        	review: "너무 친절하게 돌봐주세요"
 			        }, {
-			        	name: 이민제
+			        	name: "이민제",
+			        	star: "⭐⭐⭐⭐⭐",
+			        	review: "너무 친절하게 돌봐주세요"
 			        }, {
-			        	name: 방경률
-			        }, {
-			        	name: 정보라
-			        }] */
+			        	name: "방경률",
+			        	star: "⭐⭐⭐⭐⭐",
+			        	review: "너무 친절하게 돌봐주세요"
+			        },       {
+			        	name: "황밝으리",
+			        	star: "⭐⭐⭐⭐⭐",
+			        	review: "너무 친절하게 돌봐주세요"
+			        }, 
+			        {
+			        	name: "이온유",
+			        	star: "⭐⭐⭐⭐⭐",
+			        	review: "너무 친절하게 돌봐주세요"
+			        },
+			        {
+			        	name: "김아무개",
+			        	star: "⭐⭐⭐⭐⭐",
+			        	review: "너무 친절하게 돌봐주세요"
+			        }] 
 		}
 	}
 }); 

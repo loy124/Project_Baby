@@ -164,12 +164,7 @@ color: #ff9999;
 			</div>
 		</div>
 
-
-
-		<form class="update_form" id="update_form" action="ProfileUpdateServlet" method="get">
-		
-<!-- 	=================================    box2 시작   =================================   -->
-		
+		<form class="update_form" id="update_form" action="userProfileServlet">
 			<div class="boxs box2">
 
 				<p style="padding-top: 50px;">
@@ -181,7 +176,7 @@ color: #ff9999;
 					<tr  style=" height: 35px;">
 						<td>id :</td>
 						<td><input type="text" name="id"
-							style="width: 200px; height: 30px;" value="<%=dto.getId()%>" readonly="readonly"></td>
+							style="width: 200px; height: 30px;" value="<%=dto.getId()%>"></td>
 					</tr>
 					<tr style=" height: 35px;">
 						<td>Password :</td>
@@ -204,21 +199,22 @@ color: #ff9999;
 					</tr>
 					<tr>
 					<td colspan="2">
-							<div class="form-address">
+					<div class="form-address">
 					<br>	
-						<p>주소</p> 
-							
+						<div >주소</div> 
+							<div>
 								<input type="text" name="zipCode" id="sample4_postcode"
-									placeholder="우편번호" style="width: 300px; height: 30px;">
+									placeholder="우편번호" style="width: 300px; height: 30px;" value="<%=dto.getAddress() %>">
 								<input type="button" onclick="sample4_execDaumPostcode()"
 									value="우편번호 찾기">
-							
-
+							</div>
+							<div></div>
+							<div>
 								<input type="text" name="roadAddress" id="sample4_roadAddress"
 									placeholder="도로명주소" size="20"
-									style="width: 300px; height: 30px;"  value="<%=dto.getAddress() %>">
+									style="width: 300px; height: 30px;">
 							
-							
+							</div>
 							<span id="guide" style="color: #999; display: none"></span>
 							<div>
 								<input type="text" name="detailAddress"
@@ -226,42 +222,21 @@ color: #ff9999;
 									style="width: 300px; height: 30px;">
 							</div>
 							<br>
-							</div>
+						</div>
 						</td>
 					</tr>	
-					</table>
-					
-		<!-- 	 ============================= hidden/visable 부분   =============================		 -->
 					
 					
-	<%
-		if (dto.getAuth() == 3 || dto.getAuth() == 9) {        //일반회원의 경우
-	%>
-			<div class="changeView" Style="visibility: hidden;">		
-	<%
-		} else if (dto.getAuth() == 4 || dto.getAuth() == 5 || dto.getAuth() == 6 || dto.getAuth() == 8) { //시터의 경우
-    %>
-				
-			<div class="changeView" >		
-    <%
-		}else{
-	%>
-			<div class="changeView" >	
-	<%
-		}
-	%>
-					<table class="box1_table">
-					<col style="width: 120px;">
-					<col style="width: 320px;">
+			
 					
 					
 				 <tr style=" height: 35px;">
-			<!-- 	<div class="hidden_visable" style="visibility: hidden;" > -->
+				 
 							<td>원하는 시급 : </td>
 							<td>
 							 <input type="number" name="wantPay"
 								min="8590"  style="width: 134px; height: 30px;" value="<%=dto.getWantPay()%>">원
-						    </td> 
+						    </td>
 						</tr>
 						<tr style=" height: 35px;">
 							<td>경력 : </td>
@@ -270,22 +245,24 @@ color: #ff9999;
 								<option value="신입">신입</option>
 								<option value="1~3년">1~3년</option>
 								<option value="4~5년">4~5년</option>
-								<option value="5년초과">5년초과</option>
+								<option value="5년이상">5년초과</option>
 							</select>
 						    </td>
 						</tr>
-					<!-- 	</div> -->
+						
 
 						
-<%-- 						<!-- 경력 커리어 셀렉 출력 함수 -->
+						<!-- 경력 커리어 셀렉 출력 함수 -->
 						<script type="text/javascript">
-						$(document).ready(function () {					
+						$(document).ready(function () {
+							<%-- alert('<%=dto.getCareer() %>'); --%>
 							$("#career").val('<%=dto.getCareer() %>');
-											
+						
+						
 						});
 						
 						</script>
-						 --%>
+						
 												
 						
 						
@@ -349,14 +326,13 @@ color: #ff9999;
 						    </td>
 						</tr>
 						
-<%-- 						
+						<!-- 지역 select문 옵션 출력 함수 -->
 						<script type="text/javascript">
 							$(document).ready(function () {
-								<!-- 지역 select문 옵션 출력 함수 -->
 								$("#wantLocal").val('<%=dto.getWantLocal() %>');
 								
 							});
-						</script> --%>
+						</script>
 						
 												
 						
@@ -376,16 +352,12 @@ color: #ff9999;
 						    </td>
 						</tr>
 				</table>
-			<!-- 경력 커리어 셀렉 출력 함수 -->
-			<!-- 지역 select문 옵션 출력 함수 -->		
-			<!-- 시간대 select문 옵션 출력 함수 -->
+			
+					<!-- 지역 select문 옵션 출력 함수 -->
 					<script type="text/javascript">
 						$(document).ready(function () {
-							
-							$("#career").val('<%=dto.getCareer() %>');
-							
-							$("#wantLocal").val('<%=dto.getWantLocal() %>');		
-							
+				
+							<%-- 	consol.log("<%=dto.getWantTime()%>"); 크롬에서만 먹히는 방법--%>
 							$("#wantTime").val('<%=dto.getWantTime() %>');
 						});
 					</script>
@@ -394,10 +366,10 @@ color: #ff9999;
 
 
 
-               </div>
+
 			</div>
 
-<!-- 	=================================    box2 끝   =================================   -->
+
 
 			<div class="boxs box3">
 
@@ -412,14 +384,14 @@ color: #ff9999;
 						} else {
 					%>
 
-				<span>	<img src='http://localhost:8097/ProjectBaby4/upload/<%=dto.getRealFileName()%>'
+				<span>	<img src='http://localhost:8090/ProjectBaby/upload/<%=dto.getRealFileName()%>'
 						style="border-radius: 100%;" width='110px' height='110px'> </span>
 					<%
 						}
 					%>
 						 
 					
-				</div> <!-- <div class="image_file" align="center"> -->
+				</div>
 
 				<br>
 				<div class="form-want-introduce">
@@ -459,10 +431,10 @@ color: #ff9999;
 					</div>
 
 
-				</div> <!-- <div class="form-want-introduce"> -->
+				</div>
 
 
-			</div> <!-- <div class="boxs box3"> -->
+			</div>
 		</form>
 		<!-- ============================================================================================================================= -->
 

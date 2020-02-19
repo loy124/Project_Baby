@@ -78,9 +78,13 @@ function haveImg(img) {
 }
 
 function resultList(data) {
-    console.log('데이터터' + data);
+    console.log("데이터");
+    console.log("데이터터" + data);
+    console.log(data);
     return (
         `<div class="sitter_wrap" onclick="popUp(\'` +
+        data.id +
+        `\', \'` +
         data.name +
         `\', \'` +
         data.age +
@@ -177,11 +181,11 @@ function existElement(el) {
     }
 }
 
-function popUp(name, age, wantLocal, wantPay, wantDate) {
+function popUp(id, name, age, wantLocal, wantPay, wantDate) {
     // 로딩 완료되었을때
     console.log('로딩완료');
 
-    $('.popup_wrap').append(popUpCreate(name, age, wantLocal, wantPay, wantDate));
+    $('.popup_wrap').append(popUpCreate(id, name, age, wantLocal, wantPay, wantDate));
 
     $('.lp_bg, .popup_wrap .popupBox').show();
 
@@ -190,7 +194,7 @@ function popUp(name, age, wantLocal, wantPay, wantDate) {
     });
 }
 
-function popUpCreate(name, age, wantLocal, wantPay, wantDate) {
+function popUpCreate(id, name, age, wantLocal, wantPay, wantDate) {
     $(function() {
         $('.datePicker')
             .datepicker({
@@ -238,6 +242,7 @@ function popUpCreate(name, age, wantLocal, wantPay, wantDate) {
             $('.timepicker1').timepicker({
                 zindex: 99000,
                 dynamic: true,
+                timeFormat: 'H:00'
             });
         });
     }); //ready end
@@ -247,7 +252,10 @@ function popUpCreate(name, age, wantLocal, wantPay, wantDate) {
 			<div id="layer1" class="popupBox empBox">
 				<div class="layerInner">
 					<div>
-						<form action="reserve" method="post">
+                        <form action="reserve" method="post">
+                        <textarea hidden name="type">payReserve</textarea>
+							<textarea hidden name="id">`+id+`</textarea>
+							<textarea hidden name="wantPay">`+wantPay+`</textarea>
 						<p>이름 : ` +
         existElement(name) +
         `</p>

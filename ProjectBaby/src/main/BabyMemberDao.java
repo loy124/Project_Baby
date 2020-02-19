@@ -657,27 +657,27 @@ public class BabyMemberDao {
 			sql = " SELECT " + " NAME, " + "AGE, " + "GENDER," + " MONEY," + " PHONE_NUMBER," + " CUSTOMER_REQUEST_DATE,"
 					+ " REGISTER_DATE, " + "LICENSE," + " WANT_PAY, " + "CAREER," + " HIRE_DATE," + " EXPIRE_DATE,"
 					+ " PROFILE_PHOTO, " + " START_WORK_DATE," + " END_WORK_DATE, " + " WANT_DATE, " + " WANT_LOCAL, "
-					+ " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE, NVL(REALFILENAME, 'noImage.png') "
+					+ " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE, NVL(REALFILENAME, 'noImage.png'), ID "
 					+ " FROM BABY_MEMBER WHERE AUTH = 4 AND CAREER='" + career + "' " + "AND WANT_LOCAL='" + address + "'";
 		} else if (!(gender.equals("none")) && career.equals("신입")) {
 			sql = " SELECT " + " NAME, " + "AGE, " + "GENDER," + " MONEY," + " PHONE_NUMBER," + " CUSTOMER_REQUEST_DATE,"
 					+ " REGISTER_DATE, " + "LICENSE," + " WANT_PAY, " + "CAREER," + " HIRE_DATE," + " EXPIRE_DATE,"
 					+ " PROFILE_PHOTO, " + " START_WORK_DATE," + " END_WORK_DATE, " + " WANT_DATE, " + " WANT_LOCAL, "
-					+ " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE, NVL(REALFILENAME, 'noImage.png') "
+					+ " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE, NVL(REALFILENAME, 'noImage.png'), ID "
 					+ " FROM BABY_MEMBER WHERE AUTH = 4 AND CAREER='" + career + "'" + "AND WANT_LOCAL='" + address + "'"
 					+ " AND GENDER='" + gender + "' ";
 		} else if (gender.equals("none") && career.equals("경력")) {
 			sql = " SELECT " + " NAME, " + "AGE, " + "GENDER," + " MONEY," + " PHONE_NUMBER," + " CUSTOMER_REQUEST_DATE,"
 					+ " REGISTER_DATE, " + "LICENSE," + " WANT_PAY, " + "CAREER," + " HIRE_DATE," + " EXPIRE_DATE,"
 					+ " PROFILE_PHOTO, " + " START_WORK_DATE," + " END_WORK_DATE, " + " WANT_DATE, " + " WANT_LOCAL, "
-					+ " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE, NVL(REALFILENAME, 'noImage.png') "
+					+ " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE, NVL(REALFILENAME, 'noImage.png'), ID "
 					+ " FROM BABY_MEMBER WHERE AUTH = 4 AND CAREER != '신입' " + "AND WANT_LOCAL='" + address + "'";
 
 		} else {
 			sql = " SELECT " + " NAME, " + "AGE, " + "GENDER," + " MONEY," + " PHONE_NUMBER," + " CUSTOMER_REQUEST_DATE,"
 					+ " REGISTER_DATE, " + "LICENSE," + " WANT_PAY, " + "CAREER," + " HIRE_DATE," + " EXPIRE_DATE,"
 					+ " PROFILE_PHOTO, " + " START_WORK_DATE," + " END_WORK_DATE, " + " WANT_DATE, " + " WANT_LOCAL, "
-					+ " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE, NVL(REALFILENAME, 'noImage.png') "
+					+ " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE, NVL(REALFILENAME, 'noImage.png'), ID "
 					+ " FROM BABY_MEMBER WHERE AUTH = 4 AND CAREER != '신입' " + "AND WANT_LOCAL='" + address + "' AND GENDER='"
 					+ gender + "' ";
 		}
@@ -722,7 +722,7 @@ public class BabyMemberDao {
 						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++));
 				babyMemberDto.setRequestReceiveDate(rs.getString(i++));
 				babyMemberDto.setRealFileName(rs.getString(i++));
-
+				babyMemberDto.setId(rs.getString(i++));
 				System.out.println("babyMemberDto=" + babyMemberDto.toString());
 
 				list.add(babyMemberDto);

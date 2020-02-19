@@ -83,6 +83,9 @@ public class SearchResultServlet extends HttpServlet {
 		for(int i = 0 ; i < searchList.size() ; i++) {
 			json += "{";
 			
+			json += "\"id\":";
+			json += "\"" + searchList.get(i).getId() + "\",";
+			
 			json += "\"name\":";
 			json += "\"" + searchList.get(i).getName() + "\",";
 

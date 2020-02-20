@@ -52,7 +52,7 @@ th {
 	border-radius: 3px;
 	padding: 5px 5px 5px 6px;
 	margin-bottom: 10px;
-	margin-left: 50px;
+	margin-left: 32px;
 	display: inline-block;
 }
 
@@ -70,7 +70,8 @@ th {
 	height: 30px;
 	padding: 10px;
 }
-.paging{
+
+.paging {
 	margin-top: 10px;
 }
 </style>
@@ -95,11 +96,9 @@ th {
 	String searchWord = (String) request.getAttribute("searchWord");
 	int boardPage = (int) request.getAttribute("boardPage");
 	System.out.println("보드페이지:" + boardPage);
-	
-	
+
 	int pageNumber = (int) request.getAttribute("pageNumber");
 	System.out.println("pageNumber:" + pageNumber);
-	
 %>
 
 <div class="containerWrap sitterBoard">
@@ -174,23 +173,24 @@ th {
 							%>
 							<tr class="sub">
 								<td><%=i + 1%></td>
-								<td><img src="./images/lock.png" style="width: 15px; height: 15px;"></td>
+								<td><img src="./images/lock.png"
+									style="width: 15px; height: 15px;"></td>
 
 
 								<%
-								if(dto.getDel() == 0) {
-									%>
-									<td class="subject toe"><a
-									href="sitterDetail?seq=<%=dto.getSeq()%>&type=detail&filename=<%=dto.getOriginalFileName()%>&id=<%=login.getId() %>&auth=<%=login.getAuth() %>&wid=<%=dto.getId() %>"
+									if (dto.getDel() == 0) {
+								%>
+								<td class="subject toe"><a
+									href="sitterDetail?seq=<%=dto.getSeq()%>&type=detail&filename=<%=dto.getOriginalFileName()%>&id=<%=login.getId()%>&auth=<%=login.getAuth()%>&wid=<%=dto.getId()%>"
 									class="a" id="a_go" onclick="userCheck('<%=dto.getId()%>')"><%=dto.getTitle()%></a></td>
-									<%
-								}else if(dto.getDel() == 1){
-									%>
-									<td class="subject toe">삭제 된 글입니다.</td>
-									<%
-								}
-								%>	
-								
+								<%
+									} else if (dto.getDel() == 1) {
+								%>
+								<td class="subject toe">삭제 된 글입니다.</td>
+								<%
+									}
+								%>
+
 
 
 
@@ -220,42 +220,43 @@ th {
 
 
 		<div class="cont2 content clearfix" style="">
-		<div align="center" class="paging">
-			<%
-				for (int i = 0; i < boardPage; i++) {
-					if (pageNumber == i) { // 현재페이지
-			%>
-			<span style="font-size: 15pt; color: #9393ce; font-weight: bold;">
-				<%=i + 1%>
-			</span>&nbsp;
-			<%
-				} else { // 나머지
-			%>
-			<a href="#none" title="<%=i + 1%>페이지" onclick="goPage(<%=i%>)"
-				style="font-size: 15pt; color: #000; font-weight: bold; text-decoration: none">
-				[<%=i + 1%>]
-			</a>&nbsp;
-			<%
-				}
-			}
-			%>
+			<div align="center" class="paging">
+				<%
+					for (int i = 0; i < boardPage; i++) {
+						if (pageNumber == i) { // 현재페이지
+				%>
+				<span style="font-size: 15pt; color: #9393ce; font-weight: bold;">
+					<%=i + 1%>
+				</span>&nbsp;
+				<%
+					} else { // 나머지
+				%>
+				<a href="#none" title="<%=i + 1%>페이지" onclick="goPage(<%=i%>)"
+					style="font-size: 15pt; color: #000; font-weight: bold; text-decoration: none">
+					[<%=i + 1%>]
+				</a>&nbsp;
+				<%
+					}
+					}
+				%>
 			</div>
 
-<br><br>
+			<br>
+			<br>
 
-	<div align="center">
-			<select id="choice">
-				<option value="sel">선택</option>
-				<option value="title">제목</option>
-				<option value="writer">작성자</option>
-				<option value="content">내용</option>
-			</select> <input type="text" id="search" value="" placeholder="검색어를 입력하세요">
+			<div align="center">
+				<select id="choice">
+					<option value="sel">선택</option>
+					<option value="title">제목</option>
+					<option value="writer">작성자</option>
+					<option value="content">내용</option>
+				</select> <input type="text" id="search" value="" placeholder="검색어를 입력하세요">
 
-			<button type="button" onclick="searchSitterBoard()">검색</button>
-	</div>
+				<button type="button" onclick="searchSitterBoard()">검색</button>
+			</div>
 			<script type="text/javascript">
 				function searchSitterBoard() {
-					alert("클릭");
+					
 					var choice = document.getElementById("choice").value;
 					var word = $("#search").val();
 					
@@ -265,7 +266,7 @@ th {
 					var choice = $("#choice").val();
 					var word = $("#search").val();
 					
-					alert("pageNum: " + pageNum);
+					
 					
 					if(word == ""){
 						document.getElementById("choice").value = 'sel';
@@ -277,16 +278,16 @@ th {
 					location.href = linkStr;
 				}
 	</script>
-</div>
-		
+		</div>
+
 		<!-- 		<div class="cont3 content clearfix" style="background-color: #ccc;"></div> -->
 	</div>
 </div>
 <!--// container -->
 <script type="text/javascript">
 $(document).ready(function () {
-	var _choice = '<%=choice %>';
-	var _searchWord = '<%=searchWord %>';
+	var _choice = '<%=choice%>';
+	var _searchWord = '<%=searchWord%>';
 	if(_choice != '' && _choice != 'sel'){		
 		if(_searchWord != ""){			
 			$("#choice").val(_choice);
@@ -298,7 +299,7 @@ $(document).ready(function () {
 </script>
 <script>
 	$("#btnWrite").click(function() {
-		alert("클릭");
+	
 		location.href = "sitterWrite.jsp";
 	});
 <%-- 	function userCheck(id) {

@@ -1,21 +1,21 @@
-package mypage;
+package commission;
 
 import java.io.Serializable;
 
-public class PointDto implements Serializable {
+public class CommissionDto implements Serializable {
 	private String id;
 	private String commission;
 
 	@Override
 	public String toString() {
-		return "Point [id=" + id + ", commission=" + commission + "]";
+		return "Commission [id=" + id + ", commission=" + commission + "]";
 	}
 
-	public PointDto() {
+	public CommissionDto() {
 
 	}
 
-	public PointDto(String id, String commission) {
+	public CommissionDto(String id, String commission) {
 		super();
 		this.id = id;
 		this.commission = commission;

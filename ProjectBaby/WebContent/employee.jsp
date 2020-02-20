@@ -94,6 +94,13 @@
 	padding: 30px 20px 20px;
 	font-family: 'NanumSquare';
 }
+.employee .cont2 .inner{
+    margin-top: 25px;
+    margin-bottom: 50px;
+    padding: 0 15px;
+    overflow-y: scroll;
+    max-height: 565px;
+}
 </style>
 <%@ include file="./include/header.jsp"%>
 <link rel="stylesheet" href="./css/front/bootstrap-datepicker.css">
@@ -325,19 +332,29 @@
 
 	//정보가 기재되어 있지 않은 경우
 	function existElement(el){
-		if(el !== null && el !== false && el !== 0 && el !== undefined){
+		if(el !== null && el !== false && el !== 0 && el !== undefined && el !== "null"){
 			return el;
 		}else{
 			return "기재되지 않음";
 		}
 	};
+	
+	function existMoney(el){
+		if(el !== null && el !== false && el !== 0 && el !== undefined && el !== "null"){
+			return el;
+		}else{
+			return "8600";
+		}
+	};
+	
+	
 
 
 function haveImg(realFileName){
 	console.log("파일이름" + realFileName);
 		if(realFileName !== null && realFileName !== false && realFileName !== 0 
 				&&realFileName !== undefined &&realFileName !=="null" && realFileName !=="noImage"){
-				return "http://localhost:8090/ProjectBaby/upload/"+img;
+				return "http://192.168.2.10:8090/ProjectBaby/upload/"+img;
 			}
 	else{
 		return "./images/front/profile_w.png";
@@ -391,7 +408,7 @@ function haveImg(realFileName){
 
 	                        <div class="info_content info_txt_align">
 	                           <div class="sitter_age"> 나이: ` +existElement(data.age)+ `</div>
-	                           <span class="want_pay">희망시급 : `+existElement(data.wantPay) + ` </span>
+	                           <span class="want_pay">희망시급 : `+existMoney(data.wantPay) + ` </span>
 	                        </div>
 
 	                        <div id="sitter_review" class="info_content">
@@ -485,7 +502,7 @@ function haveImg(realFileName){
 							<p>이름 : `+existElement(popupdata.name)+ ` </p>
 							<p>나이 : `+existElement(popupdata.age)+ `  </p>
 							<p>희망 지역 : `+existElement(popupdata.wantLocal) +`  </p>
-							<p>희망 시급 : <span>`+existElement(popupdata.wantPay)+`</span> </p>	
+							<p>희망 시급 : <span>`+existMoney(popupdata.wantPay)+`</span> </p>	
 							<p>희망 요일 : `+existElement(popupdata.wantDate) +` </p>
 							<p>희망 날짜 :  <input type="text" class="datePicker" name="wantDate" style="width:200px;" class="form-control">
 							<p>시작 시간 :	<input style="width:200px;" type="text" name="startWorkHour" class="timepicker1"/></p>

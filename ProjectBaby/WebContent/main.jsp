@@ -84,6 +84,13 @@
 	location.href = "admin?type=moveAdmin";
 </script>
 <%
+	}else if(babyMemberDto.getAuth() == 6){
+		%>
+		<script>
+		alert("반려되었습니다. 다시 신청해주세요");
+		location.href="login?type=change";
+		</script>
+		<%
 	}
 	}
 %>
@@ -211,34 +218,34 @@ let app1 = new Vue({
 			         users:[{
 			        	name: "홍길동",
 			        	star: "⭐⭐⭐⭐⭐",
-			        	review: "너무 친절하게 돌봐주세요"
+			        	review: "부모인 저까지 기분이 좋아집니다"
 			        },
 			        {
 			        	name: "일지매",
 			        	star: "⭐⭐⭐⭐⭐",
-			        	review: "너무 친절"
+			        	review: "친절하고 배려가 깊으세요"
 			        },
 			        {
 			        	name: "정수동",
-			        	star: "⭐⭐⭐⭐⭐",
-			        	review: "너무 친절하게 돌봐주세요"
+			        	star: "⭐⭐⭐⭐",
+			        	review: "케어 실력 인정합니다"
 			        }, 
 			        {
 			        	name: "정보라",
 			        	star: "⭐⭐⭐⭐⭐",
-			        	review: "너무 친절하게 돌봐주세요"
+			        	review: "선생님이 너무 친절하세요!"
 			        }, {
 			        	name: "이민제",
 			        	star: "⭐⭐⭐⭐⭐",
-			        	review: "너무 친절하게 돌봐주세요"
+			        	review: "좋아요!"
 			        }, {
 			        	name: "방경률",
 			        	star: "⭐⭐⭐⭐⭐",
-			        	review: "너무 친절하게 돌봐주세요"
+			        	review: "너무 잘 해줘서 좋습니다"
 			        },       {
 			        	name: "황밝으리",
-			        	star: "⭐⭐⭐⭐⭐",
-			        	review: "너무 친절하게 돌봐주세요"
+			        	star: "⭐⭐⭐",
+			        	review: "쓸만하네요"
 			        }, 
 			        {
 			        	name: "이온유",
@@ -246,9 +253,9 @@ let app1 = new Vue({
 			        	review: "너무 친절하게 돌봐주세요"
 			        },
 			        {
-			        	name: "김아무개",
-			        	star: "⭐⭐⭐⭐⭐",
-			        	review: "너무 친절하게 돌봐주세요"
+			        	name: "성춘향",
+			        	star: "⭐⭐⭐⭐",
+			        	review: "아이가 너무 좋아해요"
 			        }] 
 		}
 	}

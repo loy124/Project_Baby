@@ -1,3 +1,4 @@
+<%@page import="main.BabyMemberDao"%>
 <%@page import="main.BabyMemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -54,10 +55,17 @@ color: #ff9999;
 .mypage .content {
 margin-bottom:100px;
 }  
+
+#finalUpdateBtn{
+
+}
 </style>
 
 <%
 	BabyMemberDto dto = (BabyMemberDto) request.getSession().getAttribute("login");
+    BabyMemberDao dao = BabyMemberDao.getInstance();
+    
+    
 
 %>
 
@@ -93,7 +101,7 @@ margin-bottom:100px;
 						} else {
 					%>
 
-				<span>	<img src='http://localhost:8090/ProjectBaby/upload/<%=dto.getRealFileName()%>'
+				<span>	<img src='http://192.168.2.10:8090/ProjectBaby/upload/<%=dto.getRealFileName()%>'
 						style="border-radius: 100%;" width='110px' height='110px'> </span>
 					<%
 						}
@@ -187,7 +195,7 @@ margin-bottom:100px;
 					</tr>
 					<tr style=" height: 35px;">
 						<td>Password :</td>
-						<td><input type="text" name="password"
+						<td><input type="password" name="password" id="password"
 							placeholder="패스워드를 입력해주세요" style="width: 200px; height: 30px">
 						</td>
 					</tr>
@@ -261,8 +269,8 @@ margin-bottom:100px;
 			<!-- 	<div class="hidden_visable" style="visibility: hidden;" > -->
 							<td>원하는 시급 : </td>
 							<td>
-							 <input type="number" name="wantPay"
-								 min="8600" step=100  style="width: 134px; height: 30px;" value="<%=dto.getWantPay()%>">원
+							 <input type="number" name="wantPay" step = 100
+								min="8600"  style="width: 134px; height: 30px;" value="<%=dto.getWantPay()%>">원
 						    </td> 
 						</tr>
 						<tr style=" height: 35px;">
@@ -414,7 +422,7 @@ margin-bottom:100px;
 						} else {
 					%>
 
-				<span>	<img src='http://localhost:8090/ProjectBaby/upload/<%=dto.getRealFileName()%>'
+				<span>	<img src='http://192.168.2.10:8090/ProjectBaby/upload/<%=dto.getRealFileName()%>'
 						style="border-radius: 100%;" width='110px' height='110px'> </span>
 					<%
 						}
@@ -456,7 +464,7 @@ margin-bottom:100px;
 					<br>
 
 					<div class="finalBtn" style="padding-left: 100px;">
-						<input type="submit" value="수정하기" style="width: 100px;">
+						<input type="submit" value="수정하기" style="width: 100px;" id="finalUpdateBtn" onclick="finalUpdateBtnClick()">
 
 					</div>
 
@@ -525,6 +533,32 @@ function sample4_execDaumPostcode() {
 			}).open();
 }
 
+
+function finalUpdateBtnClick(){
+	
+	var pwd= $("#password").val();
+	var userpwd = '<%=dao.getPassword(dto.getId()) %>'; 
+	
+	/* 자바스크립트에서 자바값 호출시  ''를 써줍시다. */
+	
+	 if(pwd == ""){
+		 alert("패스워드를 입력해주세요");
+	 } else if(pwd != userpwd){
+		 alert("패스워드가 일치하지 않습니다")
+	 }else if(pwd == userpwd){
+		 alert("정상적으로 프로필이 수정되었습니다.")
+	 } 
+	 
+	 
+}
+
+
+
+
+
+
+
+
 </script>
 
 
@@ -532,4 +566,4 @@ function sample4_execDaumPostcode() {
 <!--// container -->
 
 
-<%@ include file="./include/footer.jsp"%>
+<%@ include file="./include/footer.jsp" %>

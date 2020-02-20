@@ -586,6 +586,34 @@ public class SitterBoardDao {
 		return count>0?true:false;	
 	}
 	
+	// 어스 바꾸기
+	public boolean sitterChangeAuth() {
+		String sql = " UPDATE BABY_MEMBER "
+				+ " SET AUTH=5 "
+				+ " WHERE AUTH=6 ";
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		
+		int count = 0;
+		
+		
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 sitterChangeAuth success");
+			psmt = conn.prepareStatement(sql);
+			System.out.println("2/6 sitterChangeAuth success");
+			count = psmt.executeUpdate();
+			System.out.println("3/6 sitterChangeAuth success");
+		} catch (SQLException e) {
+			System.out.println("sitterChangeAuth fail");
+			e.printStackTrace();
+		}finally {
+			DBClose.close(psmt, conn, null);
+		}
+		return count>0?true:false;
+		
+	}
 }
 
 

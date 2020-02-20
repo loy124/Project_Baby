@@ -2,6 +2,7 @@ drop table BABY_MEMBER CASCADE CONSTRAINTS;
 
 update BABY_MEMBER  set auth = 4 where id ='aaa@aa.aa';
 select * from BABY_MEMBER where AUTH = 4;
+select * from BABY_MEMBER;
 
 CREATE TABLE BABY_MEMBER
 (

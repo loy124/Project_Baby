@@ -47,7 +47,7 @@ public class ReserveServlet extends HttpServlet {
 		if (sWantPay != null) {
 			wantPay = Integer.parseInt(sWantPay);
 		} else {
-			wantPay = 8590;
+			wantPay = 8600;
 		}
 		if (sStartWorkHour != null) {
 			startWorkHour = Integer.parseInt(sStartWorkHour.split(":")[0]);
@@ -75,23 +75,35 @@ public class ReserveServlet extends HttpServlet {
 			req.setAttribute("payPoint", payPoint);
 			req.setAttribute("userId", babyMember.getId());
 			req.setAttribute("babyMemberDto", babyMemberDto);
+
+			HttpSession session1 = req.getSession();
+			BabyMemberDto babyMember1 = (BabyMemberDto) session.getAttribute("login");
+			BabyMemberDao babyMemberDao1 = BabyMemberDao.getInstance();
+			BabyMemberDto babyMemberDto1 = babyMemberDao1.getDetail(babyMember.getId());
+			session1.setAttribute("login", babyMemberDto1);
 			forward("reserveButton.jsp", req, resp);
 			/* req.setAttribute("", o); */
 			/* employeeDao.updateHire(userId, babySitterDto); */
-		}else if(type.equals("payPoint")) {
+		} else if (type.equals("payPoint")) {
 			PointDao pointDao = PointDao.getInstance();
 			EmployeeDao employeeDao = EmployeeDao.getInstance();
 			System.out.println("유저 아이디 : " + babyMember.getId());
 			System.out.println("시터 아이디 : " + sitterId);
 			System.out.println("지불해야 할 돈: " + payPoint);
 			System.out.println(babyMemberDto.toString());
+
 			payPoint = Integer.parseInt(req.getParameter("payPoint"));
 			boolean isS = pointDao.payPoint(babyMember.getId(), sitterId, payPoint);
 			babyMemberDto.setWorkingHour(workingHour);
 			System.out.println("결제 :" + isS);
 			isS = employeeDao.updateHire(babyMember.getId(), babyMemberDto);
 			System.out.println("예약 :" + isS);
-			resp.sendRedirect("process.jsp?type=reserve&isS="+isS);
+
+			babyMember = (BabyMemberDto) session.getAttribute("login");
+			babyMemberDto = babyMemberDao.getDetail(babyMember.getId());
+			session.setAttribute("login", babyMemberDto);
+
+			resp.sendRedirect("process.jsp?type=reserve&isS=" + isS);
 		}
 	}
 

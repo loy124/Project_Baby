@@ -63,6 +63,7 @@ margin-bottom:100px;
 
 <%
 	BabyMemberDto dto = (BabyMemberDto) request.getSession().getAttribute("login");
+
 %>
 
 
@@ -93,7 +94,7 @@ margin-bottom:100px;
 					%>
 
 					<span><img
-						src='http://localhost:8090/ProjectBaby/upload/<%=dto.getRealFileName()%>'
+						src='http://192.168.2.10:8090/ProjectBaby/upload/<%=dto.getRealFileName()%>'
 						style="border-radius: 100%;" width='110x' height='110px'> </span>
 					<%
 						}

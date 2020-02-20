@@ -116,7 +116,7 @@ public class BabyMemberDao {
 				+ "0, " + "?, " // 폰넘버
 				+ "0, " + "0, " + "5, " + "0, " + "null, " + "SYSDATE, " + "null, " // 날짜
 				+ "null, " // 라이센스
-				+ " ?," // 원하는 돈
+				+ " NVL(?, '8590')," // 원하는 돈
 				+ " ?, " // 경력
 				+ "null," + " null, " + "''," // 사진
 				+ " ?, " // 소개
@@ -793,23 +793,39 @@ public class BabyMemberDao {
 
 		return -1; // 실패한 경우 여기까지 내려온다.
 	}
-	/*
-	 * public int getAllMember(String choice, String searchWord) { String sql =
-	 * " SELECT COUNT(*) FROM BABY_MEMBER ";
-	 * 
-	 * String sqlWord = ""; if(choice.equals("title")) { sqlWord =
-	 * " WHERE TITLE LIKE '%" + searchWord.trim() + "%' "; }else
-	 * if(choice.equals("writer")) { sqlWord = " WHERE ID='" + searchWord.trim() +
-	 * "'"; }else if(choice.equals("content")) { sqlWord = " WHERE CONTENT LIKE '%"
-	 * + searchWord.trim() + "%' "; } sql += sqlWord;
-	 * 
-	 * Connection conn = null; PreparedStatement psmt = null; ResultSet rs = null;
-	 * 
-	 * int len = 0;
-	 * 
-	 * try { conn = DBConnection.getConnection(); psmt = conn.prepareStatement(sql);
-	 * rs = psmt.executeQuery(); if(rs.next()) { len = rs.getInt(1); } } catch
-	 * (SQLException e) { // TODO Auto-generated catch block e.printStackTrace();
-	 * }finally { DBClose.close(psmt, conn, rs); } return len; }
-	 */
+	
+	public String getPassword(String id) {
+		String sql = " SELECT Password " + " FROM BABY_MEMBER " + " WHERE ID = ? ";
+
+		Connection conn = null; // DB Connection
+		PreparedStatement psmt = null; // SQL
+		ResultSet rs = null; // result
+
+		System.out.println("sql:" + sql);
+
+		String findPassword = null;
+		try {
+			conn = DBConnection.getConnection();
+			psmt = conn.prepareStatement(sql);
+			
+			
+			psmt.setString(1, id);
+
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				findPassword= rs.getString(1);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, rs);
+		}
+
+		return findPassword; 
+	}
+	
+
 }

@@ -70,7 +70,7 @@ body {
 					</div>
 				</div>
 				<div class="form-password">
-					<span class="blackLabel">패스워드</span><input type="text"
+					<span class="blackLabel">패스워드</span><input type="password"
 						name="password" size="20">
 				</div>
 				<div class="form-name">

@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
+import commission.CommissionDao;
+import commission.CommissionDto;
 import main.BabyMemberDao;
 import main.BabyMemberDto;
 
@@ -136,6 +140,21 @@ public class AdminServlet extends HttpServlet{
 	    	req.setAttribute("memberList", list);
 	    	req.setAttribute("memberCount", memberCount);
 	    	forward("admin.jsp", req, resp);
+	    }else if (type.equals("chart")) {
+			System.out.println("type");
+			BabyMemberDao babyMemberDao = BabyMemberDao.getInstance();
+			List<CommissionDto> list = CommissionDao.getInstance().getCommissionList();
+
+			if (list != null) {
+				for (int i = 0; i < list.size(); i++) {
+					System.out.println(list.get(i).toString());
+				}
+			}
+
+			 resp.setContentType("application/json");
+				resp.setCharacterEncoding("utf-8");
+				String gson = new Gson().toJson(list);
+				resp.getWriter().write(gson);
 	    }
 	}
 	public void forward(String link, HttpServletRequest req, HttpServletResponse resp)

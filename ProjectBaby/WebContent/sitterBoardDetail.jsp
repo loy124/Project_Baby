@@ -122,6 +122,19 @@ th {
 	margin-left: 8px;
 	display: inline-block;
 }
+
+.commentWrap{
+	margin-left: 50px;
+    margin-top: -71px;
+
+}
+.adminCO{
+	margin-left: 50px;
+}
+.noComment{
+	margin-left: 50px;
+
+}
 </style>
 <%@ include file="./include/header.jsp"%>
 
@@ -267,7 +280,7 @@ th {
 
 		</div>
 		<div class="cont2 content clearfix" style="">
-			<form id="commentForm" name="commentForm" action="comment?type=comment&seq=<%=dto.getSeq()%>">
+			<form id="commentForm" name="commentForm" action="comment?type=comment&seq=<%=dto.getSeq()%>"  class="commentWrap">
 				<input type="hidden" name="type" value="comment"> <input
 					type="hidden" name="seq" value="<%=dto.getSeq()%>"> 
 					<input	type="hidden" value="<%=login.getAuth()%>" name="auth">
@@ -306,10 +319,10 @@ th {
 						if (cDto.getComment() != null) {
 					%>
 					<div>
-						<span><strong>관리자</strong></span> <span id="cCnt"></span>
+						<span class="adminCO"><strong>관리자</strong></span> <span id="cCnt"></span>
 
 					</div>
-					<p><%=cDto.getComment()%></p>
+					<p class="noComment"><%=cDto.getComment()%></p>
 					<%
 						}
 					%>

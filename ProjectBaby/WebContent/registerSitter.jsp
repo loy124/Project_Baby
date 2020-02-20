@@ -140,7 +140,7 @@ body {
 				<div class="form-want-address">
 					<span  class="blackLabel">원하는 지역</span>
 					 <select name="wantLocal">
-						<option selected value="서울">서울</option>
+						<option value="서울" selected>서울</option>
 						<option value="경기도">경기도</option>
 						<option value="강원도">강원도</option>
 						<option value="충청남도">충청남도</option>

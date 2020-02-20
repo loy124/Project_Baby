@@ -35,9 +35,15 @@
 			%>
 		</tbody>
 	</table> --%>
-<div style="display:flex; justify-content: center;">
-<div style="width: 800px">
-	<canvas id="myChart"></canvas>
+<div style="display:flex; justify-content: center; align-items: center; margin: 50px 0;">
+<div style="width: 400px; text-align: center">
+	
+	<canvas class="myChart"></canvas>
+	<div style="margin-top:10px">아이디별 누적 커미션</div>
+</div>
+<div style="width: 400px; margin-left: 80px;">
+	<canvas class="myChart"></canvas>
+	
 </div>
 </div>
 
@@ -78,19 +84,58 @@ $(document).ready(function(){
 			id = id1.split(",");
 			
 			// 우선 컨텍스트를 가져옵니다. 
-			var ctx = document.getElementById("myChart").getContext('2d');
+			var ctx = document.getElementsByClassName("myChart")[0].getContext('2d');
+			var ctx1 = document.getElementsByClassName("myChart")[1].getContext('2d');
 			/*
 			- Chart를 생성하면서, 
 			- ctx를 첫번째 argument로 넘겨주고, 
 			- 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줍니다. 
 			*/
 			var myChart = new Chart(ctx, {
-			    type: 'bar',
+			    type: 'doughnut',
 			    data: {
 			        labels: id,
 			        datasets: [{
 			            label: '누적 커미션(ID별)',
 			            data: commission,
+			            backgroundColor: [
+			                'rgba(255, 99, 132, 0.2)',
+			                'rgba(54, 162, 235, 0.2)',
+			                'rgba(255, 206, 86, 0.2)',
+			                'rgba(75, 192, 192, 0.2)',
+			                'rgba(153, 102, 255, 0.2)',
+			                'rgba(255, 159, 64, 0.2)'
+			            ],
+			            borderColor: [
+			                'rgba(255,99,132,1)',
+			                'rgba(54, 162, 235, 1)',
+			                'rgba(255, 206, 86, 1)',
+			                'rgba(75, 192, 192, 1)',
+			                'rgba(153, 102, 255, 1)',
+			                'rgba(255, 159, 64, 1)'
+			            ],
+			            borderWidth: 1
+			        }]
+			    },
+			    options: {
+			        maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+			        scales: {
+			            yAxes: [{
+			                ticks: {
+			                    beginAtZero:true
+			                }
+			            }]
+			        }
+			    }
+			});
+			
+			var myChart1 = new Chart(ctx1, {
+			    type: 'bar',
+			    data: {
+			        labels: ["누적 커미션"],
+			        datasets: [{
+			            label: '누적 커미션(회사 이익)',
+			            data: ["<%=money%>"],
 			            backgroundColor: [
 			                'rgba(255, 99, 132, 0.2)',
 			                'rgba(54, 162, 235, 0.2)',

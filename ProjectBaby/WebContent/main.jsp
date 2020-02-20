@@ -61,6 +61,7 @@
 .box-container {
 	display: flex;
 	justify-content: center;
+	padding-bottom:30px;
 }
 
 .baby-welcome {
@@ -71,6 +72,10 @@
 
 .baby-welcome-text {
 	margin-left: 20px;
+}
+
+.el-timeline-item{
+    font-size: 20px;
 }
 </style>
 <!-- content 영역 -->
@@ -161,14 +166,16 @@
 		</div>
  -->
 
-	<el-divider></el-divider>
+	<el-divider ></el-divider>
+	<div style="display: flex; flex-direction:column; align-items: center; margin-top:40px;">
 	<div>Oh My Baby 프로젝트 연대기</div>
-	<div style="margin-left: 40px;" class="block">
+	<div style="margin-left: 40px; margin-top:30px;" class="block">
 		<el-timeline> <el-timeline-item
 			v-for="(activity, index) in activities" :key="index"
 			:icon="activity.icon" :type="activity.type" :color="activity.color"
 			:size="activity.size" :timestamp="activity.timestamp">
 		{{activity.content}} </el-timeline-item> </el-timeline>
+	</div>
 	</div>
 
 </div>
@@ -196,21 +203,39 @@ let app1 = new Vue({
 			{img: "https://cdn.pixabay.com/photo/2012/03/04/01/01/baby-22194_1280.jpg"},	
 				{img: "https://cdn.pixabay.com/photo/2018/03/28/04/59/child-3268265_1280.jpg"}],
 				 activities: [{
-			          content: 'Oh-my-baby 프로젝트 종료',
-			          timestamp: '2020-02-21 17:00',
+			          content: 'Oh-My-Baby 탄생',
+			          timestamp: '2020-02-21 14:00',
 			          size: 'large',
 			          type: 'primary',
-			          icon: 'el-icon-more'
+			          color: '#0bbd87',
+			          icon: 'el-icon-trophy'
+			        },
+			        {
+			          content: '디버깅 작업및 발표자료 준비',
+			          timestamp: '2020-02-21 12:00',
+			          color: '#0bbd87'
+			          
 			        }, {
 			          content: '프로젝트 진행중',
 			          timestamp: '2020-02-10 12:46',
 			          color: '#0bbd87'
-			        }, {
-			          content: 'Oh-My-Baby 탄생',
-			          timestamp: '2020-02-05 12:46',
-			          size: 'large',
-			          color: '#0bbd87'
-			        }, {
+			        },
+			        {
+				         content: '기능 구현',
+				         timestamp: '2020-02-07 15:00',
+				         color: '#0bbd87'
+				        },
+			        {
+				         content: 'DB 테이블 설계',
+				         timestamp: '2020-02-06 14:00',
+				         color: '#0bbd87'
+				        },
+			        {
+				          content: '아이디어 회의',
+				          timestamp: '2020-02-05 12:00',
+				          color: '#0bbd87'
+				        },
+			        {
 			          content: '팀프로젝트 시작',
 			          timestamp: '2020-02-04 10:00',
 			          color: '#0bbd87'

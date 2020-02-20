@@ -194,6 +194,14 @@ function popUp(id, name, age, wantLocal, wantPay, wantDate) {
     });
 }
 
+function existMoney(el){
+		if(el !== null && el !== false && el !== 0 && el !== undefined && el !== "null"){
+			return el;
+		}else{
+			return "8600";
+		}
+	};
+
 function popUpCreate(id, name, age, wantLocal, wantPay, wantDate) {
     $(function() {
         $('.datePicker')
@@ -255,7 +263,7 @@ function popUpCreate(id, name, age, wantLocal, wantPay, wantDate) {
                         <form action="reserve" method="post">
                         <textarea hidden name="type">payReserve</textarea>
 							<textarea hidden name="id">`+id+`</textarea>
-							<textarea hidden name="wantPay">`+wantPay+`</textarea>
+							<textarea hidden name="wantPay">`+existMoney(wantPay)+`</textarea>
 						<p>이름 : ` +
         existElement(name) +
         `</p>

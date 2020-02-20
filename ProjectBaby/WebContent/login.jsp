@@ -48,11 +48,24 @@ a {
 #chk_save_id {
 	margin: 0;
 }
+
+.positionClass {
+	position: relative;
+}
+
+.absolute-name {
+	position: absolute;
+	left: 146px;
+    z-index: 80;
+    top: 175px;
+}
 </style>
 </head>
 
 <body>
-	<form id="frm">
+	<form id="frm" style="position: relative;">
+		<img class="absolute-name" style="width: 80px; height: auto;"
+			src="./images/front/wrapImg.png">
 		<svg id="ryan" viewBox="0 0 120 120"
 			xmlns="http://www.w3.org/2000/svg">
             <path d="M0,150 C0,65 120,65 120,150" fill="#e0a243"
@@ -81,7 +94,7 @@ a {
                 <path
 				d="M60,66 C58.5,61 49,63 49,69 C49,75 58,77 60,71 M60,66 C61.5,61 71,63 71,69 C71,75 62,77 60,71"
 				fill="#fff" />
-                <path
+                <path class="positionClass"
 				d="M60,66 C58.5,61 49,63 49,69 C49,75 58,77 60,71 M60,66 C61.5,61 71,63 71,69 C71,75 62,77 60,71"
 				fill="#fff" stroke="#000" stroke-width="2.5" stroke-linejoin="round"
 				stroke-linecap="round" />
@@ -92,12 +105,12 @@ a {
 				d="M40,105 C10,140 110,140 80,105 L80,105 L70,111 L60,105 L50,111 L40,105"
 				fill="#fff" />
         </svg>
-        <input type="hidden" name="type" value="loginStart"> 
-		<input name="id" id="id" type="text" placeholder="ID(이메일형식)"> <input
-			name="password" id="password" type="password" placeholder="비밀번호	"> <input
-			type="button" id="_btnLogin" value="Login">
+		<input type="hidden" name="type" value="loginStart"> <input
+			name="id" id="id" type="text" placeholder="ID(이메일형식)"> <input
+			name="password" id="password" type="password" placeholder="비밀번호	">
+		<input type="button" id="_btnLogin" value="Login">
 		<div class="sort">
-			
+
 			<!-- 회원가입 버튼 클릭시 regiButton() 호출 -->
 			<button type="button" onclick="regiButton()">회원가입</button>
 			<div class="sort1">
@@ -106,60 +119,59 @@ a {
 		</div>
 	</form>
 	<script>
-	
-	/* RegiInfoServlet으로 이동 */
-	function regiButton(){
-		location.href="register?type=moveRegister"
-	}
-	
-	// 로그인 버튼 클릭시에 동작하는 함수 
-	$("#_btnLogin").click(function() {
+		/* RegiInfoServlet으로 이동 */
+		function regiButton() {
+			location.href = "register?type=moveRegister"
+		}
+
+		// 로그인 버튼 클릭시에 동작하는 함수 
+		$("#_btnLogin").click(function() {
+			if ($("#id").val().trim() == "") {
+				alert("id를 입력해 주십시오");
+				$("#id").focus();
+			} else if ($("#password").val().trim() == "") {
+				alert("password를 입력해 주십시오");
+				$("#password").focus();
+			} else {
+				//LoginServlet 으로 이동
+				$("#frm").attr({
+					"action" : "login",
+					"method" : "post"
+				}).submit();
+			}
+		});
+
+		var user_id = $.cookie("user_id");
+		if (user_id != null) { // 지정한 쿠키가 있을 때
+			// alert("쿠키 있음");
+			$("#id").val(user_id);
+			$("#chk_save_id").attr("checked", "checked");
+		}
+
+		$("#chk_save_id").click(function() {
+
+			if ($("#chk_save_id").is(":checked")) { // 체크 되었을 때
+
 				if ($("#id").val().trim() == "") {
 					alert("id를 입력해 주십시오");
-					$("#id").focus();
-				} else if ($("#password").val().trim() == "") {
-					alert("password를 입력해 주십시오");
-					$("#password").focus();
-				} else {
-					//LoginServlet 으로 이동
-					$("#frm").attr({
-						"action" : "login",
-	                    "method": "post"
-					}).submit();
-				}
-			});
-
-			var user_id = $.cookie("user_id");
-			if (user_id != null) { // 지정한 쿠키가 있을 때
-				// alert("쿠키 있음");
-				$("#id").val(user_id);
-				$("#chk_save_id").attr("checked", "checked");
-	        }
-	        
-			$("#chk_save_id").click(function() {
-
-				if ($("#chk_save_id").is(":checked")) { // 체크 되었을 때
-	
-					if ($("#id").val().trim() == "") {
-						alert("id를 입력해 주십시오");
-						$("#chk_save_id").prop("checked", false);
-					} else { // 정상 기입한 경우
-						// 쿠키 저장
-						$.cookie("user_id", $("#id").val().trim(), {
-							expires : 7,
-							path : './'
-						});
-					}
-				} else {
-					//	alert("체크 없어짐");
-					$.removeCookie("user_id", {
+					$("#chk_save_id").prop("checked", false);
+				} else { // 정상 기입한 경우
+					// 쿠키 저장
+					$.cookie("user_id", $("#id").val().trim(), {
+						expires : 7,
 						path : './'
 					});
 				}
+			} else {
+				//	alert("체크 없어짐");
+				$.removeCookie("user_id", {
+					path : './'
+				});
+			}
 
-			});
+		});
 	</script>
-	
+
 	<script src="script.js"></script>
 </body>
 

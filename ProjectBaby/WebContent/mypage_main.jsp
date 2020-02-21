@@ -629,17 +629,24 @@ font-size:30px;
                <% if(dto.getStartWorkDate()==null||dto.getStartWorkDate()=="null"){%>
                없음
                <% 
-               }else{ 
+               }else{
+            	   String startDate = dto.getStartWorkDate().split(" ")[0];
+            	   System.out.println(startDate);
                %>
-                    <%=dto.getStartWorkDate() %>            
+                    <%-- <%=dto.getStartWorkDate() %>      --%>
+                    
+            	   <%=startDate %>       
                <% }%>
                ~ 마감일 : 
                <% if(dto.getEndWorkDate()==null||dto.getEndWorkDate()=="null"){%>
                없음
                <% 
                }else{ 
+            	   String endDate = dto.getEndWorkDate().split(" ")[0];
+            	   System.out.println(endDate);
                %>
-                    <%=dto.getEndWorkDate() %>            
+                    <%-- <%=dto.getEndWorkDate() %>     --%>
+                    <%=endDate %>        
                <% }%> &nbsp;&nbsp;&nbsp;&nbsp;
                총시간 :
                <% if(dto.getWorkingHour()==null||dto.getWorkingHour()=="null"){%>

@@ -179,7 +179,21 @@ margin-bottom:100px;
                        </tr>
                        <tr style="height: 60px;">
                        <td>
-                            <span id="MyAccount"><b>My Account : </b> &nbsp;&nbsp; <%=dto.getBankAccount() %> </span>
+                            <span id="MyAccount"><b>My Account : </b> &nbsp;&nbsp;
+                            
+                            
+                                                 <% 
+                  if (dto.getBankAccount() == null || dto.getBankAccount() == "null") {
+                     %>
+                     0
+                 <%   }else{%>  
+                  <%=dto.getBankAccount() %> 
+                  <% } %>  
+                         
+                            
+                            
+                            
+               </span>
                        </td>
                        </tr>
                        <tr style="height: 45px;">

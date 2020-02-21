@@ -103,7 +103,7 @@ public class EmployeeDao {
 	//시터 리스트 뿌리기(이름, 나이, 성별, 폰번호, 자격, 원하는 시급, 경력, 고용날짜, 이력서 사진, 소개, 원하는 지역)
 	public List<BabyMemberDto> getSitterList(int auth){
 
-		String sql = " SELECT NAME, AGE, GENDER, PHONE_NUMBER, "
+		String sql = " SELECT ID, NAME, AGE, GENDER, PHONE_NUMBER, "
 				+ " LICENSE, WANT_PAY, CAREER, HIRE_DATE, PROFILE_PHOTO, INTRODUCE, WANT_LOCAL "
 				+ " FROM BABY_MEMBER"
 				+ " WHERE AUTH=4 ";

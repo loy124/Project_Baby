@@ -107,7 +107,7 @@ th {
 		<div class="cont1 content clearfix">
 			<div class="inner">
 				<%
-					if (login.getAuth() == 5) {
+					if (login.getAuth() == 5 || login.getAuth() == 4) {
 				%>
 				<button type="button" class="writebtn" id="btnWrite">글쓰기</button>
 				<%

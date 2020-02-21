@@ -609,11 +609,12 @@ public class BabyMemberDto implements Serializable {
 		this.userId = userId;
 	}
 	
-	public BabyMemberDto(String name, int age, String gender, String money, String phoneNumber, String customerRequestDate,
+	public BabyMemberDto( String name, int age, String gender, String money, String phoneNumber, String customerRequestDate,
 			String registerDate, String license, String wantPay, String career, String hireDate, String expireDate, String profilePhoto,
 			String startWorkDate, String endWorkDate, String wantLocal, String wantTime,
 			String sitterId, String requestReceiveDate) {
 		super();
+		
 		this.name = name;
 		this.age = age;
 		this.gender = gender;
@@ -633,6 +634,7 @@ public class BabyMemberDto implements Serializable {
 		this.wantTime = wantTime;
 		this.sitterId = sitterId;
 		this.requestReceiveDate = requestReceiveDate;
+		
 	}
 
 }

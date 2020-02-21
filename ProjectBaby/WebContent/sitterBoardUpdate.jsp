@@ -264,7 +264,7 @@ body {
 
 		<script>
 				$(document).on('click', '#btnSave', function(e) {
-					alert("클릭");
+					
 					e.preventDefault();
 
 					$("#form").submit();

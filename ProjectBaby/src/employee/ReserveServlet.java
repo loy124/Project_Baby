@@ -79,7 +79,7 @@ public class ReserveServlet extends HttpServlet {
 			HttpSession session1 = req.getSession();
 			BabyMemberDto babyMember1 = (BabyMemberDto) session.getAttribute("login");
 			BabyMemberDao babyMemberDao1 = BabyMemberDao.getInstance();
-			BabyMemberDto babyMemberDto1 = babyMemberDao1.getDetail(babyMember.getId());
+			BabyMemberDto babyMemberDto1 = babyMemberDao1.getDetail(babyMember1.getId());
 			session1.setAttribute("login", babyMemberDto1);
 			forward("reserveButton.jsp", req, resp);
 			/* req.setAttribute("", o); */
@@ -102,7 +102,6 @@ public class ReserveServlet extends HttpServlet {
 			babyMember = (BabyMemberDto) session.getAttribute("login");
 			babyMemberDto = babyMemberDao.getDetail(babyMember.getId());
 			session.setAttribute("login", babyMemberDto);
-
 			resp.sendRedirect("process.jsp?type=reserve&isS=" + isS);
 		}
 	}

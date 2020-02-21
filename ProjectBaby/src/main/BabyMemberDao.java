@@ -110,10 +110,10 @@ public class BabyMemberDao {
 	public boolean registerSitter(BabyMemberDto dto) {
 		String sql = "INSERT INTO BABY_MEMBER (" + "ID," + " PASSWORD," + " NAME, " + "AGE, " + "GENDER," + " ADDRESS,"
 				+ " MONEY," + " PHONE_NUMBER," + " BANK_ACCOUNT," + " BANK_ACCOUNT_MONEY," + " AUTH," + " POINT, "
-				+ " CUSTOMER_REQUEST_DATE," + " REGISTER_DATE, " + "UN_REGISTER_DATE," + "LICENSE," + " WANT_PAY, " + "CAREER,"
-				+ " HIRE_DATE," + " EXPIRE_DATE," + " PROFILE_PHOTO, " + "INTRODUCE," + " START_WORK_DATE," + " END_WORK_DATE,"
-				+ " WANT_DATE," + " WANT_LOCAL," + " WANT_TIME ) " + " VALUES(" + "?, " + "?, " + "?, " + "?, " + "?, " + "?, "
-				+ "0, " + "?, " // 폰넘버
+				+ " CUSTOMER_REQUEST_DATE," + " REGISTER_DATE, " + "UN_REGISTER_DATE," + "LICENSE," + " WANT_PAY, "
+				+ "CAREER," + " HIRE_DATE," + " EXPIRE_DATE," + " PROFILE_PHOTO, " + "INTRODUCE," + " START_WORK_DATE,"
+				+ " END_WORK_DATE," + " WANT_DATE," + " WANT_LOCAL," + " WANT_TIME ) " + " VALUES(" + "?, " + "?, "
+				+ "?, " + "?, " + "?, " + "?, " + "0, " + "?, " // 폰넘버
 				+ "0, " + "0, " + "5, " + "0, " + "null, " + "SYSDATE, " + "null, " // 날짜
 				+ "null, " // 라이센스
 				+ " NVL(?, '8590')," // 원하는 돈
@@ -199,12 +199,12 @@ public class BabyMemberDao {
 				System.out.println("split까지 체크");
 
 				System.out.print(i);
-				babyMemberDto = new BabyMemberDto(rs.getString(i++), rs.getString(i++), rs.getInt(i++), rs.getString(i++),
+				babyMemberDto = new BabyMemberDto(rs.getString(i++), rs.getString(i++), rs.getInt(i++),
 						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
-						rs.getInt(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
+						rs.getString(i++), rs.getInt(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
 						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
-						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), arrArray, rs.getString(25),
-						rs.getString(26), rs.getString(27), rs.getString(28));
+						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
+						arrArray, rs.getString(25), rs.getString(26), rs.getString(27), rs.getString(28));
 				babyMemberDto.setRealFileName(rs.getString(29));
 				babyMemberDto.setUserId(rs.getString(30));
 				babyMemberDto.setWorkingHour(rs.getString(31));
@@ -265,7 +265,7 @@ public class BabyMemberDao {
 						rs.getString(26), rs.getString(27), rs.getString(28));
 				System.out.println("babyMemberDto=" + babyMemberDto.toString());
 				babyMemberDto.setRealFileName(rs.getString(29));
-				
+
 				babyMemberDto.setUserId(rs.getString(30));
 				babyMemberDto.setWorkingHour(rs.getString(31));
 				list.add(babyMemberDto);
@@ -286,9 +286,10 @@ public class BabyMemberDao {
 
 		String sql = " SELECT " + "ID," + " NAME, " + "AGE, " + "GENDER," + " ADDRESS," + " MONEY," + " PHONE_NUMBER,"
 				+ " BANK_ACCOUNT," + " BANK_ACCOUNT_MONEY," + " AUTH," + " POINT, " + " CUSTOMER_REQUEST_DATE,"
-				+ " REGISTER_DATE, " + "UN_REGISTER_DATE," + "LICENSE," + " NVL(WANT_PAY, '8590'), " + "CAREER," + " HIRE_DATE,"
-				+ " EXPIRE_DATE," + " PROFILE_PHOTO, " + "INTRODUCE," + " START_WORK_DATE," + " END_WORK_DATE, "
-				+ " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE ,"
+				+ " REGISTER_DATE, " + "UN_REGISTER_DATE," + "LICENSE," + " NVL(WANT_PAY, '8590'), " + "CAREER,"
+				+ " HIRE_DATE," + " EXPIRE_DATE," + " PROFILE_PHOTO, " + "INTRODUCE," + " START_WORK_DATE,"
+				+ " END_WORK_DATE, " + " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME, "
+				+ "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE ,"
 				+ " NVL(REALFILENAME, 'noImage.png'), USER_ID, WORKING_HOUR " + " FROM BABY_MEMBER WHERE AUTH = 4";
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -330,7 +331,7 @@ public class BabyMemberDao {
 				System.out.println("babyMemberDto=" + babyMemberDto.toString());
 				list.add(babyMemberDto);
 			}
-			for(int j = 0; j < list.size(); j++){
+			for (int j = 0; j < list.size(); j++) {
 				System.out.println(list.get(j).toString());
 			}
 
@@ -382,12 +383,12 @@ public class BabyMemberDao {
 				 */
 
 				System.out.print(i);
-				babyMemberDto = new BabyMemberDto(rs.getString(i++), rs.getString(i++), rs.getInt(i++), rs.getString(i++),
+				babyMemberDto = new BabyMemberDto(rs.getString(i++), rs.getString(i++), rs.getInt(i++),
 						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
-						rs.getInt(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
+						rs.getString(i++), rs.getInt(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
 						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
-						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), arrArray, rs.getString(25),
-						rs.getString(26), rs.getString(27), rs.getString(28));
+						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
+						arrArray, rs.getString(25), rs.getString(26), rs.getString(27), rs.getString(28));
 				babyMemberDto.setRealFileName(rs.getString(29));
 				babyMemberDto.setUserId(rs.getString(30));
 				babyMemberDto.setWorkingHour(rs.getString(31));
@@ -408,7 +409,8 @@ public class BabyMemberDao {
 	}
 
 	public boolean memberAdminUpdate(BabyMemberDto babyMemberDto) {
-		String sql = "UPDATE BABY_MEMBER SET ADDRESS = ?, PHONE_NUMBER = ?, BANK_ACCOUNT = ?, AUTH = ?" + " WHERE ID = ? ";
+		String sql = "UPDATE BABY_MEMBER SET ADDRESS = ?, PHONE_NUMBER = ?, BANK_ACCOUNT = ?, AUTH = ?"
+				+ " WHERE ID = ? ";
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		int count = 0;
@@ -543,13 +545,14 @@ public class BabyMemberDao {
 				+ " BANK_ACCOUNT," + " BANK_ACCOUNT_MONEY," + " AUTH," + " POINT, " + " CUSTOMER_REQUEST_DATE,"
 				+ " REGISTER_DATE, " + "UN_REGISTER_DATE," + "LICENSE," + " WANT_PAY, " + "CAREER," + " HIRE_DATE,"
 				+ " EXPIRE_DATE," + " PROFILE_PHOTO, " + "INTRODUCE," + " START_WORK_DATE," + " END_WORK_DATE, "
-				+ " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME, NVL(REALFILENAME, 'noImage.png') "  + " FROM  ";
+				+ " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME, NVL(REALFILENAME, 'noImage.png') " + " FROM  ";
 
 		sql += "(SELECT ROW_NUMBER()OVER(ORDER BY SYSDATE) AS RNUM, " + "ID," + " NAME, " + "AGE, " + "GENDER,"
-				+ " ADDRESS," + " MONEY," + " PHONE_NUMBER," + " BANK_ACCOUNT," + " BANK_ACCOUNT_MONEY," + " AUTH," + " POINT, "
-				+ " CUSTOMER_REQUEST_DATE," + " REGISTER_DATE, " + "UN_REGISTER_DATE," + "LICENSE," + " WANT_PAY, " + "CAREER,"
-				+ " HIRE_DATE," + " EXPIRE_DATE," + " PROFILE_PHOTO, " + "INTRODUCE," + " START_WORK_DATE," + " END_WORK_DATE, "
-				+ " WANT_DATE, " + " WANT_LOCAL, " + " WANT_TIME, REALFILENAME " + " FROM BABY_MEMBER ";
+				+ " ADDRESS," + " MONEY," + " PHONE_NUMBER," + " BANK_ACCOUNT," + " BANK_ACCOUNT_MONEY," + " AUTH,"
+				+ " POINT, " + " CUSTOMER_REQUEST_DATE," + " REGISTER_DATE, " + "UN_REGISTER_DATE," + "LICENSE,"
+				+ " WANT_PAY, " + "CAREER," + " HIRE_DATE," + " EXPIRE_DATE," + " PROFILE_PHOTO, " + "INTRODUCE,"
+				+ " START_WORK_DATE," + " END_WORK_DATE, " + " WANT_DATE, " + " WANT_LOCAL, "
+				+ " WANT_TIME, REALFILENAME " + " FROM BABY_MEMBER ";
 		sql += " ORDER BY SYSDATE) ";
 		sql += " WHERE RNUM >= ? AND RNUM <= ?";
 		String sqlWord = "";
@@ -608,7 +611,7 @@ public class BabyMemberDao {
 						rs.getString(i++), rs.getString(i++), rs.getString(i++), arrArray, rs.getString(25),
 
 						rs.getString(26));
-				 babyMemberDto.setRealFileName(rs.getString(27)); 
+				babyMemberDto.setRealFileName(rs.getString(27));
 				System.out.println("babyMemberDto=" + babyMemberDto.toString());
 
 				list.add(babyMemberDto);
@@ -658,27 +661,27 @@ public class BabyMemberDao {
 					+ " REGISTER_DATE, " + "LICENSE," + " WANT_PAY, " + "CAREER," + " HIRE_DATE," + " EXPIRE_DATE,"
 					+ " PROFILE_PHOTO, " + " START_WORK_DATE," + " END_WORK_DATE, " + " WANT_DATE, " + " WANT_LOCAL, "
 					+ " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE, NVL(REALFILENAME, 'noImage.png'), ID "
-					+ " FROM BABY_MEMBER WHERE AUTH = 4 AND CAREER='" + career + "' " + "AND WANT_LOCAL='" + address + "'";
+					+ " FROM BABY_MEMBER WHERE AUTH = 4" + "AND WANT_LOCAL='" + address + "'";
 		} else if (!(gender.equals("none")) && career.equals("신입")) {
 			sql = " SELECT " + " NAME, " + "AGE, " + "GENDER," + " MONEY," + " PHONE_NUMBER," + " CUSTOMER_REQUEST_DATE,"
 					+ " REGISTER_DATE, " + "LICENSE," + " WANT_PAY, " + "CAREER," + " HIRE_DATE," + " EXPIRE_DATE,"
 					+ " PROFILE_PHOTO, " + " START_WORK_DATE," + " END_WORK_DATE, " + " WANT_DATE, " + " WANT_LOCAL, "
 					+ " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE, NVL(REALFILENAME, 'noImage.png'), ID "
-					+ " FROM BABY_MEMBER WHERE AUTH = 4 AND CAREER='" + career + "'" + "AND WANT_LOCAL='" + address + "'"
+					+ " FROM BABY_MEMBER WHERE AUTH = 4 " + "AND WANT_LOCAL='" + address + "'"
 					+ " AND GENDER='" + gender + "' ";
 		} else if (gender.equals("none") && career.equals("경력")) {
 			sql = " SELECT " + " NAME, " + "AGE, " + "GENDER," + " MONEY," + " PHONE_NUMBER," + " CUSTOMER_REQUEST_DATE,"
 					+ " REGISTER_DATE, " + "LICENSE," + " WANT_PAY, " + "CAREER," + " HIRE_DATE," + " EXPIRE_DATE,"
 					+ " PROFILE_PHOTO, " + " START_WORK_DATE," + " END_WORK_DATE, " + " WANT_DATE, " + " WANT_LOCAL, "
 					+ " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE, NVL(REALFILENAME, 'noImage.png'), ID "
-					+ " FROM BABY_MEMBER WHERE AUTH = 4 AND CAREER != '신입' " + "AND WANT_LOCAL='" + address + "'";
+					+ " FROM BABY_MEMBER WHERE AUTH = 4 " + "AND WANT_LOCAL='" + address + "'";
 
 		} else {
 			sql = " SELECT " + " NAME, " + "AGE, " + "GENDER," + " MONEY," + " PHONE_NUMBER," + " CUSTOMER_REQUEST_DATE,"
 					+ " REGISTER_DATE, " + "LICENSE," + " WANT_PAY, " + "CAREER," + " HIRE_DATE," + " EXPIRE_DATE,"
 					+ " PROFILE_PHOTO, " + " START_WORK_DATE," + " END_WORK_DATE, " + " WANT_DATE, " + " WANT_LOCAL, "
 					+ " WANT_TIME, " + "SITTER_ID, SITTER_REQUEST_RECIEVE_DATE, NVL(REALFILENAME, 'noImage.png'), ID "
-					+ " FROM BABY_MEMBER WHERE AUTH = 4 AND CAREER != '신입' " + "AND WANT_LOCAL='" + address + "' AND GENDER='"
+					+ " FROM BABY_MEMBER WHERE AUTH = 4  " + "AND WANT_LOCAL='" + address + "' AND GENDER='"
 					+ gender + "' ";
 		}
 
@@ -712,7 +715,7 @@ public class BabyMemberDao {
 				System.out.println(i);
 				i = 1;
 
-				babyMemberDto = new BabyMemberDto(rs.getString(i++), rs.getInt(i++), rs.getString(i++), rs.getString(i++),
+				babyMemberDto = new BabyMemberDto( rs.getString(i++), rs.getInt(i++), rs.getString(i++), rs.getString(i++),
 						rs.getString(i++),
 
 						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
@@ -720,6 +723,7 @@ public class BabyMemberDao {
 						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
 
 						rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++));
+				/* babyMemberDto = new Ba */
 				babyMemberDto.setRequestReceiveDate(rs.getString(i++));
 				babyMemberDto.setRealFileName(rs.getString(i++));
 				babyMemberDto.setId(rs.getString(i++));
@@ -740,7 +744,8 @@ public class BabyMemberDao {
 	}
 
 	public int profileUpdateDao(BabyMemberDto dto) {
-		String sql = " UPDATE BABY_MEMBER " + " SET " + " ID = ?, PASSWORD = ?, NAME = ?, PHONE_NUMBER = ?, ADDRESS = ?, "
+		String sql = " UPDATE BABY_MEMBER " + " SET "
+				+ " ID = ?, PASSWORD = ?, NAME = ?, PHONE_NUMBER = ?, ADDRESS = ?, "
 				+ " WANT_PAY = ?, CAREER = ?, WANT_DATE = ?, WANT_LOCAL = ?,  WANT_TIME = ?, "
 				+ " BANK_ACCOUNT = ?, INTRODUCE = ? " + " WHERE ID = ? ";
 
@@ -793,7 +798,7 @@ public class BabyMemberDao {
 
 		return -1; // 실패한 경우 여기까지 내려온다.
 	}
-	
+
 	public String getPassword(String id) {
 		String sql = " SELECT Password " + " FROM BABY_MEMBER " + " WHERE ID = ? ";
 
@@ -807,14 +812,13 @@ public class BabyMemberDao {
 		try {
 			conn = DBConnection.getConnection();
 			psmt = conn.prepareStatement(sql);
-			
-			
+
 			psmt.setString(1, id);
 
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
-				findPassword= rs.getString(1);
+				findPassword = rs.getString(1);
 			}
 
 		} catch (SQLException e) {
@@ -824,8 +828,7 @@ public class BabyMemberDao {
 			DBClose.close(psmt, conn, rs);
 		}
 
-		return findPassword; 
+		return findPassword;
 	}
-	
 
 }

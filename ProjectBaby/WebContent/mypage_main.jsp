@@ -534,9 +534,7 @@ font-size:30px;
             
          
          %>
-      
-            
-            
+    
             <div class="row3 rows">
                    <p  style="padding-top: 10px;" >
                   <b class="title" style="font-size: 13pt; color: #FFC561; text-decoration:underline;">상세 예약 내역</b>

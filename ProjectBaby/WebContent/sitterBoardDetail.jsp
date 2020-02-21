@@ -340,7 +340,7 @@ th {
 <script>
 	/* $("#go").prop("disabled", true); */
 	/* $("#go").click(function () {
-	 alert("클릭");
+	 
 	 location.href="comment?type=scomment";
 	 }) */
 	$("#update").click(function() {
@@ -348,12 +348,12 @@ th {
 	});
 	
 	$("#okBtn").click(function () {
-		alert("클릭");
+		
 		location.href = "sitterOk?id=<%=dto.getId()%>"
 	});
 	
 	$("#noBtn").click(function () {
-		alert("클릭");
+		
 		location.href = "sitterNo?seq=<%=dto.getSeq()%>&id=<%=dto.getId()%>"
 	});
 </script>

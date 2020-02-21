@@ -4,6 +4,8 @@ update BABY_MEMBER  set auth = 4 where id ='aaa@aa.aa';
 select * from BABY_MEMBER where AUTH = 4;
 select * from BABY_MEMBER;
 
+update BABY_MEMBER  set password = 'user1' where id ='user1@bit.com';
+
 CREATE TABLE BABY_MEMBER
 (
     ID                    VARCHAR2(300)      NOT NULL, 

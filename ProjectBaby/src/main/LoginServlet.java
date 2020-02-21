@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import sitterboard.SitterBoardDao;
+
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet{
 	@Override
@@ -58,7 +60,17 @@ public class LoginServlet extends HttpServlet{
 			HttpSession session = req.getSession();
 			session.invalidate();
 			resp.sendRedirect("main.jsp");
-		}
+		}else if(type.equals("change")) {
+	         SitterBoardDao dao = SitterBoardDao.getInstance();
+	         boolean isS = dao.sitterChangeAuth();
+	         
+	         HttpSession session = req.getSession();
+	            BabyMemberDto babyMember = (BabyMemberDto)session.getAttribute("login");
+	            BabyMemberDao babyMemberDao = BabyMemberDao.getInstance();
+	            BabyMemberDto babyMemberDto = babyMemberDao.getDetail(babyMember.getId());
+	            session.setAttribute("login", babyMemberDto);
+	            resp.sendRedirect("main.jsp");
+	      }
 		
 	}
 	public void forward(String link, HttpServletRequest req, HttpServletResponse resp)

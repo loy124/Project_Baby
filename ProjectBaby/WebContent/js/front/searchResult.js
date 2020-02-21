@@ -35,7 +35,7 @@ function ajaxSearch() {
             career: career,
             gender: gender,
         },
-        success: function(data) {
+        success: function (data) {
             /*$(".list-inner").append("" +
 					"<div class=\"sitter_wrap\">" +
 					"<div class=\"card_wrap\">" +
@@ -50,7 +50,7 @@ function ajaxSearch() {
             /* console.log(data[0].name); */
             console.log('onclick=popUp("테스트")');
         },
-        error: function() {},
+        error: function () { },
     });
 }
 
@@ -71,11 +71,12 @@ function haveImg(img) {
         img !== undefined &&
         img !== 'null'
     ) {
-        return 'http://localhost:8090/ProjectBaby/upload/' + img;
+        return 'http://192.168.2.10:8090/ProjectBaby/upload/' + img;
     } else {
         return './images/front/profile_w.png';
     }
 }
+
 
 function resultList(data) {
     console.log("데이터");
@@ -94,6 +95,10 @@ function resultList(data) {
         data.wantPay +
         `\', \'` +
         data.wantDate +
+        
+        `\',  \'` +
+        data.wantTime +
+        
         `\');">
     <div class="card_wrap">
     <div class="d1">
@@ -134,7 +139,7 @@ function resultList(data) {
           <div class="info_content">
              <div>
                 <span class="local">희망지역 : ` +
-        existElement(data.wantLocal) +
+        existElement(data.wantTime) +
         `</span>
              </div>
           </div>
@@ -181,29 +186,29 @@ function existElement(el) {
     }
 }
 
-function popUp(id, name, age, wantLocal, wantPay, wantDate) {
+function popUp(id, name, age, wantLocal, wantPay, wantDate, wantTime) {
     // 로딩 완료되었을때
     console.log('로딩완료');
 
-    $('.popup_wrap').append(popUpCreate(id, name, age, wantLocal, wantPay, wantDate));
+    $('.popup_wrap').append(popUpCreate(id, name, age, wantLocal, wantPay, wantDate, wantTime));
 
     $('.lp_bg, .popup_wrap .popupBox').show();
 
-    $('.empBox .popClose').click(function() {
+    $('.empBox .popClose').click(function () {
         $('.lp_bg, .popup_wrap .popupBox').hide();
     });
 }
 
-function existMoney(el){
-		if(el !== null && el !== false && el !== 0 && el !== undefined && el !== "null"){
-			return el;
-		}else{
-			return "8600";
-		}
-	};
+function existMoney(el) {
+    if (el !== null && el !== false && el !== 0 && el !== undefined && el !== "null") {
+        return el;
+    } else {
+        return "8600";
+    }
+};
 
-function popUpCreate(id, name, age, wantLocal, wantPay, wantDate) {
-    $(function() {
+function popUpCreate(id, name, age, wantLocal, wantPay, wantDate, wantTime) {
+    $(function () {
         $('.datePicker')
             .datepicker({
                 format: 'yyyy-mm-dd', //데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
@@ -230,7 +235,7 @@ function popUpCreate(id, name, age, wantLocal, wantPay, wantDate) {
                 weekStart: 0, //달력 시작 요일 선택하는 것 기본값은 0인 일요일
                 language: 'ko', //달력의 언어 선택, 그에 맞는 js로 교체해줘야한다.
             })
-            .on('changeDate', function(e) {
+            .on('changeDate', function (e) {
                 //이벤트의 종류
                 //show : datePicker가 보이는 순간 호출
                 //hide : datePicker가 숨겨지는 순간 호출
@@ -246,7 +251,7 @@ function popUpCreate(id, name, age, wantLocal, wantPay, wantDate) {
                 // 위와 같은 형태로 보인다.
                 // 추후에 yyyy-mm-dd 형태로 변경하는 코드를 업로드 하겠습니다.
             });
-        $(function() {
+        $(function () {
             $('.timepicker1').timepicker({
                 zindex: 99000,
                 dynamic: true,
@@ -262,8 +267,8 @@ function popUpCreate(id, name, age, wantLocal, wantPay, wantDate) {
 					<div>
                         <form action="reserve" method="post">
                         <textarea hidden name="type">payReserve</textarea>
-							<textarea hidden name="id">`+id+`</textarea>
-							<textarea hidden name="wantPay">`+existMoney(wantPay)+`</textarea>
+							<textarea hidden name="id">`+ id + `</textarea>
+							<textarea hidden name="wantPay">`+ existMoney(wantPay) + `</textarea>
 						<p>이름 : ` +
         existElement(name) +
         `</p>
@@ -271,7 +276,7 @@ function popUpCreate(id, name, age, wantLocal, wantPay, wantDate) {
         existElement(age) +
         `</p>
 						<p>희망 지역 : ` +
-        existElement(wantLocal) +
+        existElement(wantTime) +
         `</p>
 						<p name="wantPay">희망 시급 : ` +
         existElement(wantPay) +

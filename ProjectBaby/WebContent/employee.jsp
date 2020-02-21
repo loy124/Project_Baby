@@ -402,7 +402,7 @@ function haveImg(realFileName){
 
 	                        <div class="info_content">
 	                           <div>
-	                              <span class="local"></span>
+	                              <span class="local">원하는 지역 =`+ existElement(data.wantLocal) +`</span>
 	                           </div>
 	                        </div>
 
